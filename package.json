@@ -1,0 +1,27 @@
+{
+  "name": "trasktalk",
+  "version": "1.0.0",
+  "description": "chat app ",
+  "main": "index.js",
+  "scripts": {
+    "test": "nocha --end"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdxcii/tt-app.git"
+  },
+  "keywords": [
+    "messenger",
+    "fantasy",
+    "football"
+  ],
+  "author": "Kevin Crawford",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdxcii/tt-app/issues"
+  },
+  "homepage": "https://github.com/kdxcii/tt-app#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
