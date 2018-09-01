@@ -3,7 +3,7 @@ node_js: node
 deploy:
   provider: heroku
   api_key:
-    secure: <YOUR ENCRYPTED KEY HERE>
-  app: <YOUR APP NAME HERE>
+    secure: a41b49b2-ba22-4e7a-92da-90485cea0e00
+  app: tt-app
   on:
-    repo: <YOUR REPO INFO HERE>
+    repo: https://github.com/kdxcii/tt-app
