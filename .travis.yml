@@ -6,4 +6,4 @@ deploy:
     secure: a41b49b2-ba22-4e7a-92da-90485cea0e00
   app: tt-app
   on:
-    repo: https://github.com/kdxcii/tt-app
+    repo: https://git.heroku.com/secret-mountain-26267.git
