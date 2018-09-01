@@ -4,6 +4,6 @@ deploy:
   provider: heroku
   api_key:
     secure: a41b49b2-ba22-4e7a-92da-90485cea0e00
-  app: tt-app
+  app: secret-mountain-26267
   on:
     repo: https://git.heroku.com/secret-mountain-26267.git
