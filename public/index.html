@@ -1,23 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>SneakerLocker</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Track your sneaker purchases by itemizing each pair in our database">
+	<meta name="author" content="Kevin Crawford">
+	<meta name="keywords" content="sneaker locker, sneaker inventory, shoe, tracker">
+	<script
+	src="https://code.jquery.com/jquery-3.3.1.js"
+	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-	<script src="index.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
-<nav role="navigation"> 
-	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="account.html">Account</a></li>
-		<li><a href="browse.html">Browse</a></li>
-	</ul>
-</nav>
 
 <body>
-	
+
+	<!-- NAVIGATION -->
+		<header role="banner">
+			<div id="branding">
+				<h1>Sneaker Locker</h1>
+			</div>
+				<nav role="navigation"> 
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="account.html">Account</a></li>
+						<li><a href="browse.html">Browse</a></li>
+					</ul>
+				</nav>
+		</header>
+
+<!-- LANDING PAGE -->
+	<section role="region" id="landing">
+		<div class="container">
+			<p>Information Related to what the app does would go here.</p>
+			<p>Image of shoeboxes for background</p>
+			<p>Mock account Information</p>
+			<ul>
+				<li>Mock Username: sneakerhead</li>
+				<li>Mock password: iloveshoes</li>
+			</ul>
+		</div>
+	</section>
+
+<!-- LOGIN FORM-->
+	<section role="region" id="login">
+		<div class="container">
+			<h2>Login Form</h2>
+			<form name="login-form" id="login" role="form">
+			<fieldset>
+				<div class="login-query">
+					<legend for="" id=""></legend>
+
+					<input title="enter Username" classtype="text" aria-labelledby="" placeholder="sneakerhead" class="username-query" required>
+
+					<input title="enter password" classtype="text" aria-labelledby="" placeholder="iloveshoes" class="password-query" required>
+
+				</div>
+			</fieldset>
+			</form>
+			<button form="login-form" title="Submit Login" type="submit" class="login-button">Login</button>
+		</div>
+	</section>
+
+	<footer role="contentinfo">
+		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
+	</footer>
+	<script src="index.js"></script>
 </body>
 </html>
