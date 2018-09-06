@@ -40,9 +40,7 @@ function getUserLocker(callbackFn) {
 function displayUserLocker(data){
 	for(index in data.L_000001){
 		$('body').append(
-			'<p> Brand: ' + data.L_000001[index].shoe_brand + ' Model: ' + data.L_000001[index].shoe_model + ' Primary Color: ' + data.L_000001[index].primary_shoe_color + ' Size: ' + data.L_000001[index].shoe_size + '</p>'
-			'<button> Delete </button>'
-		)
+			'<p> Brand: ' + data.L_000001[index].shoe_brand + ' Model: ' + data.L_000001[index].shoe_model + ' Primary Color: ' + data.L_000001[index].primary_shoe_color + ' Size: ' + data.L_000001[index].shoe_size + '</p>');
 	}
 }
 
