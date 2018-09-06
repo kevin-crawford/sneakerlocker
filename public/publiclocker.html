@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SneakerLocker: Browse</title>
+	<title>SneakerLocker: Public View</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Track your sneaker purchases by itemizing each pair in our database">
 	<meta name="author" content="Kevin Crawford">
@@ -21,7 +21,7 @@
 	<!-- NAVIGATION -->
 		<header role="banner">
 			<div id="branding">
-				<h1>Sneaker Locker: Browse</h1>
+				<h1>Sneaker Locker: "User Name" Public View</h1>
 			</div>
 				<nav role="navigation"> 
 					<ul>
@@ -32,45 +32,10 @@
 				</nav>
 		</header>
 		<body>
-			<h2>BROWSE LOCKERS</h2>
+			<h2>ACCOUNT OVERVIEW</h2>
 	<footer role="contentinfo">
 		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
 	</footer>
-	<script src="browse.js"></script>
+	<script src="publiclocker.js"></script>
 </body>
 </html>
-
-<!-- END POINTS 
-user sends get request to get all other user lockers
-ENDPOINT: /api/lockers
-
-GET
-var MOCK_LOCKERS = {
-	"lockers": [
-	{
-		"author_name": "Kevin Crawford",
-		"locker_id": "000001",
-		"shoe_count": "5",
-		"shoe_size": "11.5"
-	},
-	{
-		"author_name": "John Doe",
-		"locker_id": "000002",
-		"shoe_count": "2",
-		"shoe_size": "9.5"
-	},
-	{
-		"author_name": "sneaker head",
-		"locker_id": "000003",
-		"shoe_count": "1",
-		"shoe_size": "10"
-	},
-	{
-		"author_name": "mock user",
-		"locker_id": "000004",
-		"shoe_count": "3",
-		"shoe_size": "12"
-	}
-	]
-}
--->

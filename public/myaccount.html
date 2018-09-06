@@ -33,9 +33,59 @@
 		</header>
 		<body>
 			<h2>ACCOUNT OVERVIEW</h2>
+			<a href="publiclocker.html">Public View</a>
+			<button>Add Shoe</button>
 	<footer role="contentinfo">
 		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
 	</footer>
-	<script src="index.js"></script>
+	<script src="myaccount.js"></script>
 </body>
 </html>
+
+<!--
+	This static page serves to display users personal locker
+	user should be able to GET their locker
+	user should be able to POST to their locker
+	user should be able to EDIT their locker
+	users should be able to DELETE shoes from their locker
+
+	ENDPOINT: /api/lockers/:MYACCOUNTID
+
+	var MOCK_LOCKER_INV = {
+		"000001": [
+			{
+				"shoe_brand": "nike",
+				"shoe_model": "presto",
+				"primary_shoe_color": "red",
+				"shoe_size": "11.5"
+			},
+			{
+				"shoe_brand": "Jordan",
+				"shoe_model": "4 Retro",
+				"primary_shoe_color": "blue",
+				"shoe_size": "11.5"
+			},
+			{
+				"shoe_brand": "Adidas",
+				"shoe_model": "Yeezy 500",
+				"primary_shoe_color": "yellow",
+				"shoe_size": "11.5"
+			},
+			{
+				"shoe_brand": "Adidas",
+				"shoe_model": "Ultraboost",
+				"primary_shoe_color": "black",
+				"shoe_size": "11.5"
+			},
+			{
+				"shoe_brand": "nike",
+				"shoe_model": "Kobe XII",
+				"primary_shoe_color": "green",
+				"shoe_size": "11.5"
+			}
+		]
+	}
+
+
+
+-->

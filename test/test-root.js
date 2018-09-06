@@ -8,7 +8,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe("index page", function() {
+describe("index landing page", function() {
   it("should exist", function() {
     return chai
       .request(app)
@@ -19,7 +19,7 @@ describe("index page", function() {
   });
 });
 
-  describe("Browse Page", function() {
+  describe("Browse Lockers Page", function() {
     it("should exist", function () {
       return chai
         .request(app)
@@ -36,6 +36,17 @@ describe("index page", function() {
         .request(app)
         .get("/myaccount.html")
         .then(function(res) {
+          expect(res).to.have.status(200);
+        });
+    });
+  });
+
+  describe("Public Locker View", function() {
+    it("should exist", function () {
+      return chai
+        .request(app)
+        .get("/publiclocker.html")
+        .then(function(res){
           expect(res).to.have.status(200);
         });
     });
