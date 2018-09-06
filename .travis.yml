@@ -3,7 +3,7 @@ node_js: node
 deploy:
   provider: heroku
   api_key:
-    secure: 9b84badc-5734-4d84-b222-691355910c5e
+    secure: nbbU+a5OMpRA7z/Bf3Q0Xc+OKT3s7lfa+yEWW6c2ZnOqRywrBSz/9fBqGoMYW6f7v4hFTrMuXQKvGulelmTJ/JI9dFXDqbYnSUUNMlqoUr+59w41itxqeQXkV/1mk4aSwNnKqINHy2z1xOe6QC2lBttCxLaZnMttzDuGrRHQEaaqKgz5DqXcCkel7yHdNbBQHvXlfg2boF/czMm3dpgkyn7BCcr4jC8/ziuY4K5EH9m9dV0yUtRgoTm1Nrm9NRzCbnjxKIDNlB8EN+8NW7CPvq2CTUr/9QvAtgaej4fQ9puU5Y/VR0nmEEj3IhbBQqh1zySbu73KbGN9RHdFAfl5JEMY4//dQ/9hitTuECkO1VqQVgyedAC5tDUjUuFJ0ChCAxjPtRhnOedWvvflgjyZi+9LVs1spK6KNIRL6/U/UWSNczb/FbwIiFXkTz5cjw5CoGg3vk5zFajUuhdtj1si7Eb7IIIO8EKMTKwrBuF489dU7goQhJq24IqQmO9edi0Dzpm+EKleixMewH8UTDmn12gDRAX6vNmVVLUhugV3Hdk5dG2lJXBZy2eyJ2NzfGXgobtgvdEpsxpGyFxXd/bq+6MKFXqFIIbLbwVVib2kLz4qNzQ9WxFAuy6En72KKHWBEPwMhEyzCAiq0q73k03OEE0AZ6xPPjwMPNY7/EWAxzk=
   app: secret-mountain-26267
   on:
     repo: kdxcii/sneakerlocker
