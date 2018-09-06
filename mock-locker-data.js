@@ -6,15 +6,13 @@ var MOCK_LOCKER_DATA = {
 			"shoe_count": 5,
 			"user_shoe_size": 11.5,
 			"inventory": {
-				"item":
-				{
+				"item":{
 					"shoe_brand": "Nike",
 					"shoe_model": "presto",
 					"primary_shoe_color": "red",
 					"shoe_size": 11.5
 				},
-				"item":
-				{
+				"item":{
 					"shoe_brand": "Jordan",
 					"shoe_model": "4 Retro",
 					"primary_shoe_color": "blue",
