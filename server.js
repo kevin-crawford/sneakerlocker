@@ -12,12 +12,15 @@ const app = express();
 app.use(morgan('common'));
 app.use(express.json());
 
-//END POINTS & CRUD OPS
-// get /authors ? do i need to do CRUD opperations for account creation,
+// //END POINTS & CRUD OPS
+// get /owners/:id ? do i need to do CRUD opperations for account creation,
 
 // GET /lockers - retrieve all lockers; BROWSE.html
 
 // GET /lockers/:id - retrieve individual locker; myaccount / publicview.html
+// POST
+// DELETE
+// PUT
 
 
 // do i need CRUD for this endpoint if lockers/:id includes the inventory?
@@ -29,44 +32,44 @@ app.use(express.json());
 
 
 
-// // BROWSE LOCKERS BROWSE.HTML
-// app.get('/lockers', (req, res) => {
-//   Locker
-//     .find()
-//     .then(lockers => {
-//       res.json(lockers.map(locker => {
-//         return {
-//           id: locker._id,
-//           name: locker.author,
-//           shoeSize: locker.shoeSize,
-//           shoeCount: locker.shoeCount,
-//         };
-//       }));
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({ error: 'could not retrieve lockers' });
-//     });
-// });
+// BROWSE LOCKERS BROWSE.HTML
+app.get('/lockers', (req, res) => {
+  Locker
+    .find()
+    .then(lockers => {
+      res.json(lockers.map(locker => {
+        return {
+          lockerId: locker.lockerId,
+          name: locker.author,
+          shoeSize: locker.shoeSize,
+          shoeCount: locker.shoeCount,
+        };
+      }));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'could not retrieve lockers' });
+    });
+});
 
-// // PUBLIC LOCKER VIEW
-// app.get('/lockers/:id', (req, res) => {
-//   Locker
-//     .findById(req.params.id)
-//     .then(locker => {
-//       res.json({
-//         id: locker._id,
-//         name: locker.author,
-//         shoeSize: locker.shoeSize,
-//         shoeCount: locker.shoeCount,
-//         inventory: locker.inventory,
-//       });
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({ error: 'could not get locker'});
-//     });
-// });
+// PUBLIC LOCKER VIEW
+app.get('/lockers/:id', (req, res) => {
+  Locker
+    .findById(req.params.id)
+    .then(locker => {
+      res.json({
+        id: locker._id,
+        name: locker.author,
+        shoeSize: locker.shoeSize,
+        shoeCount: locker.shoeCount,
+        inventory: locker.inventory,
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: 'could not get locker'});
+    });
+});
 
 
 
