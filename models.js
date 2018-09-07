@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-var authorSchema = mongoose.Schema({
+var ownerSchema = mongoose.Schema({
 	firstName: 'string',
 	lastName: 'string',
 	userName: {
