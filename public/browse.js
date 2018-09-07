@@ -2,7 +2,7 @@ var MOCK_LOCKER_DATA = {
 	"lockers": [
 		{
 			"locker_id": "000001",
-			"author_name": "Kevin Crawford",
+			"owner_name": "Kevin Crawford",
 			"shoe_count": 5,
 			"user_shoe_size": 11.5,
 			"inventory": {
