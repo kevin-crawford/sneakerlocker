@@ -1,14 +1,19 @@
 'use strict';
-
+// require('uuid')
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-var authorSchema = mongoose.Schema({
+var ownerSchema = mongoose.Schema({
 	firstName: 'string',
 	lastName: 'string',
+	ownerId: 'string',
 	userName: {
 		type: 'string',
 		unique: true
+	},
+	password: {
+		type: 'string',
+		required: true
 	}
 });
 
@@ -22,30 +27,31 @@ var inventorySchema = mongoose.Schema({
 });
 
 var lockerSchema = mongoose.Schema({
-	author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author'},
+	owner_name: 'string',
+	lockerId: 'number',
 	shoeSize: 'string',
 	shoeCount: 'string',
 	inventory: [inventorySchema]
 });
 
 lockerSchema.pre('findOne', function(next) {
-	this.populate('author');
+	this.populate('owner');
 	next();
 });
 
 lockerSchema.pre('find', function(next){
-	this.populate('author');
+	this.populate('owner');
 	next();
 })
 
-lockerSchema.virtual('authorName').get(function() {
-	return `${this.author.firstName} ${this.author.lastName}`.trim();
+lockerSchema.virtual('owner_name').get(function() {
+	return `${this.owner.firstName} ${this.owner.lastName}`.trim();
 });
 
 lockerSchema.methods.serialize = function () {
 	return {
-		id: this._id,
-		author: this.authorName,
+		lockerId: this.lockerId,
+		owner: this.owner,
 		shoeSize: this.shoeSize,
 		shoeCount: this.shoeCount,
 		inventory: this.inventory,
