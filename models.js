@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 mongoose.Promise = global.Promise;
 
+
+var ownerId = ownerSchema.ObjectId;
 var ownerSchema = mongoose.Schema({
 	firstName: { type: String, 
-							required: true,
 							default: '' },
 	lastName: { type: String, 
-							required: true,
 							default: ''},
 	ownerId: ObjectId,
 	shoeSize: String,
@@ -49,6 +49,10 @@ ownerSchema.statics.hashPassword = function(password) {
 ownerSchema.virtual('ownerName').get(function() {
 	return `${this.owner.firstName} ${this.owner.lastName}`.trim();
 });
+
+ownerSchema.virtual('ownerId').get(function () {
+	return this._id;
+})
 
 var inventorySchema = mongoose.Schema({ 
 	item: {
