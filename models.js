@@ -5,13 +5,12 @@ const bcrypt = require('bcryptjs');
 mongoose.Promise = global.Promise;
 
 
-var ownerId = ownerSchema.ObjectId;
+var ObjectId = ownerSchema.ObjectId;
 var ownerSchema = mongoose.Schema({
 	firstName: { type: String, 
 							default: '' },
 	lastName: { type: String, 
 							default: ''},
-	ownerId: ObjectId,
 	shoeSize: String,
 	shoeCount: String,
 	locker: [inventorySchema],
