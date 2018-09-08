@@ -1,76 +1,184 @@
 'use strict';
-
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+
 mongoose.Promise = global.Promise;
 
 const { Owner, Locker } =  require('./models');
+const {PORT, DATABASE_URL} = require('./config');
 
 const app = express();
+const jsonParser = bodyParser.json();
 
 app.use(morgan('common'));
 app.use(express.json());
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+  if (req.method === 'OPTIONS') {
+    return res.send(204);
+  }
+  next();
+});
 
-// //END POINTS & CRUD OPS
-// get /owners/:id ? do i need to do CRUD opperations for account creation,
-
-// GET /lockers - retrieve all lockers; BROWSE.html
-
-// GET /lockers/:id - retrieve individual locker; myaccount / publicview.html
-// POST
-// DELETE
-// PUT
-
-
-
-
-// BROWSE LOCKERS BROWSE.HTML
-app.get('/lockers', (req, res) => {
-  Locker
+// BROWSE OWNERS BROWSE.HTML
+app.get('/owners', (req, res) => {
+  Owner
     .find()
-    .then(lockers => {
-      res.json(lockers.map(locker => {
+    .then(owners => {
+      res.json(owners.map(owner => {
         return {
-          lockerId: locker.lockerId,
-          name: locker.author,
-          shoeSize: locker.shoeSize,
-          shoeCount: locker.shoeCount,
+          id: owner._id,
+          lockerId: owner.lockerId,
+          name: owner.owner_name,
+          shoeSize: owner.shoeSize,
+          shoeCount: owner.shoeCount,
         };
       }));
     })
     .catch(err => {
       console.error(err);
-      res.status(500).json({ error: 'could not retrieve lockers' });
+      res.status(500).json({ error: 'could not retrieve owners' });
     });
 });
 
-// PUBLIC LOCKER VIEW
+
+// ADD NEW OWNER
+app.post('/owners', jsonParser, (req, res) => {
+  const requiredFields = ['username', 'password'];
+  const missingField = requiredFields.find(field => !(field in req.body));
+
+  if(missingField) {
+    return res.status(422).json({
+      code: 422,
+      reason: 'ValidationError',
+      message: 'Missing Field',
+      location: missingField
+    });
+  }
+  
+  const stringFields = ['username', 'password', 'firstName', 'lastName'];
+  const nonStringField = stringFields.find(
+    field => field in req.body && typeof req.body[field] !== 'string'
+  );
+  
+  if (nonStringField) {
+    return res.status(422).json({
+      code: 422,
+      reason: 'ValidationError',
+      message: 'Incorrect field type: expected string',
+      location: nonStringField
+    });
+  }
+
+  const explicityTrimmedFields = ['username', 'password'];
+  const nonTrimmedField = explicityTrimmedFields.find(
+    field => req.body[field].trim() !== req.body[field]
+  );
+
+  if(nonTrimmedField){
+    return res.status(422).json({
+      code: 422,
+      reason: 'ValidationError',
+      message: 'Cannot start or end with whitespace',
+      location: nonTrimmedField
+    });
+  }
+
+  const sizedFields = {
+    username: {
+      min: 1
+    },
+    password: {
+      min: 10,
+      max: 72
+    }
+  };
+  const tooSmallField = Object.keys(sizedFields).find(
+    field =>
+      'min' in sizedFields[field] &&
+            req.body[field].trim().length < sizedFields[field].min
+  );
+  const tooLargeField = Object.keys(sizedFields[field].max);
+
+  if( tooSmallField || tooLargeField ) {
+    return res.status(422).json({
+      code: 422,
+      reason: 'ValidationError',
+      message: tooSmallField
+        ? `Must be at least ${sizedFields[tooSmallField]
+          .min} characters long`
+        : `Must be at most ${sizedFields[tooLargeField]
+          .max} characters long`,
+      location: tooSmallField || tooLargeField
+    });
+  }
+
+  let {username, password, firstName = '', lastName = ''} = req.body;
+
+  firstName = firstName.trim();
+  lastName = lastName.trim();
+
+  return Owner.find({username})
+    .count()
+    .then(count => {
+      if(count > 0) {
+        return Promise.reject({
+          code: 422,
+          reason: 'ValidationError',
+          message: 'Username already taken',
+          location: 'username'
+        });
+      }
+      return Owner.hashPassword(password);
+    })
+    .then(hash => {
+      return Owner.create({
+        username,
+        password: hash,
+        firstName,
+        lastName
+      });
+    })
+    .then(owner => {
+      return res.status(201).json('new owner created');
+    })
+    .catch(err => {
+      if(err.reason === 'ValidationError') {
+        return res.status(err.code).json(err);
+      }
+      res.status(500).json({code: 500, message: 'Internal server error'});
+    });
+});
+
+// app.post  POST NEW LOCKER 
+// app.delete DELETE LOCKER/ACCOUNT
+// app.PUT  edit account info
+
+
+//PUBLIC LOCKER VIEW
 // app.get('/lockers/:id', (req, res) => {
 //   Locker
 //     .findById(req.params.id)
-//     .then(locker => {
-//       res.json({
-//         id: locker._id,
-//         name: locker.author,
-//         shoeSize: locker.shoeSize,
-//         shoeCount: locker.shoeCount,
-//         inventory: locker.inventory,
-//       });
-//     })
+//     .then(locker => res.json(locker.serialize()))
 //     .catch(err => {
 //       console.error(err);
-//       res.status(500).json({ error: 'could not get locker'});
+//         res.status(500).json({message: 'Internal server error'})
 //     });
 // });
 
+// app.patch('/owners/:id', (req,res) => {
+//   Owner
+//     .findByIdAndUpdate(req.params.id, { inventory: 'req.body.item'}, (item) => {return item} )
 
+//     .then()
+// })
 
-if (require.main === module) {
-  app.listen(process.env.PORT || 8080, function() {
-    console.info(`App listening on ${this.address().port}`);
-  });
-}
 
 app.use('*', function (req, res) {
   res.status(404).json({ message: 'Not Found' });
@@ -82,9 +190,9 @@ app.use('*', function (req, res) {
 let server;
 
 // this function connects to our database, then starts the server
-function runServer(databaseUrl, port = PORT) {
+function runServer(DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {
-    mongoose.connect(databaseUrl, err => {
+    mongoose.connect(DATABASE_URL, err => {
       if (err) {
         return reject(err);
       }
