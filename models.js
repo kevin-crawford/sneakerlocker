@@ -8,9 +8,10 @@ mongoose.Promise = global.Promise;
 var ownerSchema = mongoose.Schema({
 	firstName: { type: String, default: '' },
 	lastName: { type: String, default: '' },
+	ownerId: { type: mongoose.Schema.Types.ObjectId },
 	shoeSize: String,
 	shoeCount: String,
-	locker: [inventorySchema],
+	// locker: [inventorySchema],
 	userName: {
 		type: String,
 		lowercase: true,
@@ -46,16 +47,16 @@ ownerSchema.virtual('ownerName').get(function() {
 	return `${this.owner.firstName} ${this.owner.lastName}`.trim();
 });
 
-ownerSchema.virtual('ownerId').get(function () {
-	return this._id;
-})
+// ownerSchema.virtual('ownerId').get(function () {
+// 	return this._id;
+// })
 
 var inventorySchema = mongoose.Schema({ 
 	item: {
-		shoeBrand: 'string',
-		shoeModel: 'string',
-		primaryColor: 'string',
-		shoeSize: 'string'
+		shoeBrand: { type: 'string', required: true},
+		shoeModel: { type: 'string', required: true},
+		primaryColor: { type: 'string', required: true},
+		shoeSize: { type: 'string', required: true},
 	}
 });
 

@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
 
-const { Owner, Locker } =  require('./models');
+const { Owner, Inventory } =  require('./models');
 const {PORT, DATABASE_URL} = require('./config');
 
 const app = express();
@@ -16,6 +16,7 @@ const jsonParser = bodyParser.json();
 
 app.use(morgan('common'));
 app.use(express.json());
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
@@ -33,9 +34,8 @@ app.get('/owners', (req, res) => {
     .then(owners => {
       res.json(owners.map(owner => {
         return {
-          id: owner._id,
-          lockerId: owner.lockerId,
-          name: owner.owner_name,
+          ownerId: owner._id,
+          name: owner.ownerName,
           shoeSize: owner.shoeSize,
           shoeCount: owner.shoeCount,
         };
@@ -49,7 +49,7 @@ app.get('/owners', (req, res) => {
 
 
 // ADD NEW OWNER
-app.post('/owners', jsonParser, (req, res) => {
+app.post('/', jsonParser, (req, res) => {
   const requiredFields = ['username', 'password'];
   const missingField = requiredFields.find(field => !(field in req.body));
 
@@ -104,7 +104,11 @@ app.post('/owners', jsonParser, (req, res) => {
       'min' in sizedFields[field] &&
             req.body[field].trim().length < sizedFields[field].min
   );
-  const tooLargeField = Object.keys(sizedFields[field].max);
+  const tooLargeField = Object.keys(sizedFields).find(
+    field =>
+      'max' in sizedFields[field] &&
+            req.body[field].trim().length > sizedFields[field].max
+  );
 
   if( tooSmallField || tooLargeField ) {
     return res.status(422).json({
