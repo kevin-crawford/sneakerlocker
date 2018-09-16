@@ -63,26 +63,38 @@ var MOCK_LOCKER_DATA = {
 	],
 }
 
-
-function getLockers(callbackFn){
-	setTimeout(function(){ callbackFn(MOCK_LOCKER_DATA)}, 100);
+function getAllLockers(){
+	$.ajax({
+		type: 'GET',
+		url: '/',
+		dataType: 'json',
+		contentType: 'application/json'
+	})
+	.done(result => {
+		console.log(result);
+		// invoke function that will display result 
+	})
 }
 
-function displayLockers(data){
-	for(index in data.lockers){
-			$('body').append(
-				'<h3> Author: ' + data.lockers[index].author_name + '</h3>',
-				'<p>User Shoe Size: ' + data.lockers[index].user_shoe_size + '</p>',
-			'<p>Shoe Count: ' + data.lockers[index].shoe_count + '</p>');
-		}
-	}
-	
-	
-function getAndDisplayLockers() {
-	getLockers(displayLockers);
-}
+// function getLockers(callbackFn){
+// 	setTimeout(function(){ callbackFn(MOCK_LOCKER_DATA)}, 100);
+// }
 
-$(function() {
-	getAndDisplayLockers();
-})
+// function displayLockers(data){
+// 	for(index in data.lockers){
+// 			$('body').append(
+// 				'<h3> Author: ' + data.lockers[index].author_name + '</h3>',
+// 				'<p>User Shoe Size: ' + data.lockers[index].user_shoe_size + '</p>',
+// 			'<p>Shoe Count: ' + data.lockers[index].shoe_count + '</p>');
+// 		}
+// 	}
+	
+	
+// function getAndDisplayLockers() {
+// 	getLockers(displayLockers);
+// }
+
+// $(function() {
+// 	getAndDisplayLockers();
+// })
 

@@ -8,13 +8,10 @@ mongoose.Promise = global.Promise;
 var ownerSchema = mongoose.Schema({
 	firstName: { type: String, default: '' },
 	lastName: { type: String, default: '' },
-	ownerId: { type: mongoose.Schema.Types.ObjectId },
 	shoeSize: String,
 	shoeCount: String,
-	// locker: [inventorySchema],
-	userName: {
+	username: {
 		type: String,
-		lowercase: true,
 		minLength: true,
 		unique: true,
 		required: true,
@@ -22,21 +19,47 @@ var ownerSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	email: {
+		type: String,
+		required: true,
+		unique: true
+	},
+	inventory: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Inventory'}]
 });
 
 ownerSchema.methods.serialize = function () {
 	return {
 		ownerId: this._id,
-		owner: this.ownerName,
-		shoeSize: this.shoeSize,
-		shoeCount: this.shoeCount,
-		inventory: this.inventory,
+		username: this.username || '',
+		firstName: this.firstName || '',
+		lastName: this.lastName || '',
+		shoeCount: this.inventory.length,
+		inventory: this.inventory
+	};
+};
+
+
+var inventorySchema = mongoose.Schema({ 
+		shoeBrand: { type: 'string', required: true},
+		shoeModel: { type: 'string', required: true},
+		primaryColor: { type: 'string', required: true},
+		shoeSize: { type: 'string', required: true},
+	});
+
+
+inventorySchema.methods.serialize = function () {
+	return {
+		stockNumber: this._id,
+		shoeBrand: this.shoeBrand,
+		shoeModel: this.shoeModel,
+		primaryColor: this.primaryColor,
+		shoeSize: this.shoeSize
 	};
 };
 
 ownerSchema.methods.validatePassword = function(password) {
-	return bcrypt.compare.length(password, this.password);
+	return bcrypt.compare(password, this.password);
 };
 
 ownerSchema.statics.hashPassword = function(password) {
@@ -44,21 +67,10 @@ ownerSchema.statics.hashPassword = function(password) {
 }
 
 ownerSchema.virtual('ownerName').get(function() {
-	return `${this.owner.firstName} ${this.owner.lastName}`.trim();
+	return `${this.firstName} ${this.lastName}`.trim();
 });
 
-// ownerSchema.virtual('ownerId').get(function () {
-// 	return this._id;
-// })
 
-var inventorySchema = mongoose.Schema({ 
-	item: {
-		shoeBrand: { type: 'string', required: true},
-		shoeModel: { type: 'string', required: true},
-		primaryColor: { type: 'string', required: true},
-		shoeSize: { type: 'string', required: true},
-	}
-});
 
 // lockerSchema.pre('findOne', function(next) {
 // 	this.populate('owner_name');

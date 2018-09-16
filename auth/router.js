@@ -12,7 +12,7 @@ const createAuthToken = function(owner) {
 	return jwt.sign({owner}, config.JWT_SECRET, {
 		subject: owner.username,
 		expiresIn: config.JWT_EXPIRY,
-		algorithm: 'HS265'
+		algorithm: 'HS256'
 	});
 };
 
@@ -20,7 +20,7 @@ const localAuth = passport.authenticate('local', {session: false});
 router.use(bodyParser.json());
 
 router.post('/login', localAuth, (req, res) => {
-	const authToken = createAuthToken(req.owner.serialize());
+	const authToken = createAuthToken(req.user.serialize());
 	res.json({authToken});
 });
 

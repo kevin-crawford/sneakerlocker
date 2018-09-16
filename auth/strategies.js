@@ -5,7 +5,7 @@ const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 const { Owner } = require ('../models');
 const { JWT_SECRET } = require('../config');
 
-const LocalStrategy = new LocalStrategy((username, password, callback) => {
+const newLocalStrategy = new LocalStrategy((username, password, callback) => {
 	let owner;
 	Owner.findOne({ username: username })
 		.then(_owner => {
@@ -16,7 +16,7 @@ const LocalStrategy = new LocalStrategy((username, password, callback) => {
 					message: 'Incorrect username or password'
 				});
 			}
-			return user.validatePassword(password);
+			return owner.validatePassword(password);
 		})
 		.then(isValid => {
 			if(!isValid) {
@@ -35,7 +35,7 @@ const LocalStrategy = new LocalStrategy((username, password, callback) => {
 		});
 });
 
-const JwtStrategy = new JwtStrategy(
+const newJwtStrategy = new JwtStrategy(
 	{
 		secretOrKey: JWT_SECRET,
 		jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
@@ -46,4 +46,4 @@ const JwtStrategy = new JwtStrategy(
 	}
 );
 
-module.exports = { LocalStrategy, jwtStrategy };
+module.exports = { newLocalStrategy, newJwtStrategy };
