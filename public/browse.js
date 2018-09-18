@@ -1,3 +1,18 @@
+function loadOwners() {
+	
+	$.ajax({
+		type: 'GET',
+		url: `/browse`,
+		dataType: 'json',
+		contenType: 'json/application'
+	})
+	.done(result => {
+		console.log(result);
+	})
+};
+
+$(loadOwners);
+
 var MOCK_LOCKER_DATA = {
 	"lockers": [
 		{
@@ -63,18 +78,6 @@ var MOCK_LOCKER_DATA = {
 	],
 }
 
-function getAllLockers(){
-	$.ajax({
-		type: 'GET',
-		url: '/',
-		dataType: 'json',
-		contentType: 'application/json'
-	})
-	.done(result => {
-		console.log(result);
-		// invoke function that will display result 
-	})
-}
 
 // function getLockers(callbackFn){
 // 	setTimeout(function(){ callbackFn(MOCK_LOCKER_DATA)}, 100);

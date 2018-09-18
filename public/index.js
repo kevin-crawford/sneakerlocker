@@ -18,7 +18,7 @@ $('#login-form').submit( event => {
 
 $.ajax({
 	type: 'POST',
-	url: '/login',
+	url: '/auth/login',
 	dataType: 'json',
 	data: JSON.stringify(userObject),
 	contentType: 'application/json'
