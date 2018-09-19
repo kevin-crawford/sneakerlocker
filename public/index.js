@@ -2,14 +2,9 @@
 // LOGIN EVENT LISTENER
 $('#login-form').submit( event => {
 	event.preventDefault();
-	console.log('Logging In...');
-
 	// login input variables
 	const username = $(event.currentTarget).find('#username-query').val();
 	const password = $(event.currentTarget).find('#password-query').val();
-
-	console.log(username, password);
-	console.log(` user is logging in as ${username}`);
 
 	const userObject = {
 		username: username,
@@ -23,32 +18,38 @@ $.ajax({
 	data: JSON.stringify(userObject),
 	contentType: 'application/json'
 })
-.done(result => {
-	console.log(result);
+.done(token => {
+	console.log('success!')
+	localStorage.setItem('authToken', token.authToken);
+	res.sendFile('/myaccount.html');
 })
-.fail(function (jqXHR, error, errorThrown) {
-	console.log(jqXHR);
+.fail(function (error) {
 	console.log(error);
-	console.log(errorThrown);
+	if(error.status === 401) {
+			console.log('Username and/or password is incorrect');
+		}
 	});
 
 });
 
+// HIDE / REVEAL SIGNUP-SIGNIN FORMS
+$('#new-account').click(event => {
+	event.preventDefault();
+	$('#login-section').hide();
+	$('#signup-section').removeClass('hidden');
+})
+
 //SIGN UP EVENT LISTENER
 $('#signup-form').submit( event => {
 	event.preventDefault();
+	$("#login-section").show();
+	$("#signup-section").hide();
 	console.log('Submitting Sign Up Request');
-
-	// sign up input variables 
-
 	const username = $(event.currentTarget).find('#newUsername-query').val();
 	const password = $(event.currentTarget).find('#newPassword-query').val();
 	const firstName = $(event.currentTarget).find('#fn-query').val();
 	const lastName = $(event.currentTarget).find('#ln-query').val();
 	const email = $(event.currentTarget).find('#email-query').val();
-
-	console.log(username,password,firstName,lastName,email);
-
 	// Payload
 	const newUserObject = {
 		username: username,
@@ -57,7 +58,6 @@ $('#signup-form').submit( event => {
 		lastName:	lastName,
 		email: email
 	};
-
 	// POST request to Sneakerlocker API 
 	$.ajax({
 		type: 'POST',
@@ -69,9 +69,47 @@ $('#signup-form').submit( event => {
 	.done(result => {
 		console.log(result);
 	})
-	.fail(function (jqXHR, error, errorThrown) {
-		console.log(jqXHR);
-		console.log(error);
-		console.log(errorThrown);
+	.fail(function (error) {
+		if (password.length < 10){
+			console.log('password must be at least 10 characters long');
+		}
+		if (error.responseJSON.location === "username"){
+			console.log('username already taken');
+		}
+		if ( error.responseJSON.location === "email"){
+			console.log('email already taken');
+		}
 	});
 });
+
+
+// ------------------ MY ACCOUNT PAGE ---------------------------//
+//---------------------------------------------------------------//
+
+function renderMyAccount(){
+	let token = localStorage.getItem("authToken");
+	let ownerID = localStorage.getItem("ownerID");
+
+}
+
+
+// USED TO LOAD MYACCOUNT.HTML AND PUBLIC VIEWS, needs to be repeatable and used for different owners not just the local one. 
+
+function loadOwnerInventory() {
+
+
+
+	$.ajax({
+		type: 'GET',
+		url: `/${ownerID}/inventory`,
+		dataType: 'json',
+		contentType: 'json/application',
+	})
+	.done(result => {
+		console.log(result);
+	})
+	.fail( error => {
+		console.log(error)
+	})
+
+};

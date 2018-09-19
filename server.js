@@ -188,14 +188,9 @@ app.post('/', jsonParser, (req, res) => {
     });
 });
 
-// --- EDIT OWNER ---
-app.put('/:id', jwtAuth, (req, res) => {
-  if(!(req.params.id === req.user.ownerId)) {
-    return res.status(400).json({
-    error: 'Request path id and request ownerId must match'
-  });
-}
-
+// --- EDIT OWNER --- ** 
+// allows user to use same email
+app.put('/owner', jwtAuth, (req, res) => {
   const updated = {};
   const updatableFields = ['firstName', 'lastName', 'username', 'password', 'email'];
   updatableFields.forEach(field => {
@@ -205,21 +200,32 @@ app.put('/:id', jwtAuth, (req, res) => {
   });
 
   Owner
-    .findOne({ userName: updated.userName || '', _id: { $ne: req.params.id }})
-    .then(owner => {
-      if(owner) {
+    .findOne({ userName: updated.userName || '', _id: { $ne: req.user.ownerId }})
+    .then(username => {
+      if(username) {
         const message = 'Username already taken';
         console.error(message);
         return res.status(400).send(message);
       }
       else {
-        Owner.findByIdAndUpdate(req.params.id, { $set: updated }, { new: true   })
+        Owner
+          .findOne({ email: updated.email , _id: { $ne: req.user.ownerId}})
+          .then( email => {
+            if(email) {
+              const message = 'Email already taken';
+              console.error(message);
+              return res.status(400).send(message);
+            }
+          })
+        Owner
+        .findByIdAndUpdate(req.user.ownerId, { $set: updated }, { new: true   })
         .then( updatedOwner => {
           res.status(200).json({
             ownerId: updatedOwner.id,
             firstName: `${updatedOwner.firstName}`,
             lastName: `${updatedOwner.lastName}`,
-            username: updatedOwner.username 
+            username: updatedOwner.username,
+            email: updatedOwner.email
           });
         })
         .catch(err => res.status(500).json({ message: err }));
@@ -227,38 +233,35 @@ app.put('/:id', jwtAuth, (req, res) => {
     });
 });
 
-//-- DELETE OWNER WITH PARAMS -- WORKING 9-15-18 // NEEDS ADDITIONAL FUNCTIONS
-app.delete('/:id', jwtAuth, (req, res) => {
-console.log(req.params.id);
-console.log(req.user.ownerId);
-  if(!(req.params.id === req.user.ownerId)) {
-    return res.status(400).json({
-      error: 'Request path id and request ownerId must match'
-    });
-  }
-  console.log(req.body);
-
+//-- DELETE OWNER WITH PARAMS --  NOT WORKING 9-15-18 // NEEDS ADDITIONAL FUNCTIONS
+app.delete('/owner', jwtAuth, (req, res) => {
+// promise.all()?
   Owner
-    .findByIdAndRemove(req.params.id)
-    .then(
-      Inventory
-
+    .findById(req.user.ownerId)
+    .then((owner) => 
+      owner.inventory.map(item => {
+        Inventory
+          .findByIdAndRemove(item)
+      }) 
     )
     .catch(err => {
       console.log(err);
       res.status(500).json({ error: 'Could not delete user'});
     })
-// create variable that is an array of all itemIds in the owner inventory array.
-// owner.inventory.map? into a function that looks for each itemId in inventory collection
-//
-// need to delete all items associated with the particular owner from the inventory collection
 });
 
 //PUBLIC LOCKER VIEW -- WORKING 9-15-18
-app.get('/:id/inventory/', (req, res) => {
+// WHAT IF SHOEINV IS EMPTY??
+app.get('/:username/inventory/', (req, res) => {
   Owner
-    .findById(req.params.id).populate('inventory').exec()
-    .then(owner => res.json(owner.serialize()))
+    .findOne({ username: `${req.params.username}`}).populate('inventory').exec()
+    .then(owner => {
+      if(owner.inventory == null){
+        res.json({ message: 'No inventory found'});
+      } else {
+        res.json(owner.serialize())
+      }
+    })
     .catch(err => {
       console.error(err);
         res.status(500).json({message: 'Internal server error'})
@@ -267,16 +270,8 @@ app.get('/:id/inventory/', (req, res) => {
 
 
 //--- ADD SHOE TO OWNER LOCKER --- WORKING 9-15-18
-app.post('/:id/inventory/addShoe', jwtAuth, (req,res) => {
+app.post('/inventory/addShoe', jwtAuth, (req,res) => {
 
-console.log(req.params.id);
-console.log(req.user.ownerId);
-  if(!(req.params.id === req.user.ownerId)) {
-    return res.status(400).json({
-      error: 'Request path id and request ownerId must match'
-    });
-  }
-  console.log(req.body);
   Inventory
   .create({
     shoeBrand: req.body.shoeBrand,
@@ -290,9 +285,8 @@ console.log(req.user.ownerId);
     .then( (owner) => {
       owner.inventory.push(item);
       owner.save()
-      .then(() => res.status(201).json(item.stockNumber))
-      console.log(item.stockNumber)
-      //stock number undefined 
+      .then(() => res.status(201).json(item._id))
+      console.log(item._id)
       })
     })
   .catch(err => {
@@ -301,25 +295,14 @@ console.log(req.user.ownerId);
   })
 });
 
-// -- EDIT SHOE IN OWNERS LOCKER 
-
-app.put('/:ownerId/inventory/:itemId/editShoe', jwtAuth, (req, res) => {
-  console.log(req.params.ownerId);
-  console.log(req.params.itemId);
-  if(!(req.params.ownerId === req.user.ownerId)) {
-    return res.status(400).json({
-    error: 'Request path id and request ownerId must match'
-  });
-}
-console.log(req.params.itemId);
-
+// -- EDIT SHOE IN OWNERS LOCKER WORKING 
+app.put('/inventory/:itemId/editShoe', jwtAuth, (req, res) => {
 const updated = {};
 const updatableFields = ['shoeBrand', 'shoeModel', 'primaryColor', 'shoe', 'email']; updatableFields.forEach(field => {
   if (field in req.body) {
     updated[field] = req.body[field];
   }
 });
-// response is the same as non updated item
 Inventory
   .findByIdAndUpdate(req.params.itemId, {$set: updated}, { new: true })
   .then( updatedItem => {
@@ -334,34 +317,24 @@ Inventory
 })
 
 
-// DELETE SHOE FROM OWNER INVENTORY
-app.delete('/:ownerId/inventory/:itemId/deleteShoe', jwtAuth, (req, res) => {
-  if(!(req.params.ownerId === req.user.ownerId)) {
-    return res.status(400).json({
-    error: 'Request path id and request ownerId must match'
-  });
-};
-//how would i find the id of a particular item in an owners inv array?
+// DELETE SHOE FROM OWNER INVENTORY WORKING
+app.delete('/inventory/:itemId/deleteShoe', jwtAuth, (req, res) => {
+ 
 Inventory
   .findByIdAndRemove(req.params.itemId)
-  .then(
-  Owner
-    .findById(req.params.ownerId)
+  .then(() =>
+  Owner 
+    .findById(req.user.ownerId)
     .then(function(owner){ 
-
       let itemIndex = -1;
-      
       for(let i = 0; i < owner.inventory.length; i++){
-        if( owner.inventory[i] === req.params.itemId){
+        if( owner.inventory[i] == req.params.itemId){
           itemIndex = i;
         }
       }
-
       if( itemIndex !== -1){
-      console.log('splicing item');
       owner.inventory.splice(itemIndex, 1)
       }
-
       return owner.save()
     })
     .then(() => {

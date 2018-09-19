@@ -7,11 +7,17 @@ function loadOwners() {
 		contenType: 'json/application'
 	})
 	.done(result => {
-		console.log(result);
+			for(let i = 0; i < result.length, i++ )
+		{
+			
+		}
 	})
 };
 
+
+
 $(loadOwners);
+
 
 var MOCK_LOCKER_DATA = {
 	"lockers": [
