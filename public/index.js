@@ -21,7 +21,8 @@ $.ajax({
 .done(token => {
 	console.log('success!')
 	localStorage.setItem('authToken', token.authToken);
-	// res.sendFile('/myaccount.html');
+	localStorage.setItem('username', username);
+	window.location = '/myaccount.html';
 })
 .fail(function (error) {
 	console.log(error);
@@ -29,7 +30,6 @@ $.ajax({
 			console.log('Username and/or password is incorrect');
 		}
 	});
-
 });
 
 // HIDE / REVEAL SIGNUP-SIGNIN FORMS
@@ -37,7 +37,14 @@ $('#new-account').click(event => {
 	event.preventDefault();
 	$('#login-section').hide();
 	$('#signup-section').removeClass('hidden');
-})
+});
+
+// BACK OUT OF SIGN UP FORM
+$('#back-btn').click(event => {
+	event.preventDefault();
+	$('#signup-section').addClass('hidden');
+	$('#login-section').show();
+});
 
 //SIGN UP EVENT LISTENER
 $('#signup-form').submit( event => {
@@ -81,35 +88,3 @@ $('#signup-form').submit( event => {
 		}
 	});
 });
-
-
-// ------------------ MY ACCOUNT PAGE ---------------------------//
-//---------------------------------------------------------------//
-
-function renderMyAccount(){
-	let token = localStorage.getItem("authToken");
-	
-
-}
-
-
-// USED TO LOAD MYACCOUNT.HTML AND PUBLIC VIEWS, needs to be repeatable and used for different owners not just the local one. 
-
-function loadOwnerInventory() {
-
-
-
-	$.ajax({
-		type: 'GET',
-		url: `/${ownerID}/inventory`,
-		dataType: 'json',
-		contentType: 'json/application',
-	})
-	.done(result => {
-		console.log(result);
-	})
-	.fail( error => {
-		console.log(error)
-	})
-
-};

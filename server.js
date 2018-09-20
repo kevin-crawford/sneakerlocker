@@ -46,14 +46,7 @@ app.get('/browse', (req, res) => {
     .find()
     .then(owners => {
       res.json(owners.map(owner => {
-        return {
-          firstName: owner.firstName,
-          lastName: owner.lastName,
-          username: owner.userName,
-          ownerId: owner._id,
-          shoeSize: owner.shoeSize,
-          shoeCount: owner.shoeCount,
-        };
+        return owner.serialize();
       }));
     })
     .catch(err => {
@@ -192,6 +185,7 @@ app.post('/', jsonParser, (req, res) => {
 // --- EDIT OWNER --- ** 
 // allows user to use same email
 app.put('/owner', jwtAuth, (req, res) => {
+
   const updated = {};
   const updatableFields = ['firstName', 'lastName', 'username', 'password', 'email'];
   updatableFields.forEach(field => {
@@ -235,21 +229,21 @@ app.put('/owner', jwtAuth, (req, res) => {
 });
 
 //-- DELETE OWNER WITH PARAMS --  NOT WORKING 9-15-18 // NEEDS ADDITIONAL FUNCTIONS
-app.delete('/owner', jwtAuth, (req, res) => {
-// promise.all()?
-  Owner
-    .findById(req.user.ownerId)
-    .then((owner) => 
-      owner.inventory.map(item => {
-        Inventory
-          .findByIdAndRemove(item)
-      }) 
-    )
-    .catch(err => {
-      console.log(err);
-      res.status(500).json({ error: 'Could not delete user'});
-    })
-});
+// app.delete('/owner', jwtAuth, (req, res) => {
+// // promise.all()?
+//   Owner
+//     .findById(req.user.ownerId)
+//     .then((owner) => 
+//       owner.inventory.map(item => {
+//         Inventory
+//           .findByIdAndRemove(item)
+//       }) 
+//     )
+//     .catch(err => {
+//       console.log(err);
+//       res.status(500).json({ error: 'Could not delete user'});
+//     })
+// });
 
 //PUBLIC LOCKER VIEW -- WORKING 9-15-18
 // WHAT IF SHOEINV IS EMPTY??
@@ -257,11 +251,7 @@ app.get('/:username/inventory/', (req, res) => {
   Owner
     .findOne({ username: `${req.params.username}`}).populate('inventory').exec()
     .then(owner => {
-      if(owner.inventory == null){
-        res.json({ message: 'No inventory found'});
-      } else {
-        res.json(owner.serialize())
-      }
+      res.json(owner.inventory.map( item => item.serialize()))
     })
     .catch(err => {
       console.error(err);
@@ -320,10 +310,9 @@ Inventory
 
 // DELETE SHOE FROM OWNER INVENTORY WORKING
 app.delete('/inventory/:itemId/deleteShoe', jwtAuth, (req, res) => {
- 
-Inventory
-  .findByIdAndRemove(req.params.itemId)
-  .then(() =>
+  Inventory
+    .findByIdAndRemove(req.params.itemId)
+    .then(() =>
   Owner 
     .findById(req.user.ownerId)
     .then(function(owner){ 

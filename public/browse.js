@@ -4,24 +4,20 @@ function loadOwners() {
 		type: 'GET',
 		url: `/browse`,
 		dataType: 'json',
-		contenType: 'json/application'
+		contentType: 'json/application'
 	})
 	.done(result => {
 		console.log(result);
-			for(let i = 0; i < result.length; i++){
-				if(result.length === 0){
-					$('#js-owner-browse').append(
-						`<p> No Lockers Available </p>`
-					);
-				} else {
-					$('#js-owner-browse').append(
-						`<ul>
-							<li> ${result[i].username} </li>
-							<li> ${result[i].shoeCount}</li>
-							<li><a href=""> VIEW </a> </li>
-						</ul>`
-					)
-				}
+			for(let i = 0; i < result.length; i++ ){
+				$('#js-owner-browse').append(
+					`
+					<ul>
+						<a href="#"><li> Username: ${result[i].username}</li>
+						<li> # of Shoes: ${result[i].shoeCount}</li>
+						<li> Shoe Size: ${result[i].shoeSize}</li></a>
+					</ul>
+					`
+				)
 		}
 	})
 };

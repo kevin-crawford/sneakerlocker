@@ -35,6 +35,7 @@ ownerSchema.methods.serialize = function () {
 		firstName: this.firstName || '',
 		lastName: this.lastName || '',
 		shoeCount: this.inventory.length,
+		shoeSize: this.shoeSize,
 		inventory: this.inventory
 	};
 };
