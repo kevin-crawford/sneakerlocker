@@ -49,6 +49,7 @@ app.get('/browse', (req, res) => {
         return {
           firstName: owner.firstName,
           lastName: owner.lastName,
+          username: owner.userName,
           ownerId: owner._id,
           shoeSize: owner.shoeSize,
           shoeCount: owner.shoeCount,

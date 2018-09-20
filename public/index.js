@@ -21,7 +21,7 @@ $.ajax({
 .done(token => {
 	console.log('success!')
 	localStorage.setItem('authToken', token.authToken);
-	res.sendFile('/myaccount.html');
+	// res.sendFile('/myaccount.html');
 })
 .fail(function (error) {
 	console.log(error);
@@ -88,7 +88,7 @@ $('#signup-form').submit( event => {
 
 function renderMyAccount(){
 	let token = localStorage.getItem("authToken");
-	let ownerID = localStorage.getItem("ownerID");
+	
 
 }
 

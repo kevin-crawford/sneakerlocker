@@ -1,25 +1,31 @@
 function loadOwnerInventory() {
 
-
-	// need user ID
-
-	const userData = {
-
-	}
+	let username = 'kdxcii';
 
 	$.ajax({
 		type: 'GET',
-		url: `/${ownerID}/inventory`,
+		url: `/${username}/inventory`,
 		dataType: 'json',
-		data: JSON.stringify(result),
 		contentType: 'json/application'
 	})
 	.done(result => {
-		// render owners inventory
-	})
+		console.log(result)
+		for(let i = 0; i < result.inventory.length; i++){
+
+	
+		$('#js-myaccount').append(
+			`
+			<ul>
+				<li> ${result.}s
+			`
+		);
+		}
+	});
 
 
 };
+
+$(loadOwnerInventory);
 
 function addItem() {
 	$.ajax({

@@ -32,11 +32,28 @@
 		</header>
 
 		<body>
-			<div class="container">
-			<h2>ACCOUNT OVERVIEW</h2>
-			<a href="publiclocker.html">Public View</a>
-			<button>Add Shoe</button>
-		</div>
+			<section role="section" id="dashboard">
+				<div class="row">
+					<h3>My Dashboard</h3>
+						<a href="myaccount.html">Username</a>
+						<p># of Shoes: owner.inventory.length</p>
+				</div>
+			</section>
+
+			<section role="region" id=" myaccount-section">
+				<div class="container">
+					<h2>ACCOUNT OVERVIEW</h2>
+					<a href="publiclocker.html" id="view-public">Public View</a>
+				</div>
+			</section>
+
+			<section role="region" id="myinventory-section">
+				<div class="container">
+					<div class="js-myinventory">
+						
+					</div>
+				</div>
+			</section>
 	<footer role="contentinfo">
 		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
 	</footer>

@@ -7,9 +7,21 @@ function loadOwners() {
 		contenType: 'json/application'
 	})
 	.done(result => {
-			for(let i = 0; i < result.length, i++ )
-		{
-			
+		console.log(result);
+			for(let i = 0; i < result.length; i++){
+				if(result.length === 0){
+					$('#js-owner-browse').append(
+						`<p> No Lockers Available </p>`
+					);
+				} else {
+					$('#js-owner-browse').append(
+						`<ul>
+							<li> ${result[i].username} </li>
+							<li> ${result[i].shoeCount}</li>
+							<li><a href=""> VIEW </a> </li>
+						</ul>`
+					)
+				}
 		}
 	})
 };
