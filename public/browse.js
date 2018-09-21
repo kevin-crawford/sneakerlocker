@@ -23,6 +23,15 @@ function loadOwners() {
 };
 
 
+// LOGOUT 
+$('#logout-btn').on('click', (e) => {
+	event.preventDefault();
+	console.log('Logging Out User');
+	localStorage.clear();
+	window.location = '/index.html';
+});
+
+
 
 $(loadOwners);
 

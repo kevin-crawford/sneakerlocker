@@ -46,6 +46,14 @@ $('#back-btn').click(event => {
 	$('#login-section').show();
 });
 
+// LOGOUT 
+$('#logout-btn').on('click', (e) => {
+	event.preventDefault();
+	console.log('Logging Out User');
+	localStorage.empty();
+	window.location = '/index.html';
+});
+
 //SIGN UP EVENT LISTENER
 $('#signup-form').submit( event => {
 	event.preventDefault();

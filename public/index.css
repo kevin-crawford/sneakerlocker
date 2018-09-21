@@ -56,20 +56,20 @@ header #branding h1 {
 	margin: 0;
 }
 
-header nav {
+/* header nav {
 	float: right;
 	margin-top: 10px;
-}
+} */
 
-header .highlight, header .current a {
+/* header .highlight, header .current a {
 	color:#ff0000;
 	font-weight: bold;
-}
+} */
 
-header a:hover {
+/* header a:hover {
 	color: #cccccc;
 	font-weight: bold;
-}
+} */
 
 /* FORM STYLING */
 fieldset {
@@ -103,6 +103,52 @@ input {
 	background: #eee;
 	text-decoration: none;
 }
+
+/* NAV */
+
+nav {
+	margin: 50px;
+}
+
+nav ul {
+	overflow: auto;
+	list-style-type: none;
+}
+
+ nav li {
+  height: 25px;
+  float: left;
+  margin-right: 0px;
+  border-right: 1px solid #aaa;
+  padding: 0 20px;
+}
+
+nav li:last-child {
+  border-right: none;
+}
+
+nav li a {
+  text-decoration: none;
+  color: #ccc;
+  font: 25px/1 Helvetica, Verdana, sans-serif;
+  text-transform: uppercase;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+li a:hover {
+  color: #666;
+}
+
+li.current a {
+  font-weight: bold;
+  color: #333;
+}
+
+/* INVENTORY - OWNER BROWSE */
 
 /* FOOTER */
 footer {

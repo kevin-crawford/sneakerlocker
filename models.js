@@ -71,18 +71,6 @@ ownerSchema.virtual('ownerName').get(function() {
 	return `${this.firstName} ${this.lastName}`.trim();
 });
 
-
-
-// lockerSchema.pre('findOne', function(next) {
-// 	this.populate('owner_name');
-// 	next();
-// });
-
-// lockerSchema.pre('find', function(next){
-// 	this.populate('owner_name');
-// 	next();
-// })
-
 const Owner = mongoose.model('Owner', ownerSchema);
 const Inventory = mongoose.model('Inventory', inventorySchema);
 
