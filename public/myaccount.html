@@ -12,50 +12,91 @@
 				src="https://code.jquery.com/jquery-3.3.1.js"
 				integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 				<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+				<link rel="stylesheet" type="text/css" media="screen" href="myaccount.css" />
 				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 			</head>
 <body>
+
 	<!-- NAVIGATION -->
+
 	<header role="banner">
-			<div class="container">
+		<div class="container">
 			<div id="branding">
-				<h1>Sneaker Locker</h1>
+					<img src="https://fontmeme.com/permalink/180922/f5bd4944ce84b67ec83f9558a87c6b90.png" alt="SneakerLocker Branding">
 			</div>
 				<nav role="navigation"> 
 					<ul>
 						<li><a href="index.html">Home</a></li>
-						<li  class="current"><a href="myaccount.html">Account</a></li>
+						<li class="current"><a href="myaccount.html">Account</a></li>
 						<li><a href="browse.html">Browse</a></li>
 					</ul>
 				</nav>
-			</div>
+		</div>
 		</header>
 
-		<body>
 			<section role="section" id="dashboard">
 				<div class="row">
 					<h3>My Dashboard</h3>
-						<a href="myaccount.html">Username</a>
+						<div id="js-username"></div>
+						<div id="js-shoeCount"></div>
 						<a href="#" id="logout-btn">Logout</a>
-						<p id="js-shoeCount"></p>
+						<a href="publiclocker.html" id="view-public">Public View</a>
+						<a href="#" id="edit-account-link">Edit Account</a>
+							<div id="edit-account" class="hidden">
+								<legend>Edit Owner Information</legend>
+								<form name="edit-account-form">
+									<fieldset>
+										<label for="editUsername-query" id="edit-username">New Username</label>
+											<input title="Enter New Username" type="text" id="editUsername-query">
+										<label for="editPassword-query" id="edit-password">New Password</label>
+											<input title="Enter New Password" id="editPassword-query">
+										<label for="fn-query" id="signup-fn">First Name</label>
+											<input title="Enter First Name" type="text" id="fn-query">
+										<label for="ln-query" id="signup-ln">Last Name</label>
+											<input title="Enter Last Name" type="text" id="ln-query">
+										<label for="email-query" id="signup-email">E-Mail</label>
+											<input title="Enter valid email address" type="text"  id="email-query">
+										<label for="shoeSize-query" id="edit-shoeSize">Shoe Size</label>
+											<select name="Shoe Size">
+												<option value="5">5</option>
+												<option value="5.5">5.5</option>
+												<option value="6">6</option>
+												<option value="6.5">6.5</option>
+												<option value="7">7</option>
+												<option value="7.5">7.5</option>
+												<option value="8">8</option>
+												<option value="8">8.5</option>
+												<option value="9">9</option>
+												<option value="9">9.5</option>
+												<option value="10">10</option>
+												<option value="10.5">10.5</option>
+												<option value="11">11.5</option>
+												<option value="12">12</option>
+												<option value="12.5">12.5</option>
+												<option value="13">13</option>
+												<option value="13.5">13.5</option>
+												<option value="14">14</option>
+										<button for="edit-account-form" title="Submit Owner Information" type="submit" id="submit-ownerInfo">Submit</button>
+										<button for="close-edit" title="Close Edit Menu" type="submit" id="close-btn">Close</button>
+									</fieldset>
+								</form>
+							</div>
 				</div>
 			</section>
 
 			<section role="region" id=" myaccount-section">
 				<div class="container">
-					<h2>ACCOUNT OVERVIEW</h2>
-					<h2># of Shoes: </h2>
-					<a href="publiclocker.html" id="view-public">Public View</a>
+					<h3>ACCOUNT OVERVIEW</h3>
 				</div>
 			</section>
 
 			<section role="region" id="myinventory-section">
 				<div class="container">
-					<div id="js-myinventory">
-					</div>
-					<a href="#" id="add-shoe-btn"> Add Shoe </a>
+					<div id="js-myinventory"></div>
+					<a href="#" id="add-shoe-btn">Add Shoe</a>
 				</div>
 			</section>
+
 	<footer role="contentinfo">
 		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
 	</footer>

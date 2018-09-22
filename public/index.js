@@ -46,6 +46,7 @@ $('#back-btn').click(event => {
 	$('#login-section').show();
 });
 
+
 // LOGOUT 
 $('#logout-btn').on('click', (e) => {
 	event.preventDefault();

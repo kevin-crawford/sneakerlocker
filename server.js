@@ -228,25 +228,8 @@ app.put('/owner', jwtAuth, (req, res) => {
     });
 });
 
-//-- DELETE OWNER WITH PARAMS --  NOT WORKING 9-15-18 // NEEDS ADDITIONAL FUNCTIONS
-// app.delete('/owner', jwtAuth, (req, res) => {
-// // promise.all()?
-//   Owner
-//     .findById(req.user.ownerId)
-//     .then((owner) => 
-//       owner.inventory.map(item => {
-//         Inventory
-//           .findByIdAndRemove(item)
-//       }) 
-//     )
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json({ error: 'Could not delete user'});
-//     })
-// });
 
 //PUBLIC LOCKER VIEW -- WORKING 9-15-18
-// WHAT IF SHOEINV IS EMPTY??
 app.get('/:username/inventory/', (req, res) => {
   Owner
     .findOne({ username: `${req.params.username}`}).populate('inventory').exec()

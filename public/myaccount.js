@@ -1,29 +1,37 @@
 function loadOwnerInventory() {
-
-const username = localStorage.getItem('username');
+let username = localStorage.getItem('username');
 
 	$.ajax({
 		type: 'GET',
 		url: `/${username}/inventory`,
 		dataType: 'json',
-		contentType: 'json/application'
+		contentType: 'json/application',
+		error: function() {
+			$('#js-myinventory').append(`
+			<p>Please Log In To View Your Inventory</p>`);
+		}
 	})
 	.done(result => {
 		console.log(result);
+		const shoeCount = result.length;
+		localStorage.setItem('shoeCount', shoeCount);
+
 		for(let i = 0; i < result.length; i++){
 		$('#js-myinventory').append(
 			`
-			<div>
+			<div class="shoe-info">
 				<p>Brand: ${result[i].shoeBrand}</p>
-				<p>Shoe Model: ${result[i].shoeModel}</p>
-				<p>Primary Color: ${result[i].primaryColor}</p>
+				<p>Model: ${result[i].shoeModel}</p>
+				<p>Color: ${result[i].primaryColor}</p>
 				<p>Size: ${result[i].shoeSize}</p>
 				<a href="#" id="edit-shoe" stockNumber="${result[i].stockNumber}">Edit</a>
 				<a href="#" id="delete-shoe-btn" stockNumber="${result[i].stockNumber}"> DELETE </a>
-				<legend> Edit Shoe </legend>
-				<form name="editshoe-form" id"editshoe-form" role="form">
+				
+			</div>
+				<form name="editshoe-form" role="form" class="editshoe-form hidden">
 				<fieldset>
-					<label>Shoe Brand</label>
+				<legend> Edit Shoe </legend>
+					<label>Brand</label>
 						<select name="Shoe Brand">
 							<option value="Nike">Nike</option>
 							<option value="Adidas">Adidas</option>
@@ -37,11 +45,14 @@ const username = localStorage.getItem('username');
 							<option value="Sketchers">Sketchers</option>
 							<option value="Other">Other</option>
 						</select>
-						<label>Shoe Model</label>
+						<br>
+						<label>Model</label>
 							<input title="Edit Shoe Model" type="text" placeholder="Shoe Model">
-						<label>Primary Color</input>
-							<input title="Edit Shoe Color" type="text" placeholder="Primary Shoe Color">
-						<label>Shoe Size</label>
+							<br>
+						<label>Color</input>
+							<input title="Edit Shoe Color" type="text" placeholder="Shoe Color">
+							<br>
+						<label>Size</label>
 						<select name="Shoe Size">
 							<option value="5">5</option>
 							<option value="5.5">5.5</option>
@@ -63,24 +74,71 @@ const username = localStorage.getItem('username');
 							<option value="14">14</option>
 					<input title="Edit Shoe Submission" type="submit">
 				</fieldset>
-
-			</div>
 			`
-		).on('click', (e) => {
-			e.preventDefault();
-			const item = e.target;
-			const attr = $(item).attr('stockNumber');
-			console.log(attr);
-			
-		});
-		}
-	}
-);
+		)};
+	});
 };
 
+// DELETE ITEM LISTENER
+$('#js-myinventory').on('click', '#delete-shoe-btn', (e) => {
+	e.preventDefault();
+		const item = e.target;
+		const itemId = $(item).attr('stockNumber');
+	console.log(itemId);
+	
+	let retVal = confirm("Are You Sure?");
+	if( retVal == true ){
+		return deleteItem(itemId);
+	} else {
+		return false;
+	};
+});
+
+// EDIT ITEM LISTENER
+
+$('#js-myinventory').on('click', '#edit-shoe', (e) => {
+	e.preventDefault();
+	console.log('Revealing');
+	$('.editshoe-form').removeClass('hidden');
+});
 
 
-$(loadOwnerInventory);
+// EDIT ACCOUNT EVENT LISTENER
+$('#edit-account-link').click( (e) => {
+	e.preventDefault();
+	console.log('revealing');
+	$('#edit-account').removeClass('hidden');
+});
+
+// USER DASHBOARD
+function loadUserDashBoard() {
+	console.log('getting user info')
+
+	let username = localStorage.getItem('username');
+	let shoeCount = localStorage.getItem('shoeCount');
+
+	// hide dashboard if not logged in , else show dashboard
+	if(username === null){
+		$('#dashboard').addClass('hidden');
+	} 
+	else {
+		$('#js-username').append(`
+		<p>Logged in As: <a href="myaccount.html">${username}</a></p>`
+		);
+
+		$('#js-shoeCount').append(`
+		<p>Shoe Count: ${shoeCount}</p>
+		`);
+	}
+}
+
+// LOGOUT 
+$('#logout-btn').on('click', (e) => {
+	event.preventDefault();
+	console.log('Logging Out User');
+	localStorage.clear();
+	window.location = '/index.html';
+});
 
 function addItem() {
 	$.ajax({
@@ -96,19 +154,12 @@ function addItem() {
 	})
 };
 
-
-// LOGOUT 
-$('#logout-btn').on('click', (e) => {
-	event.preventDefault();
-	console.log('Logging Out User');
-	localStorage.clear();
-	window.location = '/index.html';
-});
-
 function editItem() {
+
+
 	$.ajax({
 		type: 'PUT',
-		url: `/${ownerID}/inventory/${itemID}/editShoe`,
+		url: `/inventory/${itemID}/editShoe`,
 		dataType: 'json',
 		data: JSON.stringify(result),
 		contentType: 'json/application'
@@ -118,18 +169,28 @@ function editItem() {
 	})
 };
 
-function deleteItem() {
+function deleteItem(itemId) {
+const token = localStorage.getItem('authToken');
+console.log(token);
+
 	$.ajax({
 		type: 'DELETE',
-		url: `/${ownerID}/inventory/${itemID}/deleteShoe`,
+		url: `/inventory/${itemId}/deleteShoe`,
 		dataType: 'json',
-		data: JSON.stringify(result),
-		contentType: 'json/application'
+		contentType: 'json/application',
+		Headers: {
+			'Authorization': 'Bearer ' + token
+		}
 	})
 	.done(result => {
-		// delete item from inventory
+		console.log('item deleted');
 		// decrement count
 	})
-
 };
 
+function handleOnLoad() {
+	$(loadOwnerInventory);
+	$(loadUserDashBoard);
+};
+
+$(handleOnLoad);

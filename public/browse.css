@@ -1,0 +1,32 @@
+
+
+
+#owner-browse {
+	background-color: rgb(202, 244, 255);
+	font-size: 14px;
+	border: 1px solid black;
+	margin-bottom: 20px;
+	padding-left: 10px;
+}
+
+#owner-browse a:link, 
+#owner-browse a:visited, 
+#owner-browse a:hover, 
+#owner-browse a:active {
+	text-decoration: none;
+	color: black;
+}
+
+footer {
+	padding-bottom: 5px;
+	margin-top: 15px;
+	font-size: 11px;
+	color: #ffffff;
+	text-align: center;
+	font-family: 'Karla', sans-serif;
+	background-color: #000000;
+	border-top: #ac0000 3px solid;
+	width: 100%;
+ 	position: static;
+	bottom: 0;
+}

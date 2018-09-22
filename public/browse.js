@@ -1,5 +1,4 @@
 function loadOwners() {
-	
 	$.ajax({
 		type: 'GET',
 		url: `/browse`,
@@ -11,17 +10,62 @@ function loadOwners() {
 			for(let i = 0; i < result.length; i++ ){
 				$('#js-owner-browse').append(
 					`
-					<ul>
-						<a href="#"><li> Username: ${result[i].username}</li>
-						<li> # of Shoes: ${result[i].shoeCount}</li>
-						<li> Shoe Size: ${result[i].shoeSize}</li></a>
-					</ul>
+					<div id="owner-browse">
+						<a href="#" id="go-to-ownerInv" ownerId="${result[i].ownerId}">
+							<p> Owner: ${result[i].username}
+									Amount of Shoes: ${result[i].shoeCount}
+									Shoe Size: ${result[i].shoeSize}
+							</p>
+						</a>
+					</div>
 					`
-				)
-		}
-	})
+				);
+		};
+		$('#go-to-ownerInv').on('click', (e) => {
+			e.preventDefault();
+			console.log('Owner Clicked');
+			const owner = e.target;
+			const ownerId = $(owner).attr('ownerId');
+			console.log(ownerId);
+			// log ownerId in localStorage
+			// Redirect user to publicview.html of selected owner.
+		})
+	});
 };
 
+// // GO TO PUBLIC VIEW OF OWNER LOCKER E.LISTENER
+// function browseListener(event) {
+// 	event.preventDefault();
+// 	console.log('Owner Clicked');
+// }
+
+// function goToOwnerLocker(){
+// 	window.location = '/publiclocker.html'
+// 		// go to 
+	
+// }
+
+
+// USER DASHBOARD
+function loadUserDashBoard() {
+	console.log('getting user info');
+
+	const username = localStorage.getItem('username');
+	const shoeCount = localStorage.getItem('shoeCount');
+
+	if( username === null ){
+		$('#dashboard').addClass('hidden');
+	} 
+	else {
+		$('#js-username').append(`
+		<p>Logged in As: <a href="myaccount.html">${username}</a></p>`
+		);
+		$('#js-shoeCount').append(`
+			<p>Shoe Count: ${shoeCount}</p>
+		`);
+	};
+	
+};
 
 // LOGOUT 
 $('#logout-btn').on('click', (e) => {
@@ -31,96 +75,10 @@ $('#logout-btn').on('click', (e) => {
 	window.location = '/index.html';
 });
 
+function handleOnLoad() {
+	$(loadUserDashBoard);
+	$(loadOwners);
+};
 
 
-$(loadOwners);
-
-
-var MOCK_LOCKER_DATA = {
-	"lockers": [
-		{
-			"locker_id": "000001",
-			"owner_name": "Kevin Crawford",
-			"shoe_count": 5,
-			"user_shoe_size": 11.5,
-			"inventory": {
-				"item":
-				{
-					"shoe_brand": "Nike",
-					"shoe_model": "presto",
-					"primary_shoe_color": "red",
-					"shoe_size": 11.5
-				},
-				"item":
-				{
-					"shoe_brand": "Jordan",
-					"shoe_model": "4 Retro",
-					"primary_shoe_color": "blue",
-					"shoe_size": 11.5
-				},
-				"item": {
-					"shoe_brand": "Adidas",
-					"shoe_model": "Yeezy 500",
-					"primary_shoe_color": "yellow",
-					"shoe_size": 11.5
-				},
-				"item": {
-					"shoe_brand": "Adidas",
-					"shoe_model": "Ultraboost",
-					"primary_shoe_color": "black",
-					"shoe_size": 11.5
-				},
-				"item": {
-					"shoe_brand": "Nike",
-					"shoe_model": "Kobe XII",
-					"primary_shoe_color": "green",
-					"shoe_size": 11.5
-				},
-		},
-	},
-		{
-			"locker_id": "000002",
-			"author_name": "John Doe",
-			"shoe_count": 2,
-			"user_shoe_size": 9.5,
-			"inventory": {
-				"item": {
-					"shoe_brand": "Nike",
-					"shoe_model": "presto",
-					"primary_shoe_color": "red",
-					"shoe_size": 9.5
-				},
-				"item": {
-					"shoe_brand": "Jordan",
-					"shoe_model": "4 Retro",
-					"primary_shoe_color": "blue",
-					"shoe_size": 9.5
-				}
-		},
-	},
-	],
-}
-
-
-// function getLockers(callbackFn){
-// 	setTimeout(function(){ callbackFn(MOCK_LOCKER_DATA)}, 100);
-// }
-
-// function displayLockers(data){
-// 	for(index in data.lockers){
-// 			$('body').append(
-// 				'<h3> Author: ' + data.lockers[index].author_name + '</h3>',
-// 				'<p>User Shoe Size: ' + data.lockers[index].user_shoe_size + '</p>',
-// 			'<p>Shoe Count: ' + data.lockers[index].shoe_count + '</p>');
-// 		}
-// 	}
-	
-	
-// function getAndDisplayLockers() {
-// 	getLockers(displayLockers);
-// }
-
-// $(function() {
-// 	getAndDisplayLockers();
-// })
-
+$(handleOnLoad);

@@ -12,15 +12,16 @@
 	src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="browse.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
 
-<body>
+	<body>
 		<header role="banner">
 				<div class="container">
 				<div id="branding">
-					<h1>Sneaker Locker</h1>
+						<img src="https://fontmeme.com/permalink/180922/f5bd4944ce84b67ec83f9558a87c6b90.png" alt="SneakerLocker Branding">
 				</div>
 					<nav role="navigation"> 
 						<ul>
@@ -35,14 +36,13 @@
 		<section role="section" id="dashboard">
 			<div class="row">
 				<h3>My Dashboard</h3>
-				<a href="myaccount.html">Username</a>
-				<a href="#" id="logout-btn">Logout</a>
-				<p># of Shoes: owner.inventory.length</p>
+					<div id="js-username"></div>
+					<div id="js-shoeCount"></div>
+					<a href="#" id="logout-btn">Logout</a>
 			</div>
 		</section>
 
-		<section role="section" id="">
-				<!-- BANNER -->
+		<section role="section">
 				<div class="container">
 					<h2>BROWSE LOCKERS</h2>
 				</div>
@@ -50,19 +50,16 @@
 
 		<section role="region" id="owner-browse-section">
 			<div class="container">
-				<div id="js-owner-browse">
-					
-				</div> 
+				<div id="js-owner-browse"></div> 
 			</div>
 		</section>
 
+		<footer role="contentinfo">
+			<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
+		</footer>
 
-		
-	<footer role="contentinfo">
-		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
-	</footer>
-	<script src="browse.js"></script>
-</body>
+		<script src="browse.js"></script>
+	</body>
 </html>
 
 <!-- END POINTS 

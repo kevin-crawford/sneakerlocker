@@ -5,11 +5,11 @@
 body {
 	padding: 0;
 	margin: 0;
-	background-color: #aaaaaa;
+	background-color: #eeeeee;
 }
 
 .container {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 	overflow: hidden;
 
@@ -19,62 +19,39 @@ body {
 .container::after {
   display: table;
   content: '';
-}
+} 
 
 ul {
 	margin: 0;
 	padding: 0;
 }
 
-
-
-/* HEADER */
-
-header {
-	background: #000000;
-	color: #ffffff;
-	border-bottom: #ac0000 3px solid;
+#landing {
+	text-align: center;
+	margin-bottom: 10px;
 }
-
-header a {
-	color: #e2e2e2;
-	text-decoration: none;
-	text-transform: uppercase;
-	font-size: 16px;
-}
-
-header li {
-	display: inline;
-	padding: 0 20px 0 20px;
-}
-
-header #branding {
-	float: left;
-}
-
-header #branding h1 {
-	margin: 0;
-}
-
-/* header nav {
-	float: right;
-	margin-top: 10px;
-} */
-
-/* header .highlight, header .current a {
-	color:#ff0000;
-	font-weight: bold;
-} */
-
-/* header a:hover {
-	color: #cccccc;
-	font-weight: bold;
-} */
 
 /* FORM STYLING */
 fieldset {
 	border: none;
 }
+
+form button {
+	width: 200px;
+	height: 30px;
+}
+
+form a {
+	display: block;
+	margin-top: 10px;
+}
+
+#login-section .container, #signup-section .container {
+	background-color: #ffffff;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
 
 legend {
 	background-color: #000;
@@ -90,6 +67,8 @@ label {
 
 input {
 	margin: .4rem 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .hidden {
@@ -97,30 +76,31 @@ input {
 }
 
 #new-account {
-	display: inline-block;
   padding: 3px 5px;
-  border: 1px solid #000;
-	background: #eee;
+  border: none;
 	text-decoration: none;
 }
 
-/* NAV */
+/* NAV -- HEADER */
+
+header img {
+	margin-top: 10px;
+	margin-left: 15px;
+}
 
 nav {
-	margin: 50px;
+	margin: 20px;
 }
 
 nav ul {
-	overflow: auto;
 	list-style-type: none;
 }
 
- nav li {
-  height: 25px;
-  float: left;
+nav li {
   margin-right: 0px;
   border-right: 1px solid #aaa;
-  padding: 0 20px;
+	padding: 0 10px;
+	display: inline;
 }
 
 nav li:last-child {
@@ -129,8 +109,8 @@ nav li:last-child {
 
 nav li a {
   text-decoration: none;
-  color: #ccc;
-  font: 25px/1 Helvetica, Verdana, sans-serif;
+  color: rgb(182, 182, 182); 
+  font: 15px/1 Helvetica, Verdana, sans-serif;
   text-transform: uppercase;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -139,21 +119,27 @@ nav li a {
   transition: all 0.5s ease;
 }
 
-li a:hover {
+nav li a:hover {
   color: #666;
 }
 
-li.current a {
+nav li.current a {
   font-weight: bold;
-  color: #333;
+  color: rgb(0, 151, 221);
 }
 
-/* INVENTORY - OWNER BROWSE */
+/* DASHBOARD */
+#dashboard {
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	background: white;
+}
 
 /* FOOTER */
 footer {
-	padding: 20px;
-	font-size: 16px;
+	padding-bottom: 5px;
+	margin-top:	15px;
+	font-size: 11px;
 	color: #ffffff;
 	text-align: center;
 	font-family: 'Karla', sans-serif;

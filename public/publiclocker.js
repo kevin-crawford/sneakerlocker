@@ -7,7 +7,6 @@ $('#logout-btn').on('click', (e) => {
 });
 
 function loadPublicInventory() {
-
 	const username = localStorage.getItem('username');
 	
 		$.ajax({
@@ -23,8 +22,8 @@ function loadPublicInventory() {
 				`
 				<div>
 					<p>Brand: ${result[i].shoeBrand}</p>
-					<p>Shoe Model: ${result[i].shoeModel}</p>
-					<p>Primary Color: ${result[i].primaryColor}</p>
+					<p>Model: ${result[i].shoeModel}</p>
+					<p>Color: ${result[i].primaryColor}</p>
 					<p>Size: ${result[i].shoeSize}</p>
 				</div>
 				`
@@ -40,4 +39,19 @@ function loadPublicInventory() {
 	);
 	};
 
+function loadUserDashBoard() {
+		console.log('getting user info')
+		const username = localStorage.getItem('username');
+		$('#js-username').prepend(`
+		<p>Logged in As:</p>
+		<a href="myaccount.html">${username}</a>`);
+	}
+
+
+function handleOnLoad(){
 	$(loadPublicInventory);
+	$(loadUserDashBoard);
+}
+
+
+$(handleOnLoad);
