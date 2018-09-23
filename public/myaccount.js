@@ -160,11 +160,11 @@ function loadUserDashBoard() {
 	} 
 	else {
 		$('#js-username').append(`
-		<p>Logged in As: <a href="myaccount.html">${username}</a></p>`
+		<p id="username">Username <a href="myaccount.html">${username}</a></p>`
 		);
 
 		$('#js-shoeCount').append(`
-		<p>Shoe Count: ${shoeCount}</p>
+		<p id="shoeCount">Shoe Count ${shoeCount}</p>
 		`);
 	}
 }
