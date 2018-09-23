@@ -1,6 +1,6 @@
 // EVENT LISTENERS LANDING PAGE
 // LOGIN EVENT LISTENER
-$('#login-form').submit( event => {
+$('#login-form').on('click', event => {
 	event.preventDefault();
 	// login input variables
 	const username = $(event.currentTarget).find('#username-query').val();

@@ -1,34 +1,27 @@
-* {
-	box-sizing: border-box;
-}
-
 body {
 	padding: 0;
 	margin: 0;
 	background-color: #eeeeee;
 }
 
-.container {
-	width: 100%;
-	margin: 0 auto;
-	overflow: hidden;
-
-}
-
-.container::before,
-.container::after {
-  display: table;
-  content: '';
-} 
-
-ul {
-	margin: 0;
-	padding: 0;
-}
-
-#landing {
+/* SHOWCASE BANNER */
+#showcase {
 	text-align: center;
 	margin-bottom: 10px;
+	background-image: url('http://toledocitypaper.com/sneaker-collection-boxes.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 200px;
+}
+
+#showcase span {
+	color: white;
+	text-shadow: 0 1px black;
+	background: #333; /* For browsers that don't support RGBA */
+	background: rgba(0,0,0,0.5);
+	padding: 4px 8px;
+	font-size: 26px;
+	margin-top: 50px;
 }
 
 /* FORM STYLING */
@@ -41,21 +34,10 @@ form button {
 	height: 30px;
 }
 
-form a {
-	display: block;
-	margin-top: 10px;
-}
-
-#login-section .container, #signup-section .container {
-	background-color: #ffffff;
-	padding-bottom: 10px;
-	text-align: center;
-}
-
 
 legend {
-	background-color: #000;
-	color: #fff;
+	text-align: center;
+	color: rgb(88, 88, 88);
 	padding: 3px 6px;
 }
 
@@ -75,11 +57,7 @@ input {
 	display: none;
 }
 
-#new-account {
-  padding: 3px 5px;
-  border: none;
-	text-decoration: none;
-}
+
 
 /* NAV -- HEADER */
 
@@ -132,7 +110,58 @@ nav li.current a {
 #dashboard {
 	border-bottom: 2px solid black;
 	border-top: 2px solid black;
-	background: white;
+	background: rgb(179, 179, 179);
+}
+
+#dashboard h3 {
+	text-align: center;
+}
+
+#dashboard a {
+	background-color: Crimson;  
+  border-radius: 5px;
+  color: white;
+  padding: .5em;
+	text-decoration: none;
+	display: inline-block;
+}
+
+#js-username, #js-shoeCount {
+	display: inline-block;
+	margin: 5px auto;
+}
+/* BUTTONS*/
+#add-shoe-btn img {
+	width: 8%;
+	height: 8%;
+}
+
+#new-account {
+	display: block;
+	text-align: center;
+	margin: 10px auto;
+	width: 90%;
+}
+
+.login {
+	display: block;
+	text-align: center;
+	width: 90%;
+	margin: 10px auto;
+}
+
+.button {
+  background-color: Crimson;  
+  border-radius: 5px;
+  color: white;
+  padding: .5em;
+  text-decoration: none;
+}
+
+.button:focus,
+.button:hover {
+  background-color: FireBrick;
+  color: White;
 }
 
 /* FOOTER */
@@ -146,16 +175,6 @@ footer {
 	background-color: #000000;
 	border-top: #ac0000 3px solid;
 	width: 100%;
- position: static;
+ 	position: absolute;
 	bottom: 0;
 }
-
-/* header {
-	background: #434440;
-	color: #ffffff;
-	padding-top: 30px;
-	min-height: 70px;
-	border-bottom: #7d8500 3px solid;
-	font-size: 24px;
-	font: 26px/1.5 Arial, Helvetica, sans-serif;
-} */

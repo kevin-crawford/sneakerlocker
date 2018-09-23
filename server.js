@@ -183,7 +183,8 @@ app.post('/', jsonParser, (req, res) => {
 });
 
 // --- EDIT OWNER --- ** 
-// allows user to use same email
+// NEED TO ENCRYPT PW WHEN EDITED
+
 app.put('/owner', jwtAuth, (req, res) => {
 
   const updated = {};

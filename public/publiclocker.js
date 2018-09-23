@@ -6,8 +6,7 @@ $('#logout-btn').on('click', (e) => {
 	window.location = '/index.html';
 });
 
-function loadPublicInventory() {
-	const username = localStorage.getItem('username');
+function loadPublicInventory(username) {
 	
 		$.ajax({
 			type: 'GET',

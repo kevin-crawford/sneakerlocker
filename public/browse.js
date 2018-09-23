@@ -11,39 +11,28 @@ function loadOwners() {
 				$('#js-owner-browse').append(
 					`
 					<div id="owner-browse">
-						<a href="#" id="go-to-ownerInv" ownerId="${result[i].ownerId}">
-							<p> Owner: ${result[i].username}
-									Amount of Shoes: ${result[i].shoeCount}
-									Shoe Size: ${result[i].shoeSize}
-							</p>
+						<a href="#" class="go-to-ownerInv" username="${result[i].username}">
+							Owner: ${result[i].username}
+							Amount of Shoes: ${result[i].shoeCount}
+							Shoe Size: ${result[i].shoeSize}
 						</a>
 					</div>
 					`
 				);
 		};
-		$('#go-to-ownerInv').on('click', (e) => {
-			e.preventDefault();
-			console.log('Owner Clicked');
-			const owner = e.target;
-			const ownerId = $(owner).attr('ownerId');
-			console.log(ownerId);
-			// log ownerId in localStorage
-			// Redirect user to publicview.html of selected owner.
-		})
 	});
 };
 
-// // GO TO PUBLIC VIEW OF OWNER LOCKER E.LISTENER
-// function browseListener(event) {
-// 	event.preventDefault();
-// 	console.log('Owner Clicked');
-// }
-
-// function goToOwnerLocker(){
-// 	window.location = '/publiclocker.html'
-// 		// go to 
+$('#js-owner-browse').on('click', 'a', (e) => {
+	e.preventDefault();
+	console.log('Owner Clicked');
+	const owner = e.target;
+	const username = $(owner).attr('username');
+	localStorage.setItem('otherUser', username);
+	console.log(username);
 	
-// }
+})
+
 
 
 // USER DASHBOARD

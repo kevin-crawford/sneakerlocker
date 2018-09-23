@@ -12,87 +12,94 @@
 	src="https://code.jquery.com/jquery-3.3.1.js"
 	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="float-grid.css" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
-
 <body>
 	<!-- NAVIGATION -->
-		<header role="banner">
-			<div id="branding">
-				<img src="https://fontmeme.com/permalink/180922/f5bd4944ce84b67ec83f9558a87c6b90.png" alt="SneakerLocker Branding">
+	<header role="banner">
+		<div class="row">
+			<div class="col-12">
+				<div id="branding">
+					<img src="https://fontmeme.com/permalink/180922/f5bd4944ce84b67ec83f9558a87c6b90.png" alt="SneakerLocker Branding">
+				</div>
+					<nav role="navigation"> 
+						<ul>
+							<li class="current"><a href="index.html">Home</a></li>
+							<li><a href="myaccount.html">Account</a></li>
+							<li><a href="browse.html">Browse</a></li>
+						</ul>
+					</nav>
+				</div>
 			</div>
-				<nav role="navigation"> 
-					<ul>
-						<li class="current"><a href="index.html">Home</a></li>
-						<li><a href="myaccount.html">Account</a></li>
-						<li><a href="browse.html">Browse</a></li>
-					</ul>
-				</nav>
 		</header>
 
 <!-- LANDING PAGE -->
-	<section role="region" id="landing">
-		<div class="container">
-			<p>Itemize all your shoes in your closet with the SneakerLocker WebApp! For those who own many pairs of fresh kicks, it can get pesky to dig through the closet efficiently. This webapp will help you </p>
-			<p>Want to try it out?</p>
-			<p>Use our mock account provided below</p>
-			<ul>
-				<li>Mock Username: sneakerhead</li>
-				<li>Mock Password: iloveshoes</li>
-			</ul>
+	<section role="region">
+		<div class="row">
+			<div class="col-12">
+				<div id="showcase">
+					<span>Catalogue, Itemize, Prioritize </span>
+				</div>
+			</div>
 		</div>
 	</section>
 
 <!-- LOGIN FORM-->
 	<section role="region" id="login-section">
-		<div class="container">
-			<legend>Login</legend>
-			<form name="login-form" id="login-form" role="form">
-			<fieldset>
-				<div class="login-query">
-					<label for="" id="login-username">Username</label>
-					<input title="Enter Username" type="text" aria-labelledby="" placeholder="sneakerhead" id="username-query" required>
-					<label for="" id="login-pw">Password</label>
-					<input title="enter password" type="password" aria-labelledby="" placeholder="iloveshoes" id="password-query" required>
-				</div>
-			</fieldset>
-			<button form="login-form" title="Submit Login" type="submit" class="login-button">Login</button>
-			<a href="#" id="new-account">Dont Have An Account?</a>
-			</form>
+		<div class="row">
+			<div class="col-12">
+				<legend>Login</legend>
+					<form name="login-form" id="login-form" role="form">
+						<fieldset>
+							<div class="login-query">
+								<label for="" id="login-username">Username</label>
+									<input title="Enter Username" type="text" aria-labelledby="" placeholder="sneakerhead" id="username-query" required>
+								<label for="" id="login-pw">Password</label>
+									<input title="enter password" type="password" aria-labelledby="" placeholder="iloveshoes" id="password-query" required>
+							</div>
+						</fieldset>
+					<a href="#" for="login-form" title="Submit Login" class="login button">Login</a>
+					<a href="#" id="new-account" class="button">Dont Have An Account?</a>
+				</form>
+			</div>
 		</div>
-		
 	</section>
 
 	<!-- SIGN UP FORM -->
 	<section role="region" id="signup-section" class="hidden">
-		<div class="container">
-			<legend>Sign Up Form</legend>
-		<form name="signup-form" id="signup-form" role="form">
-			<fieldset>
-				<div class="signup-query">
-					<label for="newUsername-query"  id="signup-username">Username</label>
-						<input title="Enter New Username" type="text" aria-labelledby="" placeholder="Enter New Username" id="newUsername-query" required>
-					<label for="newPassword-query" id="signup-pw">Password</label>
-						<input title="Enter New Password" type="password" aria-labelledby="" id="newPassword-query" placeholder="Enter New Password" required>
-					<label for="fn-query" id="signup-fn">First Name</label>
-						<input title="Enter First Name" type="text" aria-labelledby="" id="fn-query" placeholder="Enter First Name" required>
-					<label for="ln-query" id="signup-ln">	Last Name</label>
-						<input title="Enter Last Name" type="text" aria-labelledby="" id="ln-query" placeholder="Enter Last Name" required>
-					<label for="email-query" id="signup-email">E-Mail</label>
-						<input title="Enter valid email address" type="text" aria-labelledby="" id="email-query" placeholder="Enter Email" required>
-				</div>
-			</fieldset>
-				<button for="signup-form" title="Submit Sign Up" type="submit" id="signup-button">Submit</button>
-				<button for="back" title="Return to Sign In" type="submit" id="back-btn">Back</button>
-		</form>
-	
+		<div class="row">
+			<div class="col-12">
+				<legend>Sign Up Form</legend>
+					<form name="signup-form" id="signup-form" role="form">
+						<fieldset>
+							<div class="signup-query">
+								<label for="newUsername-query"  id="signup-username">Username</label>
+									<input title="Enter New Username" type="text" aria-labelledby="" placeholder="Enter New Username" id="newUsername-query" required>
+								<label for="newPassword-query" id="signup-pw">Password</label>
+									<input title="Enter New Password" type="password" aria-labelledby="" id="newPassword-query" placeholder="Enter New Password" required>
+								<label for="fn-query" id="signup-fn">First Name</label>
+									<input title="Enter First Name" type="text" aria-labelledby="" id="fn-query" placeholder="Enter First Name" required>
+								<label for="ln-query" id="signup-ln">	Last Name</label>
+									<input title="Enter Last Name" type="text" aria-labelledby="" id="ln-query" placeholder="Enter Last Name" required>
+								<label for="email-query" id="signup-email">E-Mail</label>
+									<input title="Enter valid email address" type="text" aria-labelledby="" id="email-query" placeholder="Enter Email" required>
+							</div>
+						</fieldset>
+					<button for="signup-form" title="Submit Sign Up" type="submit" id="signup-button">Submit</button>
+					<button for="back" title="Return to Sign In" type="submit" id="back-btn">Back</button>
+				</form>
+			</div>
 		</div>
 	</section>
-
+<!-- FOOTER -->
 	<footer role="contentinfo">
-		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
+		<div class="row">
+			<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
+		</div>
 	</footer>
-	<script src="index.js"></script>
+
+<script src="index.js"></script>
 </body>
 </html>

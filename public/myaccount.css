@@ -22,6 +22,7 @@ footer {
 
 .shoe-info a {
 	display: block;
+	text-decoration: none;
 }
 
 /* SHOE EDIT FORM */

@@ -13,93 +13,156 @@
 				integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 				<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 				<link rel="stylesheet" type="text/css" media="screen" href="myaccount.css" />
+				<link rel="stylesheet" type="text/css" media="screen" href="float-grid.css" />
 				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 			</head>
 <body>
 
 	<!-- NAVIGATION -->
 
-	<header role="banner">
-		<div class="container">
+<header role="banner">
+	<div class="row">
+		<div class="col-12">
 			<div id="branding">
-					<img src="https://fontmeme.com/permalink/180922/f5bd4944ce84b67ec83f9558a87c6b90.png" alt="SneakerLocker Branding">
+				<img src="https://fontmeme.com/permalink/180922/f5bd4944ce84b67ec83f9558a87c6b90.png" alt="SneakerLocker Branding">
 			</div>
-				<nav role="navigation"> 
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li class="current"><a href="myaccount.html">Account</a></li>
-						<li><a href="browse.html">Browse</a></li>
-					</ul>
-				</nav>
+			<nav role="navigation"> 
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li class="current"><a href="myaccount.html">Account</a></li>
+					<li><a href="browse.html">Browse</a></li>
+				</ul>
+			</nav>
 		</div>
-		</header>
+	</div>
+</header>
 
-			<section role="section" id="dashboard">
-				<div class="row">
-					<h3>My Dashboard</h3>
-						<div id="js-username"></div>
-						<div id="js-shoeCount"></div>
-						<a href="#" id="logout-btn">Logout</a>
-						<a href="publiclocker.html" id="view-public">Public View</a>
-						<a href="#" id="edit-account-link">Edit Account</a>
-							<div id="edit-account" class="hidden">
-								<legend>Edit Owner Information</legend>
-								<form name="edit-account-form">
-									<fieldset>
-										<label for="editUsername-query" id="edit-username">New Username</label>
-											<input title="Enter New Username" type="text" id="editUsername-query">
-										<label for="editPassword-query" id="edit-password">New Password</label>
-											<input title="Enter New Password" id="editPassword-query">
-										<label for="fn-query" id="signup-fn">First Name</label>
-											<input title="Enter First Name" type="text" id="fn-query">
-										<label for="ln-query" id="signup-ln">Last Name</label>
-											<input title="Enter Last Name" type="text" id="ln-query">
-										<label for="email-query" id="signup-email">E-Mail</label>
-											<input title="Enter valid email address" type="text"  id="email-query">
-										<label for="shoeSize-query" id="edit-shoeSize">Shoe Size</label>
-											<select name="Shoe Size">
-												<option value="5">5</option>
-												<option value="5.5">5.5</option>
-												<option value="6">6</option>
-												<option value="6.5">6.5</option>
-												<option value="7">7</option>
-												<option value="7.5">7.5</option>
-												<option value="8">8</option>
-												<option value="8">8.5</option>
-												<option value="9">9</option>
-												<option value="9">9.5</option>
-												<option value="10">10</option>
-												<option value="10.5">10.5</option>
-												<option value="11">11.5</option>
-												<option value="12">12</option>
-												<option value="12.5">12.5</option>
-												<option value="13">13</option>
-												<option value="13.5">13.5</option>
-												<option value="14">14</option>
-										<button for="edit-account-form" title="Submit Owner Information" type="submit" id="submit-ownerInfo">Submit</button>
-										<button for="close-edit" title="Close Edit Menu" type="submit" id="close-btn">Close</button>
-									</fieldset>
-								</form>
-							</div>
-				</div>
-			</section>
+<section role="section" id="dashboard">
+	<div class="row">
+		<div class="col-12">
+		<h3>My Dashboard</h3>
+		<!-- INSERT OWNERS USERNAME NAME-->
+		<div id="js-username"></div>
+		<!-- INSERT # OF ITEMS IN INVENTORY -->
+		<div id="js-shoeCount"></div>
+			<a href="#" id="logout-btn">Logout</a>
+			<a href="publiclocker.html" id="view-public">Public View</a>
+			<a href="#" id="edit-account-link">Edit Account</a>
+			<!-- EDIT OWNER ACCOUNT FORM -->
+				<div id="edit-account" class="hidden">
+					<legend>Edit Owner Information</legend>
+						<form name="edit-account-form" id="edit-account-form">
+							<fieldset>
+								<label for="editUsername-query" id="edit-username">New Username</label>
+									<input title="Enter New Username" type="text" id="editUsername-query">
+								<label for="editPassword-query" id="edit-password">New Password</label>
+									<input title="Enter New Password" id="editPassword-query">
+								<label for="fn-query" id="signup-fn">First Name</label>
+									<input title="Enter First Name" type="text" id="fn-query">
+								<label for="ln-query" id="signup-ln">Last Name</label>
+									<input title="Enter Last Name" type="text" id="ln-query">
+								<label for="email-query" id="signup-email">E-Mail</label>
+									<input title="Enter valid email address" type="text"  id="email-query">
+								<label for="shoeSize-query" id="edit-shoeSize">Shoe Size</label>
+									<select name="Shoe Size" id='shoeSize-query'>
+										<option value="5">5</option>
+										<option value="5.5">5.5</option>
+										<option value="6">6</option>
+										<option value="6.5">6.5</option>
+										<option value="7">7</option>
+										<option value="7.5">7.5</option>
+										<option value="8">8</option>
+										<option value="8">8.5</option>
+										<option value="9">9</option>
+										<option value="9">9.5</option>
+										<option value="10">10</option>
+										<option value="10.5">10.5</option>
+										<option value="11">11.5</option>
+										<option value="12">12</option>
+										<option value="12.5">12.5</option>
+										<option value="13">13</option>
+										<option value="13.5">13.5</option>
+										<option value="14">14</option>
+									</select>
+								<button for="edit-account-form" title="Submit Owner Information" type="submit" id="submit-ownerInfo">Submit</button>
+								<button for="close-edit" title="Close Edit Menu" type="submit" id="close-btn">Close</button>
+						</fieldset>
+					</form>
+			</div>
+		</div>
+	</div>
+</section>
 
-			<section role="region" id=" myaccount-section">
-				<div class="container">
-					<h3>ACCOUNT OVERVIEW</h3>
-				</div>
-			</section>
+<section role="region" id="myinventory-section">
+	<h3>Sneaker Inventory</h3>
+	<div class="container">
+	<!-- GENERATE INVENTORY -->
+		<div id="js-myinventory"></div>
+			<a href="#" id="add-shoe-btn"><img src="https://cdn3.iconfinder.com/data/icons/musthave/256/Add.png" alt="add shoe">Add A New Shoe to Inventory</a>
+			<!-- ADD SHOE FORM-->
+				<div id="add-shoe">
+					<form name="addShoe-form" role="form" id="addShoe-form" class="hidden">
+						<fieldset>
+							<legend> Add Shoe </legend>
+								<label>Brand</label>
+									<select name="Shoe Brand" id="addBrand-query" required>
+										<option value="Nike">Nike</option>
+										<option value="Adidas">Adidas</option>
+										<option value="Puma">Puma</option>
+										<option value="Under Armor">Under Armor</option>
+										<option value="Jordan">Jordan</option>
+										<option value="Vans">Vans</option>
+										<option value="Converse">Converse</option>
+										<option value="Reebok">Reebok</option>
+										<option value="New Balance">New Balance</option>
+										<option value="Sketchers">Sketchers</option>
+										<option value="Other">Other</option>
+									</select>
+								<label for="addModel-query">Model</label>
+									<input title="Add Shoe Model" type="text" id="addModel-query" placeholder="Shoe Model" required>
+								<label for="addColor-query">Color</label>
+								<select name="Shoe Color" id="addColor-query">
+										<option value="black">Black</option>
+										<option value="Blue">Blue</option>
+										<option value="Brown">Brown</option>
+										<option value="Green">Green</option>
+										<option value="Orange">Orange</option>
+										<option value="Purple">Purple</option>
+										<option value="Red">Red</option>
+										<option value="White">White</option>
+										<option value="Yellow">Yellow</option>
+									</select>
+								<label for="addSize-query">Size</label>
+									<select name="Shoe Size" id="addSize-query">
+										<option value="5">5</option>
+										<option value="5.5">5.5</option>
+										<option value="6">6</option>
+										<option value="6.5">6.5</option>
+										<option value="7">7</option>
+										<option value="7.5">7.5</option>
+										<option value="8">8</option>
+										<option value="8">8.5</option>
+										<option value="9">9</option>
+										<option value="9">9.5</option>
+										<option value="10">10</option>
+										<option value="10.5">10.5</option>
+										<option value="11">11.5</option>
+										<option value="12">12</option>
+										<option value="12.5">12.5</option>
+										<option value="13">13</option>
+										<option value="13.5">13.5</option>
+										<option value="14">14</option>
+									<input for="addShoe-form" title="add Shoe Submission" type="submit">
+						</fieldset>
+			</div>
+		</div>
+</section>
 
-			<section role="region" id="myinventory-section">
-				<div class="container">
-					<div id="js-myinventory"></div>
-					<a href="#" id="add-shoe-btn">Add Shoe</a>
-				</div>
-			</section>
-
-	<footer role="contentinfo">
+<footer role="contentinfo">
+	<div class="row">
 		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
-	</footer>
-	<script src="myaccount.js"></script>
+	</div>
+</footer>
+<script src="myaccount.js"></script>
 </body>
 </html>
