@@ -111,12 +111,12 @@ $('#edit-account-form').submit( e => {
 	e.preventDefault();
 	console.log('submitting edit owner');
 
-	const username = $(event.currentTarget).find('#editUsername-query').val() || '';
-	const password = $(event.currentTarget).find('#editPassword-query').val() || '';
-	const firstName = $(event.currentTarget).find('#fn-query').val() || '';
-	const lastName = $(event.currentTarget).find('#ln-query').val() || '';
-	const email = $(event.currentTarget).find('#email-query').val() || '';
-	const shoeSize = $(event.currentTarget).find('#shoeSize-query').val() || 'N/A';
+	const username = $(event.currentTarget).find('#editUsername-query').val();
+	const password = $(event.currentTarget).find('#editPassword-query').val();
+	const firstName = $(event.currentTarget).find('#fn-query').val();
+	const lastName = $(event.currentTarget).find('#ln-query').val();
+	const email = $(event.currentTarget).find('#email-query').val();
+	const shoeSize = $(event.currentTarget).find('#shoeSize-query').val();
 
 	const token = localStorage.getItem('authToken');
 
@@ -154,20 +154,19 @@ function loadUserDashBoard() {
 	let username = localStorage.getItem('username');
 	let shoeCount = localStorage.getItem('shoeCount');
 
+	console.log(username,shoeCount);
+
 	// hide dashboard if not logged in , else show dashboard
 	if(username === null){
 		$('#dashboard').addClass('hidden');
 	} 
 	else {
-		$('#js-username').append(`
-		<p id="username">Username <a href="myaccount.html">${username}</a></p>`
+		$('#js-userinfo').append(`
+		<p id="username">Username <a href="myaccount.html">${username}</a></p>
+		<p id="shoeCount">Shoe Count ${shoeCount}</p>`
 		);
-
-		$('#js-shoeCount').append(`
-		<p id="shoeCount">Shoe Count ${shoeCount}</p>
-		`);
-	}
-}
+	};
+};
 
 // LOGOUT 
 $('#logout-btn').on('click', (e) => {

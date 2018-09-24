@@ -1,6 +1,6 @@
 // EVENT LISTENERS LANDING PAGE
 // LOGIN EVENT LISTENER
-$('#login-form').on('click', event => {
+$('#login-form').submit( event => {
 	event.preventDefault();
 	// login input variables
 	const username = $(event.currentTarget).find('#username-query').val();
@@ -10,6 +10,8 @@ $('#login-form').on('click', event => {
 		username: username,
 		password: password
 	};
+
+	console.log(userObject);
 
 $.ajax({
 	type: 'POST',
@@ -33,7 +35,7 @@ $.ajax({
 });
 
 // HIDE / REVEAL SIGNUP-SIGNIN FORMS
-$('#new-account').click(event => {
+$('#new-account').click( event => {
 	event.preventDefault();
 	$('#login-section').hide();
 	$('#signup-section').removeClass('hidden');

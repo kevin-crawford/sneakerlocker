@@ -1,7 +1,6 @@
 body {
-	padding: 0;
 	margin: 0;
-	background-color: #eeeeee;
+	background-color: #ffffff;
 }
 
 /* SHOWCASE BANNER */
@@ -25,8 +24,14 @@ body {
 }
 
 /* FORM STYLING */
+
+form {
+	background-color: dimgray;
+	padding-bottom: .5em;
+}
 fieldset {
 	border: none;
+	margin: auto;
 }
 
 form button {
@@ -42,7 +47,7 @@ legend {
 }
 
 label {
-	display: inline-block;
+	float: left;
 	font-size: .9rem;
 	width: 35%;
 }
@@ -62,16 +67,13 @@ input {
 /* NAV -- HEADER */
 
 header img {
-	margin-top: 10px;
-	margin-left: 15px;
-}
-
-nav {
-	margin: 20px;
+	display: block;
+	margin: 10px auto;
 }
 
 nav ul {
 	list-style-type: none;
+	text-align: center;
 }
 
 nav li {
@@ -107,27 +109,27 @@ nav li.current a {
 }
 
 /* DASHBOARD */
-#dashboard {
-	border-bottom: 2px solid black;
-	border-top: 2px solid black;
-	background: rgb(179, 179, 179);
+.dashboard {
+	background: rgba(255, 204, 146, 0.83);
+	margin-bottom: 1em;
+	padding: .5em;
 }
 
-#dashboard h3 {
+h3 {
 	text-align: center;
 }
 
-#dashboard a {
-	background-color: Crimson;  
+.dashboard a {
+	background-color: #53363b;  
   border-radius: 5px;
   color: white;
-  padding: .5em;
+	padding: .5em;
+	margin: .5em auto;
 	text-decoration: none;
-	display: inline-block;
+	display: block;
 }
 
-#js-username, #js-shoeCount {
-	display: inline-block;
+#js-userinfo {
 	margin: 5px auto;
 }
 
@@ -149,6 +151,7 @@ nav li.current a {
 	text-align: center;
 	width: 90%;
 	margin: 10px auto;
+	border: none;
 }
 
 .button {
@@ -167,15 +170,12 @@ nav li.current a {
 
 /* FOOTER */
 footer {
-	padding-bottom: 5px;
-	margin-top:	15px;
 	font-size: 11px;
 	color: #ffffff;
 	text-align: center;
 	font-family: 'Karla', sans-serif;
 	background-color: #000000;
-	border-top: #ac0000 3px solid;
 	width: 100%;
- 	position: absolute;
+ 	position: fixed;
 	bottom: 0;
 }

@@ -1,23 +1,11 @@
-footer {
-	padding-bottom: 5px;
-	margin-top: 15px;
-	font-size: 11px;
-	color: #ffffff;
-	text-align: center;
-	font-family: 'Karla', sans-serif;
-	background-color: #000000;
-	border-top: #ac0000 3px solid;
-	width: 100%;
- position: static;
-	bottom: 0;
-}
+
 
 
 /* SHOE INVENTORY */
 .shoe-info {
 	background-color: rgb(202, 244, 255);
 	font-size: 14px;
-	border: 1px solid black;
+	margin-bottom: 1em;
 }
 
 .shoe-info a {
@@ -25,10 +13,10 @@ footer {
 	text-decoration: none;
 }
 
+
 /* SHOE EDIT FORM */
 #js-myinventory form {
 	background-color: #ffffff;
-	border-bottom: 2px solid black;
 	padding-bottom: 10px;
 	text-align: center;
 	
@@ -36,10 +24,4 @@ footer {
 
 #js-myinventory input {
 	max-width: 100px;
-
 }
-
-/* #add-shoe-btn {
-	background: white;
-	width: 100%;
-} */

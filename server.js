@@ -196,7 +196,7 @@ app.put('/owner', jwtAuth, (req, res) => {
   });
 
   Owner
-    .findOne({ userName: updated.userName || '', _id: { $ne: req.user.ownerId }})
+    .findOne({ username: updated.userName || '', _id: { $ne: req.user.ownerId }})
     .then(username => {
       if(username) {
         const message = 'Username already taken';
