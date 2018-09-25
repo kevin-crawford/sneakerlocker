@@ -19,17 +19,20 @@ let username = localStorage.getItem('username');
 		for(let i = 0; i < result.length; i++){
 		$('#js-myinventory').append(
 			`
-			<div class="shoe-info">
+		<div class="shoe-info">
 				<b>Brand</b> <p>${result[i].shoeBrand}</p>
 				<b>Model</b> <p>${result[i].shoeModel}</p>
 				<b>Color</b> <p>${result[i].primaryColor}</p>
 				<b>Size</b>	<p>${result[i].shoeSize}</p>
 				<a href="#" class="edit-shoe" stockNumber="${result[i].stockNumber}">Edit</a>
 				<a href="#" id="delete-shoe-btn" stockNumber="${result[i].stockNumber}"> DELETE </a>
+		</div>
 				
-				<form name="editshoe-form" role="form" id="shoeForm${[i]}" class="editform hidden">
+		<section role="region" class="editshoe-section">
+			<form name="editshoe-form" role="form" id="shoeForm${[i]}" class="editform hidden">
 				<fieldset>
 				<legend> Edit Shoe </legend>
+				<div class="shoebrand wrapper">
 					<label for="editShoeBrand-query">Brand</label>
 						<select name="Shoe Brand" class="editShoeBrand-query">
 							<option value="Nike">Nike</option>
@@ -44,8 +47,12 @@ let username = localStorage.getItem('username');
 							<option value="Sketchers">Sketchers</option>
 							<option value="Other">Other</option>
 						</select>
+					</div>
+					<div class="shoemodel wrapper">
 						<label for="editShoeModel-query">Model</label>
 							<input title="Edit Shoe Model" type="text" class="editShoeModel-query" placeholder="Shoe Model" required>
+					</div>
+					<div class="shoecolor wrapper">
 						<label for="editShoeColor-query">Color</label>
 							<select name="Shoe Color" class="editShoeColor-query">
 								<option value="black">Black</option>
@@ -58,32 +65,35 @@ let username = localStorage.getItem('username');
 								<option value="White">White</option>
 								<option value="Yellow">Yellow</option>
 							</select>
+					</div>
+					<div class="shoesize wrapper">
 						<label for="editShoeSize-query">Size</label>
-						<select name="Shoe Size" class="editShoeSize-query">
-							<option value="5">5</option>
-							<option value="5.5">5.5</option>
-							<option value="6">6</option>
-							<option value="6.5">6.5</option>
-							<option value="7">7</option>
-							<option value="7.5">7.5</option>
-							<option value="8">8</option>
-							<option value="8.5">8.5</option>
-							<option value="9">9</option>
-							<option value="9">9.5</option>
-							<option value="10">10</option>
-							<option value="10.5">10.5</option>
-							<option value="11">11</option>
-							<option value="11.5">11.5</option>
-							<option value="12">12</option>
-							<option value="12.5">12.5</option>
-							<option value="13">13</option>
-							<option value="13.5">13.5</option>
-							<option value="14">14</option>
+							<select name="Shoe Size" class="editShoeSize-query">
+								<option value="5">5</option>
+								<option value="5.5">5.5</option>
+								<option value="6">6</option>
+								<option value="6.5">6.5</option>
+								<option value="7">7</option>
+								<option value="7.5">7.5</option>
+								<option value="8">8</option>
+								<option value="8.5">8.5</option>
+								<option value="9">9</option>
+								<option value="9">9.5</option>
+								<option value="10">10</option>
+								<option value="10.5">10.5</option>
+								<option value="11">11</option>
+								<option value="11.5">11.5</option>
+								<option value="12">12</option>
+								<option value="12.5">12.5</option>
+								<option value="13">13</option>
+								<option value="13.5">13.5</option>
+								<option value="14">14</option>
 							</select>
+						</div>
 					<input type="submit" title="Edit Shoe Submission">
 				</fieldset>
 				</form>
-			</div>
+			</section>
 			`
 		)};
 	});
@@ -231,7 +241,7 @@ function addItem(newShoeObj) {
 $('#js-myinventory').on('click', '.edit-shoe', (e) => {
 	e.preventDefault();
 	console.log('Revealing');
-	$(e.currentTarget).closest('.shoe-info').find('.editform').toggleClass('hidden');
+	$(e.currentTarget).parent().next().find('.editform').toggleClass('hidden');
 
 	const item = e.target;
 	const itemId = $(item).attr('stockNumber');
@@ -240,14 +250,13 @@ $('#js-myinventory').on('click', '.edit-shoe', (e) => {
 	localStorage.setItem('itemId', itemId);
 });
 
-$('#js-myinventory').on('submit','.editform', e => {
+$('#js-myinventory').submit('.editform', e => {
 	e.preventDefault();
 
 	const shoeBrand = $(e.currentTarget).closest('.editform').find('.editShoeBrand-query').val();
 	const shoeModel = $(e.currentTarget).closest('.editform').find('.editShoeModel-query').val();
 	const shoeColor = $(e.currentTarget).closest('.editform').find('.editShoeColor-query').val();
 	const shoeSize = $(e.currentTarget).closest('.editform').find('.editShoeSize-query').val();
-	const storageId = localStorage.getItem('itemId');
 
 	const editShoeObj = {
 		shoeBrand: shoeBrand,
@@ -257,14 +266,16 @@ $('#js-myinventory').on('submit','.editform', e => {
 	}
 
 	$(editItem(editShoeObj));
-})
+
+});
 
 
 function editItem(item) {
 
 	const itemId = localStorage.getItem('itemId');
 	const token = localStorage.getItem('authToken');
-
+	console.log(localStorage.getItem('itemId'));
+	
 	$.ajax({
 		type: 'PUT',
 		url: `/inventory/${itemId}/editShoe`,
@@ -294,6 +305,7 @@ $('#js-myinventory').on('click', '#delete-shoe-btn', (e) => {
 	} else {
 		return false;
 	};
+
 });
 
 function deleteItem(itemId) {

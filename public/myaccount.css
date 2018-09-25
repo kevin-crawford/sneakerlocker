@@ -14,12 +14,23 @@
 }
 
 
+
 /* SHOE EDIT FORM */
 #js-myinventory form {
 	background-color: #ffffff;
 	padding-bottom: 10px;
-	text-align: center;
-	
+}
+
+#js-myinventory fieldset {
+	border: none;
+	margin: 0 auto;
+	width: 200px
+}
+
+#js-myinventory label {
+	display: inline-block;
+	margin-right: 20px;
+	width: 50px;
 }
 
 #js-myinventory input {

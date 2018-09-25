@@ -29,9 +29,13 @@ form {
 	background-color: dimgray;
 	padding-bottom: .5em;
 }
-fieldset {
+
+#login-form fieldset {
 	border: none;
 	margin: auto;
+	text-align: center;
+	display: block;
+	width: 300px;
 }
 
 form button {
@@ -42,20 +46,20 @@ form button {
 
 legend {
 	text-align: center;
-	color: rgb(88, 88, 88);
+	color: rgb(243, 237, 237);
 	padding: 3px 6px;
 }
 
-label {
-	float: left;
+#login-form label {
 	font-size: .9rem;
-	width: 35%;
+	display: block;
 }
 
-input {
-	margin: .4rem 0;
+input #login-form {
+	margin: 10px auto;
 	padding-top: 5px;
 	padding-bottom: 5px;
+	display: block;
 }
 
 .hidden {
