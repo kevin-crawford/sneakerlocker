@@ -188,11 +188,13 @@ app.post('/', jsonParser, (req, res) => {
 app.put('/owner', jwtAuth, (req, res) => {
 
   const updated = {};
-  const updatableFields = ['firstName', 'lastName', 'username', 'password', 'email'];
+  const updatableFields = ['firstName', 'lastName', 'username', 'password', 'email', 'shoeSize'];
+
+  // add fields to update object from request body
   updatableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];
-    }
+    } 
   });
 
   Owner

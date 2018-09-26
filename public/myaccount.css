@@ -1,38 +1,83 @@
-
-
-
 /* SHOE INVENTORY */
-.shoe-info {
+.shoeinfo-region {
 	background-color: rgb(202, 244, 255);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	font-size: 14px;
 	margin-bottom: 1em;
 }
 
-.shoe-info a {
-	display: block;
+.shoeinfo-region a {
+	/* display: block; */
 	text-decoration: none;
 }
 
+.shoe-info > li {
+	float: left;
+	list-style: none;
+	padding-left: 20px;
+	font-size: 20px;
+}
 
+.shoe-info {
+	overflow: hidden;
+}
+
+.shoe-info-data > li {
+	float: left;
+	list-style: none;
+	padding-left: 36px;
+}
+
+.shoe-info-data {
+	overflow: hidden;
+}
 
 /* SHOE EDIT FORM */
 #js-myinventory form {
 	background-color: #ffffff;
 	padding-bottom: 10px;
+	margin-bottom: 10px;
 }
 
-#js-myinventory fieldset {
+#js-myinventory legend {
+	text-align: center;
+	color: rgb(73, 73, 73);
+	padding: 3px 6px;
+}
+
+#js-myinventory a {
+	text-align: center;
+}
+
+#js-myinventory fieldset, 
+#edit-account-form fieldset {
 	border: none;
 	margin: 0 auto;
-	width: 200px
+	width: 300px
 }
 
-#js-myinventory label {
+#js-myinventory label, 
+#edit-account-form label {
 	display: inline-block;
 	margin-right: 20px;
 	width: 50px;
 }
 
-#js-myinventory input {
-	max-width: 100px;
+#js-myinventory input, 
+#edit-account-form input, 
+#js-myinventory select {
+	max-width: 150px;
+	text-align: center;
+}
+
+a#add-shoe-btn {
+	background-color: white;
+	padding: 10px;
+	text-decoration: none;
+}
+
+#add-shoe-btn img {
+	width: 3%;
+	height: 3%;
+	margin-right: 10px;
 }

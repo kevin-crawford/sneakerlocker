@@ -61,10 +61,10 @@
 		<form name="edit-account-form" id="edit-account-form">
 					<legend>Edit Owner Information</legend>
 				<fieldset>
-					<label for="editUsername-query" id="edit-username">New Username</label>
+					<label for="editUsername-query" id="edit-username">Username</label>
 						<input title="Enter New Username" type="text" id="editUsername-query">
-					<label for="editPassword-query" id="edit-password">New Password</label>
-						<input title="Enter New Password" id="editPassword-query">
+					<label for="editPassword-query" id="edit-password">Password</label>
+						<input type="password" title="Enter New Password" id="editPassword-query">
 					<label for="fn-query" id="signup-fn">First Name</label>
 						<input title="Enter First Name" type="text" id="fn-query">
 					<label for="ln-query" id="signup-ln">Last Name</label>
@@ -93,7 +93,7 @@
 							<option value="14">14</option>
 						</select>
 					<button for="edit-account-form" title="Submit Owner Information" type="submit" id="submit-ownerInfo">Submit</button>
-					<a href="#" for="close-edit" title="Close Edit Menu" id="close-edit button">Close</a>
+					<a href="#" for="close-edit" title="Close Edit Menu" id="close-edit">Close</a>
 				</fieldset>
 			</form>
 		</div>
@@ -104,10 +104,11 @@
 <section role="region" id="myinventory-section">
 	<div class="row">
 		<div class="col-12">
-				<h3>Sneaker Inventory</h3>
+				
 	<!-- GENERATE INVENTORY -->
-		<div id="js-myinventory"></div>
-			<a href="#" id="add-shoe-btn"><img src="https://cdn3.iconfinder.com/data/icons/musthave/256/Add.png" alt="add shoe">Add A New Shoe to Inventory</a>
+		<div id="js-myinventory"> 
+			<h3>Sneaker Inventory</h3>
+		</div>
 		</div>
 	</div>
 </section>
@@ -117,6 +118,7 @@
 		<div class="col-12">
 		<!-- ADD SHOE FORM-->
 			<div id="add-shoe">
+				<a href="#" id="add-shoe-btn"><img src="https://cdn3.iconfinder.com/data/icons/musthave/256/Add.png" alt="add shoe">Add A New Shoe to Inventory</a>
 				<form name="addShoe-form" role="form" id="addShoe-form" class="hidden">
 				<fieldset>
 					<legend> Add Shoe </legend>
@@ -168,8 +170,9 @@
 								<option value="13">13</option>
 								<option value="13.5">13.5</option>
 								<option value="14">14</option>
-							<input for="addShoe-form" title="add Shoe Submission" type="submit">
 				</fieldset>
+				<input for="addShoe-form" title="add Shoe Submission" type="submit">
+				<a href='#' title="Cancel Edit Shoe Submission" id="cancelShoeEdit">Cancel</a>
 			</div>
 		</div>
 	</div>

@@ -8,28 +8,34 @@ let username = localStorage.getItem('username');
 		contentType: 'json/application',
 		error: function() {
 			$('#js-myinventory').append(`
-			<p>Please Log In To View Your Inventory</p>`);
+			<a href='/index.html'>Please Log In To View Your Inventory</a>`);
 		}
 	})
 	.done(result => {
-		console.log(result);
 		const shoeCount = result.length;
 		localStorage.setItem('shoeCount', shoeCount);
 
 		for(let i = 0; i < result.length; i++){
-		$('#js-myinventory').append(
-			`
-		<div class="shoe-info">
-				<b>Brand</b> <p>${result[i].shoeBrand}</p>
-				<b>Model</b> <p>${result[i].shoeModel}</p>
-				<b>Color</b> <p>${result[i].primaryColor}</p>
-				<b>Size</b>	<p>${result[i].shoeSize}</p>
-				<a href="#" class="edit-shoe" stockNumber="${result[i].stockNumber}">Edit</a>
-				<a href="#" id="delete-shoe-btn" stockNumber="${result[i].stockNumber}"> DELETE </a>
-		</div>
-				
+		$('#js-myinventory').append(`
+		<section role="region" class="shoeinfo-region">
+			<ul class="shoe-info">
+				<li>Brand</li>
+				<li>Model</li>
+				<li>Color</li>
+				<li>Size</li>
+			</ul>
+			<ul class="shoe-info-data">
+				<li>${result[i].shoeBrand}</li>
+				<li>${result[i].shoeModel}</li>
+				<li>${result[i].primaryColor}</li>
+				<li>${result[i].shoeSize}</li>
+			</ul>
+			<a href="#" class="edit-shoe">Edit</a>
+			<a href="#" id="delete-shoe-btn" stockNumber="${result[i].stockNumber}"> DELETE </a>
+		</section>
+		
 		<section role="region" class="editshoe-section">
-			<form name="editshoe-form" role="form" id="shoeForm${[i]}" class="editform hidden">
+			<form name="editshoe-form" role="form" id="shoeForm${[i]}" stockNumber="${result[i].stockNumber}" class="editform hidden">
 				<fieldset>
 				<legend> Edit Shoe </legend>
 				<div class="shoebrand wrapper">
@@ -99,27 +105,31 @@ let username = localStorage.getItem('username');
 	});
 };
 
-
+// GO TO PUBLIC VIEW LISTENER
 $('#view-public').click( e => {
 	e.preventDefault();
-	console.log('going to public locker');
-	const username =	localStorage.getItem('username');
-	$(loadPublicInventory(username));
+	window.location = '/publiclocker.html';
 })
 
 // EDIT ACCOUNT EVENT LISTENER
 $('#edit-account-link').click( e => {
 	e.preventDefault();
-	console.log('revealing');
 	$('#edit-account').removeClass('hidden');
 	$('#myinventory-section').addClass('hidden');
+	$("#add-shoe-btn").addClass('hidden');
 });
 
+// CLOSE EDIT ACCOUNT FORM
+$('#close-edit').click( e => {
+	e.preventDefault();
+	$('#edit-account').addClass('hidden');
+	$('#myinventory-section').removeClass('hidden');
+	$('#add-shoe-btn').removeClass('hidden');
+})
 // EDIT ACCOUNT AJAX CALLS
 
 $('#edit-account-form').submit( e => { 
 	e.preventDefault();
-	console.log('submitting edit owner');
 
 	const username = $(event.currentTarget).find('#editUsername-query').val();
 	const password = $(event.currentTarget).find('#editPassword-query').val();
@@ -130,7 +140,7 @@ $('#edit-account-form').submit( e => {
 
 	const token = localStorage.getItem('authToken');
 
-	const editOwnerObj = {
+	const editRawOwnerObj = {
 		username: username,
 		password: password,
 		firstName: firstName,
@@ -138,6 +148,17 @@ $('#edit-account-form').submit( e => {
 		email: email,
 		shoeSize: shoeSize
 	};
+
+// REMOVE EMPTY STRINGS FROM EDIT OWNER OBJECT
+function removeEmptyStrings(obj){
+	let newObj = {};
+	Object.keys(obj).forEach((prop) => {
+    if (obj[prop] !== '') { newObj[prop] = obj[prop]; }
+	});
+	return newObj;
+};
+
+const editOwnerObj = removeEmptyStrings(editRawOwnerObj);
 
 	if( confirm('Are You Sure?')) {
 	$.ajax({
@@ -152,6 +173,7 @@ $('#edit-account-form').submit( e => {
 	})
 	.done(result => {
 		console.log(result);
+		localStorage.setItem('username', result.username);
 		window.location.reload(true);
 		});
 	};
@@ -168,7 +190,8 @@ function loadUserDashBoard() {
 
 	// hide dashboard if not logged in , else show dashboard
 	if(username === null){
-		$('#dashboard').addClass('hidden');
+		$('.dashboard').addClass('hidden');
+		$('#add-shoe-btn').addClass('hidden');
 	} 
 	else {
 		$('#js-userinfo').append(`
@@ -190,8 +213,20 @@ $('#logout-btn').on('click', (e) => {
 $('#add-shoe-btn').on('click', e => {
 	e.preventDefault();
 	$('#addShoe-form').removeClass('hidden');
+	$('#myinventory-section').addClass('hidden');
+	$('#add-shoe-btn').addClass('hidden');
 });
 
+// CANCEL SHOE EDIT -- REVEAL INVENTORY
+$('#cancelShoeEdit').on('click', e => {
+	e.preventDefault();
+	console.log('clicking');
+	$('#addShoe-form').addClass('hidden');
+	$('#myinventory-section').removeClass('hidden');
+	$('#add-shoe-btn').removeClass('hidden');
+});
+
+// ADD SHOE SUBMISSION LISTENER
 $('#addShoe-form').submit( e => {
 	e.preventDefault();
 		const shoeBrand = $(event.currentTarget).find('#addBrand-query').val();
@@ -209,7 +244,7 @@ $('#addShoe-form').submit( e => {
 	$(addItem(newShoeObj));
 })
 
-
+// ADD SHOE AJAX CALL
 function addItem(newShoeObj) {
 
 	const token = localStorage.getItem('authToken');
@@ -237,26 +272,25 @@ function addItem(newShoeObj) {
 
 
 // EDIT ITEM LISTENER
-
 $('#js-myinventory').on('click', '.edit-shoe', (e) => {
 	e.preventDefault();
 	console.log('Revealing');
 	$(e.currentTarget).parent().next().find('.editform').toggleClass('hidden');
+});
+
+// EDIT ITEM SUBMISSION
+$('#js-myinventory').submit('.editform', e => {
+	e.preventDefault();
 
 	const item = e.target;
 	const itemId = $(item).attr('stockNumber');
 
 	console.log(itemId);
-	localStorage.setItem('itemId', itemId);
-});
-
-$('#js-myinventory').submit('.editform', e => {
-	e.preventDefault();
-
-	const shoeBrand = $(e.currentTarget).closest('.editform').find('.editShoeBrand-query').val();
-	const shoeModel = $(e.currentTarget).closest('.editform').find('.editShoeModel-query').val();
-	const shoeColor = $(e.currentTarget).closest('.editform').find('.editShoeColor-query').val();
-	const shoeSize = $(e.currentTarget).closest('.editform').find('.editShoeSize-query').val();
+	
+	const shoeBrand = $('#'+e.target.id).closest('.editform').find('.editShoeBrand-query').val()
+	const shoeModel = $('#'+e.target.id).closest('.editform').find('.editShoeModel-query').val()
+	const shoeColor = $('#'+e.target.id).closest('.editform').find('.editShoeColor-query').val()
+	const shoeSize = $('#'+e.target.id).closest('.editform').find('.editShoeSize-query').val()
 
 	const editShoeObj = {
 		shoeBrand: shoeBrand,
@@ -265,16 +299,15 @@ $('#js-myinventory').submit('.editform', e => {
 		shoeSize: shoeSize
 	}
 
-	$(editItem(editShoeObj));
+	console.log(editShoeObj);
+
+	$(editItem(editShoeObj, itemId));
 
 });
 
-
-function editItem(item) {
-
-	const itemId = localStorage.getItem('itemId');
+// EDIT ITEM AJAX CALL
+function editItem(item, itemId) {
 	const token = localStorage.getItem('authToken');
-	console.log(localStorage.getItem('itemId'));
 	
 	$.ajax({
 		type: 'PUT',
@@ -289,6 +322,7 @@ function editItem(item) {
 	.done(result => {
 		console.log(result);
 		localStorage.removeItem('itemId');
+		window.location.reload(true);
 	})
 };
 
@@ -308,6 +342,7 @@ $('#js-myinventory').on('click', '#delete-shoe-btn', (e) => {
 
 });
 
+// DELETE ITEM AJAX CALL
 function deleteItem(itemId) {
 const token = localStorage.getItem('authToken');
 console.log(token);
@@ -327,6 +362,8 @@ console.log(token);
 	})
 };
 
+
+// START FUNCTIONS ON LOAD
 function handleOnLoad() {
 	$(loadOwnerInventory);
 	$(loadUserDashBoard);

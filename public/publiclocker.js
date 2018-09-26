@@ -6,8 +6,8 @@ $('#logout-btn').on('click', (e) => {
 	window.location = '/index.html';
 });
 
-function loadPublicInventory(username) {
-	
+function loadPublicInventory() {
+	const username = localStorage.getItem('username');
 		$.ajax({
 			type: 'GET',
 			url: `/${username}/inventory`,
@@ -26,27 +26,29 @@ function loadPublicInventory(username) {
 					<p>Size: ${result[i].shoeSize}</p>
 				</div>
 				`
-			).on('click', (e) => {
-				e.preventDefault();
-				const item = e.target;
-				const attr = $(item).attr('stockNumber');
-				console.log(attr);
-				
-			});
-			}
-		}
-	);
+			)};
+		});
 	};
-
-function loadUserDashBoard() {
+	function loadUserDashBoard() {
 		console.log('getting user info')
-		const username = localStorage.getItem('username');
-		$('#js-username').prepend(`
-		<p>Logged in As:</p>
-		<a href="myaccount.html">${username}</a>`);
-	}
-
-
+	
+		let username = localStorage.getItem('username');
+		let shoeCount = localStorage.getItem('shoeCount');
+	
+		console.log(username,shoeCount);
+	
+		// hide dashboard if not logged in , else show dashboard
+		if(username === null){
+			$('#dashboard').addClass('hidden');
+		} 
+		else {
+			$('#js-userinfo').append(`
+			<p id="username">Username <a href="myaccount.html">${username}</a></p>
+			<p id="shoeCount">Shoe Count ${shoeCount}</p>`
+			);
+		};
+	};
+	
 function handleOnLoad(){
 	$(loadPublicInventory);
 	$(loadUserDashBoard);

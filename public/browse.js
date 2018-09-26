@@ -30,6 +30,7 @@ $('#js-owner-browse').on('click', 'a', (e) => {
 	const username = $(owner).attr('username');
 	localStorage.setItem('otherUser', username);
 	console.log(username);
+
 	
 })
 
@@ -37,23 +38,23 @@ $('#js-owner-browse').on('click', 'a', (e) => {
 
 // USER DASHBOARD
 function loadUserDashBoard() {
-	console.log('getting user info');
+	console.log('getting user info')
 
-	const username = localStorage.getItem('username');
-	const shoeCount = localStorage.getItem('shoeCount');
+	let username = localStorage.getItem('username');
+	let shoeCount = localStorage.getItem('shoeCount');
 
-	if( username === null ){
+	console.log(username,shoeCount);
+
+	// hide dashboard if not logged in , else show dashboard
+	if(username === null){
 		$('#dashboard').addClass('hidden');
 	} 
 	else {
-		$('#js-username').append(`
-		<p>Logged in As: <a href="myaccount.html">${username}</a></p>`
+		$('#js-userinfo').append(`
+		<p id="username">Username <a href="myaccount.html">${username}</a></p>
+		<p id="shoeCount">Shoe Count ${shoeCount}</p>`
 		);
-		$('#js-shoeCount').append(`
-			<p>Shoe Count: ${shoeCount}</p>
-		`);
 	};
-	
 };
 
 // LOGOUT 
