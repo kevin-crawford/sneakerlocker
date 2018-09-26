@@ -1,6 +1,6 @@
 body {
 	margin: 0;
-	background-color: #d1d1d1;
+	background-color: #ffffff;
 }
 
 /* SHOWCASE BANNER */
@@ -16,6 +16,7 @@ body {
 #showcase span {
 	color: white;
 	text-shadow: 0 1px black;
+	background: #333; /* For browsers that don't support RGBA */
 	background: rgba(0,0,0,0.5);
 	padding: 4px 8px;
 	font-size: 26px;
@@ -25,7 +26,7 @@ body {
 /* FORM STYLING */
 
 form {
-	background-color: #919191;
+	background-color: dimgray;
 	padding-bottom: .5em;
 }
 
@@ -43,7 +44,7 @@ form button {
 }
 
 
-#login-form legend {
+legend {
 	text-align: center;
 	color: rgb(243, 237, 237);
 	padding: 3px 6px;
@@ -72,11 +73,6 @@ input #login-form {
 header img {
 	display: block;
 	margin: 10px auto;
-}
-
-header {
-	background-color: white;
-	margin: 0;
 }
 
 nav ul {
@@ -118,36 +114,23 @@ nav li.current a {
 
 /* DASHBOARD */
 .dashboard {
-	background: rgba(237, 236, 234, 0.83);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background: rgba(212, 212, 212, 0.83);
 	margin-bottom: 1em;
 	padding: .5em;
-	text-align: center;
 }
 
 h3 {
 	text-align: center;
 }
 
-/* #shoeCount {
-	background-color: #919191;  
+.dashboard a {
+	background-color: #53363b;  
   border-radius: 5px;
   color: white;
 	padding: .5em;
 	margin: .5em auto;
 	text-decoration: none;
 	display: block;
-	width: 300px;
-} */
-.dashboard a, #shoeCount {
-	background-color: #919191;  
-  border-radius: 5px;
-  color: white;
-	padding: .5em;
-	margin: .5em auto;
-	text-decoration: none;
-	display: block;
-	width: 300px;
 }
 
 #js-userinfo {
@@ -156,8 +139,8 @@ h3 {
 
 /* BUTTONS*/
 #add-shoe-btn img {
-	width: 3%;
-	height: 3%;
+	width: 8%;
+	height: 8%;
 }
 
 #new-account {

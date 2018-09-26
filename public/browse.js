@@ -13,7 +13,7 @@ function loadOwners() {
 					<div id="owner-browse">
 						<a href="#" class="go-to-ownerInv" username="${result[i].username}">
 							Owner: ${result[i].username}
-							Amount of Shoes: ${result[i].shoeCount}
+							Shoes: ${result[i].shoeCount}
 							Shoe Size: ${result[i].shoeSize}
 						</a>
 					</div>
@@ -27,12 +27,12 @@ $('#js-owner-browse').on('click', 'a', (e) => {
 	e.preventDefault();
 	console.log('Owner Clicked');
 	const owner = e.target;
-	const username = $(owner).attr('username');
-	localStorage.setItem('otherUser', username);
+	const browseOwnerInv = $(owner).attr('username');
+	localStorage.setItem('ownerInv', browseOwnerInv);
 	console.log(username);
-
+	window.location = '/browseinventory.html';
 	
-})
+});
 
 
 
