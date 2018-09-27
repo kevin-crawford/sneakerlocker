@@ -5,7 +5,7 @@ $('#logout-btn').on('click', (e) => {
 	window.location = '/index.html';
 });
 
-function loadPublicInventory() {
+function loadPublnoicInventory() {
 	const username = localStorage.getItem('ownerInv');
 		$.ajax({
 			type: 'GET',
