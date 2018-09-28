@@ -1,32 +1,34 @@
 body {
 	margin: 0;
-	background-color: #ffffff;
+	background-color: #d1d1d1;
 }
 
 /* SHOWCASE BANNER */
 #showcase {
-  background-image: url("http://toledocitypaper.com/sneaker-collection-boxes.jpg");
-  background-color: #cccccc;
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+	text-align: center;
+	margin-bottom: 10px;
+	background-image: url('http://toledocitypaper.com/sneaker-collection-boxes.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 150px;
 }
 
 #showcase span {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
+	color: white;
+	text-shadow: 0 1px black;
+	text-align: center;
+	position: absolute;
+	top: 18%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 26px;
+	margin-top: 50px;
 }
 
 /* FORM STYLING */
 
-form {
-	background-color: dimgray;
+#login-form {
+	background-color: #919191;
 	padding-bottom: .5em;
 }
 
@@ -38,21 +40,28 @@ form {
 	width: 300px;
 }
 
-form button {
+/* form button {
 	width: 200px;
 	height: 30px;
-}
+} */
 
 
-legend {
+#login-form legend {
 	text-align: center;
 	color: rgb(243, 237, 237);
-	padding: 3px 6px;
+	padding: 5px 0px;
+	font-size: 25px;
+}
+
+#login-form input {
+	text-align: center;
+	padding: 3px 0px;
 }
 
 #login-form label {
 	font-size: .9rem;
 	display: block;
+	padding: 10px 0px;
 }
 
 input #login-form {
@@ -73,6 +82,11 @@ input #login-form {
 header img {
 	display: block;
 	margin: 10px auto;
+}
+
+header {
+	background-color: white;
+	margin: 0;
 }
 
 nav ul {
@@ -114,23 +128,26 @@ nav li.current a {
 
 /* DASHBOARD */
 .dashboard {
-	background: rgba(212, 212, 212, 0.83);
+	background: rgba(237, 236, 234, 0.83);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	margin-bottom: 1em;
 	padding: .5em;
+	text-align: center;
 }
 
 h3 {
 	text-align: center;
 }
 
-.dashboard a {
-	background-color: #53363b;  
+.dashboard a, #shoeCount {
+	background-color: #919191;  
   border-radius: 5px;
   color: white;
 	padding: .5em;
 	margin: .5em auto;
 	text-decoration: none;
 	display: block;
+	width: 300px;
 }
 
 #js-userinfo {
@@ -138,16 +155,13 @@ h3 {
 }
 
 /* BUTTONS*/
-#add-shoe-btn img {
-	width: 8%;
-	height: 8%;
-}
+
 
 #new-account {
 	display: block;
 	text-align: center;
 	margin: 10px auto;
-	width: 90%;
+	width: 200px;
 }
 
 .login {
@@ -163,7 +177,8 @@ h3 {
   border-radius: 5px;
   color: white;
   padding: .5em;
-  text-decoration: none;
+	text-decoration: none;
+	width: 200px;
 }
 
 .button:focus,
@@ -182,8 +197,4 @@ footer {
 	width: 100%;
  	position: fixed;
 	bottom: 0;
-};
-
-@media(max-width: 768px){
-
-};
+}

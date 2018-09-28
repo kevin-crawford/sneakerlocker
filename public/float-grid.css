@@ -31,7 +31,7 @@
   width: 100%;
 }
 
-@media only screen and (min-width: 640px) {
+@media (min-width: 640px) {
   /* 3 columns, 3/12 in % */
   .col-3 {
     width: 25%;
@@ -51,4 +51,37 @@
   .col-12 {
     width: 100%
   }
+
+section#showcase-section {
+  float: left;
+  width: 35%
+}
+
+section#login-section {
+  float: right;
+  width: 65%
+}
+
+#login-form {
+  background-color: #919191;
+    padding-bottom: .5em;
+    height: 300px;
+}
+
+#login-form legend {
+  text-align: center;
+  color: rgb(243, 237, 237);
+  padding: 12px 0px;
+  font-size: 40px;
+}
+
+#showcase {
+  background-image: url('http://toledocitypaper.com/sneaker-collection-boxes.jpg');
+  background-color: #cccccc;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 }

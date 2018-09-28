@@ -215,8 +215,12 @@ app.put('/owner', jwtAuth, (req, res) => {
               return res.status(400).send(message);
             }
           })
+        
         Owner
         .findByIdAndUpdate(req.user.ownerId, { $set: updated }, { new: true   })
+        .then( () => {
+          return Owner.hashPassword(password);
+        })
         .then( updatedOwner => {
           res.status(200).json({
             ownerId: updatedOwner.id,
