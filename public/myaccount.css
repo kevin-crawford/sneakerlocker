@@ -39,7 +39,8 @@
 	margin-bottom: 10px;
 }
 
-#js-myinventory legend {
+#js-myinventory legend,
+#addShoe-form legend {
 	text-align: center;
 	color: rgb(73, 73, 73);
 	padding: 3px 6px;
@@ -50,21 +51,24 @@
 }
 
 #js-myinventory fieldset, 
-#edit-account-form fieldset {
+#edit-account-form fieldset,
+#addShoe-form fieldset {
 	border: none;
 	margin: 0 auto;
 	width: 300px
 }
 
 #js-myinventory label, 
-#edit-account-form label {
+#edit-account-form label,
+#addShoe-form label {
 	display: inline-block;
 	margin-right: 20px;
 	width: 50px;
 }
 
 #js-myinventory input, 
-#edit-account-form input, 
+#edit-account-form input,
+#addShoe-form input,
 #js-myinventory select {
 	max-width: 150px;
 	text-align: center;

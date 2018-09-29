@@ -197,6 +197,8 @@ app.put('/owner', jwtAuth, (req, res) => {
     } 
   });
 
+  console.log(updated);
+
   Owner
     .findOne({ username: updated.userName || '', _id: { $ne: req.user.ownerId }})
     .then(username => {
@@ -216,20 +218,26 @@ app.put('/owner', jwtAuth, (req, res) => {
             }
           })
         
-        Owner
-        .findByIdAndUpdate(req.user.ownerId, { $set: updated }, { new: true   })
-        .then( () => {
-          return Owner.hashPassword(password);
-        })
-        .then( updatedOwner => {
-          res.status(200).json({
-            ownerId: updatedOwner.id,
-            firstName: `${updatedOwner.firstName}`,
-            lastName: `${updatedOwner.lastName}`,
-            username: updatedOwner.username,
-            email: updatedOwner.email
-          });
-        })
+        
+       var updatedPassword = 
+       Owner
+        .hashPassword(updated.password)
+        .then(updatedPassword  => {
+          console.log(updatedPassword);
+            return updated.password = updatedPassword
+          })
+          .then(
+          Owner
+          .findByIdAndUpdate(req.user.ownerId, { $set: updated }, { new: true   })
+          .then( updatedOwner => {
+            res.status(200).json({
+              ownerId: updatedOwner.id,
+              firstName: `${updatedOwner.firstName}`,
+              lastName: `${updatedOwner.lastName}`,
+              username: updatedOwner.username,
+              email: updatedOwner.email
+            });
+          }))
         .catch(err => res.status(500).json({ message: err }));
       }
     });
