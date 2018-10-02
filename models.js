@@ -64,7 +64,7 @@ ownerSchema.methods.validatePassword = function(password) {
 };
 
 ownerSchema.statics.hashPassword = function(password) {
-	return bcrypt.hashSync(password, 10);
+	return bcrypt.hash(password, 10);
 }
 
 ownerSchema.virtual('ownerName').get(function() {

@@ -19,16 +19,25 @@ function loadPublicInventory() {
 			for(let i = 0; i < result.length; i++){
 			$('#public-inventory').append(
 				`
-				<div>
-					<p>Brand: ${result[i].shoeBrand}</p>
-					<p>Model: ${result[i].shoeModel}</p>
-					<p>Color: ${result[i].primaryColor}</p>
-					<p>Size: ${result[i].shoeSize}</p>
-				</div>
+			<section role="region" class="shoeinfo-region">
+				<ul class="shoe-info">
+					<li>Brand</li>
+					<li>Model</li>
+					<li>Color</li>
+					<li>Size</li>
+				</ul>
+				<ul class="shoe-info-data">
+					<li>${result[i].shoeBrand}</li>
+					<li>${result[i].shoeModel}</li>
+					<li>${result[i].primaryColor}</li>
+					<li>${result[i].shoeSize}</li>
+				</ul>
+			</section>
 				`
 			)};
 		});
 	};
+
 	function loadUserDashBoard() {
 		console.log('getting user info')
 	
@@ -47,6 +56,8 @@ function loadPublicInventory() {
 			<p id="shoeCount">Shoe Count ${shoeCount}</p>`
 			);
 		};
+
+		$('#js-username').prepend(`${username}'s Inventory`)
 	};
 	
 function handleOnLoad(){

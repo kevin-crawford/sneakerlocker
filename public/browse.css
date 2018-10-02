@@ -2,6 +2,12 @@ h2 {
 	text-align: center;
 }
 
+#js-owner-browse {
+	background-color: rgba(237, 236, 234, 0.83);
+	padding-bottom: 20px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+}
 
 #owner-browse {
 	background-color: rgb(210, 210, 210);

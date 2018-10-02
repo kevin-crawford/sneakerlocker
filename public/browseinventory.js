@@ -5,7 +5,7 @@ $('#logout-btn').on('click', (e) => {
 	window.location = '/index.html';
 });
 
-function loadPublnoicInventory() {
+function loadPublicInventory() {
 	const username = localStorage.getItem('ownerInv');
 		$.ajax({
 			type: 'GET',
@@ -18,12 +18,20 @@ function loadPublnoicInventory() {
 			for(let i = 0; i < result.length; i++){
 			$('#public-inventory').append(
 				`
-				<div>
-					<p>Brand: ${result[i].shoeBrand}</p>
-					<p>Model: ${result[i].shoeModel}</p>
-					<p>Color: ${result[i].primaryColor}</p>
-					<p>Size: ${result[i].shoeSize}</p>
-				</div>
+				<section role="region" class="shoeinfo-region">
+				<ul class="shoe-info">
+					<li>Brand</li>
+					<li>Model</li>
+					<li>Color</li>
+					<li>Size</li>
+				</ul>
+				<ul class="shoe-info-data">
+					<li>${result[i].shoeBrand}</li>
+					<li>${result[i].shoeModel}</li>
+					<li>${result[i].primaryColor}</li>
+					<li>${result[i].shoeSize}</li>
+				</ul>
+			</section>
 				`
 			)};
 		});

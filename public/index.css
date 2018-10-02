@@ -1,6 +1,8 @@
 body {
 	margin: 0;
-	background-color: #d1d1d1;
+	background: url('https://images.unsplash.com/photo-1518366352543-6609db5ccdef?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d2052077841a4424653901b8a8368d39&auto=format&fit=crop&w=2775&q=80');
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 /* SHOWCASE BANNER */
@@ -27,12 +29,14 @@ body {
 
 /* FORM STYLING */
 
-#login-form {
-	background-color: #919191;
+#login-form,
+#signup-form {
+	background-color: rgba(8, 0, 0, 0.5);
 	padding-bottom: .5em;
 }
 
-#login-form fieldset {
+#login-form fieldset,
+#signup-form fieldset {
 	border: none;
 	margin: auto;
 	text-align: center;
@@ -46,7 +50,8 @@ body {
 } */
 
 
-#login-form legend {
+#login-form legend,
+#signup-form legend {
 	text-align: center;
 	color: rgb(243, 237, 237);
 	padding: 5px 0px;
@@ -56,19 +61,35 @@ body {
 #login-form input {
 	text-align: center;
 	padding: 3px 0px;
-}
-
-#login-form label {
-	font-size: .9rem;
-	display: block;
-	padding: 10px 0px;
-}
-
-input #login-form {
+	font-size: 20px;
 	margin: 10px auto;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	display: block;
+}
+
+#signup-form input {
+	text-align: center;
+	padding: 3px 0px;
+	font-size: 12px;
+	margin: 10px auto;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+}
+
+#login-form label {
+	font-size: 22px;
+	display: block;
+	padding: 10px 0px;
+	color: white;
+}
+
+#signup-form label {
+	font-size: 16px;
+	display: block;
+	padding: 0px 0px;
+	color: white;
 }
 
 .hidden {
@@ -85,8 +106,11 @@ header img {
 }
 
 header {
-	background-color: white;
-	margin: 0;
+	margin-top: 25px;
+}
+
+nav {
+	margin-bottom: 35px;
 }
 
 nav ul {
@@ -108,7 +132,7 @@ nav li:last-child {
 nav li a {
   text-decoration: none;
   color: rgb(182, 182, 182); 
-  font: 15px/1 Helvetica, Verdana, sans-serif;
+  font: 18px/1 Helvetica, Verdana, sans-serif;
   text-transform: uppercase;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -156,6 +180,11 @@ h3 {
 
 /* BUTTONS*/
 
+button#signup-button,
+button#back-btn {
+	display: block;
+	margin: 0 auto;
+}
 
 #new-account {
 	display: block;
@@ -187,14 +216,64 @@ h3 {
   color: White;
 }
 
-/* FOOTER */
-footer {
-	font-size: 11px;
-	color: #ffffff;
-	text-align: center;
-	font-family: 'Karla', sans-serif;
-	background-color: #000000;
-	width: 100%;
- 	position: fixed;
-	bottom: 0;
+
+@media (min-width: 640px) {
+  /* 3 columns, 3/12 in % */
+  .col-3 {
+    width: 25%;
+  }
+
+  /* 4 columns */
+  .col-4 {
+    width: 33.33%
+  }
+
+  /* 6 columns */
+  .col-6 {
+    width: 50%
+  }
+
+  /* 12 columns */
+  .col-12 {
+    width: 100%
+  }
+
+section#showcase-section {
+  float: left;
+  width: 35%
+}
+
+section#login-section,
+section#signup-section {
+  float: right;
+  width: 65%
+}
+
+#login-form {
+    padding-bottom: .5em;
+    height: 375px;
+}
+
+#signup-form {
+	padding-bottom: .5em;
+	height: 455px;
+}
+
+#login-form legend,
+#signup-form legend {
+  text-align: center;
+  color: rgb(243, 237, 237);
+  padding: 5px 0px;
+  font-size: 40px;
+}
+
+#showcase {
+  background-image: url('http://toledocitypaper.com/sneaker-collection-boxes.jpg');
+  background-color: #cccccc;
+  height: 375px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
 }

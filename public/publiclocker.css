@@ -1,0 +1,43 @@
+/* SHOE INVENTORY */
+.shoeinfo-region {
+	background-color: rgb(255, 183, 183);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	font-size: 14px;
+	margin-bottom: 1em;
+	margin: 0 auto;
+	width: 85%;
+	text-align: center;
+}
+
+.shoeinfo-region a {
+	/* display: block; */
+	text-decoration: none;
+}
+
+.shoe-info > li {
+	float: left;
+	list-style: none;
+	padding-left: 20px;
+	font-size: 20px;
+}
+
+.shoe-info {
+	overflow: hidden;
+}
+
+.shoe-info-data > li {
+	float: left;
+	list-style: none;
+	padding-left: 36px;
+}
+
+.shoe-info-data {
+	overflow: hidden;
+}
+
+#public-inventory {
+	background-color: rgba(237, 236, 234, 0.83);
+	padding-bottom: 20px;
+	padding-top: 10px;
+	margin-bottom: 20px;
+}

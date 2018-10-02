@@ -15,6 +15,13 @@ let username = localStorage.getItem('username');
 		const shoeCount = result.length;
 		localStorage.setItem('shoeCount', shoeCount);
 
+		if(shoeCount == 0){
+			$('#js-myinventory').append(`
+			<section role="region" class="shoeinfo-region">
+				<h4> No Shoes Found! Please add a shoe.<h4>
+			</section>
+			`)
+		} else {
 		for(let i = 0; i < result.length; i++){
 		$('#js-myinventory').append(`
 		<section role="region" class="shoeinfo-region">
@@ -102,6 +109,7 @@ let username = localStorage.getItem('username');
 			</section>
 			`
 		)};
+		}
 	});
 };
 
@@ -195,7 +203,7 @@ function loadUserDashBoard() {
 	} 
 	else {
 		$('#js-userinfo').append(`
-		<p id="username">Username <a href="myaccount.html">${username}</a></p>
+		<p id="username"><a href="myaccount.html">${username}</a></p>
 		<p id="shoeCount">Shoe Count ${shoeCount}</p>`
 		);
 	};
