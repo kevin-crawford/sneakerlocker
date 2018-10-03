@@ -99,7 +99,7 @@ app.post('/', jsonParser, (req, res) => {
 
   const sizedFields = {
     username: {
-      min: 1
+      min: 1,
     },
     password: {
       min: 10,

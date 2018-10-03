@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "sneakerlocker",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "start": "node server.js",
     "test": "mocha --exit"
