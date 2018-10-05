@@ -16,6 +16,13 @@ function loadPublicInventory() {
 		})
 		.done(result => {
 			console.log(result);
+		$('#public-inventory').prepend(`<h3>${username}'s Inventory</h3>`)
+			if(result.length == 0) {
+				$('#public-inventory').append(`
+			<section role="region" class="shoeinfo-region">
+				<h4> No Shoes Found! Please add a shoe.<h4>
+			</section>`)
+			} else {
 			for(let i = 0; i < result.length; i++){
 			$('#public-inventory').append(
 				`
@@ -34,7 +41,8 @@ function loadPublicInventory() {
 				</ul>
 			</section>
 				`
-			)};
+			)}
+			};
 		});
 	};
 
@@ -52,12 +60,10 @@ function loadPublicInventory() {
 		} 
 		else {
 			$('#js-userinfo').append(`
-			<p id="username">Username <a href="myaccount.html">${username}</a></p>
+			<p id="username"><a href="myaccount.html">${username}</a></p>
 			<p id="shoeCount">Shoe Count ${shoeCount}</p>`
 			);
 		};
-
-		$('#js-username').prepend(`${username}'s Inventory`)
 	};
 	
 function handleOnLoad(){

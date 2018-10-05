@@ -9,7 +9,7 @@ h2 {
 	margin-bottom: 20px;
 }
 
-#owner-browse {
+.owner-browse {
 	background-color: rgb(210, 210, 210);
 	font-size: 14px;
 	border: 1px solid black;
@@ -20,10 +20,10 @@ h2 {
 	text-align: center;
 }
 
-#owner-browse a:link, 
-#owner-browse a:visited, 
-#owner-browse a:hover, 
-#owner-browse a:active {
+.owner-browse a:link, 
+.owner-browse a:visited, 
+.owner-browse a:hover, 
+.owner-browse a:active {
 	text-decoration: none;
 	color: black;
 }

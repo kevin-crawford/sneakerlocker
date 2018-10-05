@@ -7,14 +7,25 @@ function loadOwners() {
 	})
 	.done(result => {
 		console.log(result);
-			for(let i = 0; i < result.length; i++ ){
+
+
+
+		for(let i = 0; i < result.length; i++ ){
+			
+			let shoeSize;
+
+			if(result[i].shoeSize == undefined){
+				let shoeSize = 'N/A';
+			} else {
+				let shoeSize = result[i].shoeSize;
+			}
 				$('#js-owner-browse').append(
 					`
-					<div id="owner-browse">
+					<div class="owner-browse">
 						<a href="#" class="go-to-ownerInv" username="${result[i].username}">
 							Owner: ${result[i].username}
 							Shoes: ${result[i].shoeCount}
-							Shoe Size: ${result[i].shoeSize}
+							Shoe Size: ${shoeSize}
 						</a>
 					</div>
 					`
@@ -51,7 +62,7 @@ function loadUserDashBoard() {
 	} 
 	else {
 		$('#js-userinfo').append(`
-		<p id="username">Username <a href="myaccount.html">${username}</a></p>
+		<p id="username"><a href="myaccount.html">${username}</a></p>
 		<p id="shoeCount">Shoe Count ${shoeCount}</p>`
 		);
 	};

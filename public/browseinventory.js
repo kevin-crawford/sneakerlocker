@@ -50,7 +50,7 @@ function loadPublicInventory() {
 		} 
 		else {
 			$('#js-userinfo').append(`
-			<p id="username">Username <a href="myaccount.html">${username}</a></p>
+			<p id="username"><a href="myaccount.html">${username}</a></p>
 			<p id="shoeCount">Shoe Count ${shoeCount}</p>`
 			);
 		};
