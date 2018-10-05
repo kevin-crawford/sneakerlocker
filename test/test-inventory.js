@@ -4,6 +4,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
 const mongoose = require('mongoose');
+const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const should = chai.should();
 
