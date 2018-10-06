@@ -8,6 +8,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const should = chai.should();
 
+const jwtAuth = passport.authenticate('jwt', {session: false});
+
 const { Owner, Inventory } = require('../models');
 const { closeServer, runServer, app } = require('../server');
 const { JWT_SECRET, TEST_DATABASE_URL } = require('../config');
@@ -60,6 +62,8 @@ describe('/owners inventory endpoint', function(){
 			expiresIn: '7d'
 		});
 
+	// console.log(token);
+	console.log('Logging User', token);
 
 	before(function () {
     return runServer(TEST_DATABASE_URL);
@@ -71,6 +75,7 @@ describe('/owners inventory endpoint', function(){
 
   beforeEach(function () { 
 		return Owner.hashPassword(password).then(password => {
+			console.log(password);
 			Owner.create({
 				username,
 				password,
@@ -93,6 +98,8 @@ describe('Protected Items in Inventory endpoint', function() {
 			.send(newItem)
 			.set('authorization', `Bearer ${token}`)
 			.then(function(res){
+				console.log('Logging Response',res);
+				
 				res.should.have.status(201);
 				res.body.should.be.a('object');
 				res.body.to.have.keys('_id','shoeBrand','shoeModel','primaryColor','shoeSize');
