@@ -194,15 +194,8 @@ app.put('/owner', jwtAuth, (req, res) => {
   updatableFields.forEach(field => {
     if (field in req.body) {
       updated[field] = req.body[field];
-      if (typeof(updated.password) !== 'undefined'){
-        Owner.hashPassword(updated.password);
-        console.log(updated.password);
-      }
     } 
   });
-
- 
-
   console.log(updated);
 
   Owner
@@ -223,7 +216,6 @@ app.put('/owner', jwtAuth, (req, res) => {
               return res.status(400).send(message);
             }
           })
-          .then(Owner.hashPassword(updated.password))
           .then(
           Owner
           .findByIdAndUpdate(req.user.ownerId, { $set: updated }, { new: true   })

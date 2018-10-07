@@ -23,9 +23,14 @@ let username = localStorage.getItem('username');
 			`)
 		} else {
 		for(let i = 0; i < result.length; i++){
+			let shoeNumber = (i + 1);
 		$('#js-myinventory').append(`
 		<section role="region" class="shoeinfo-region">
-			<ul class="shoe-info">
+		<div class="shoeNumber-inventory">
+			<h4>${shoeNumber}</h4>
+		</div>
+		<div id="shoe-item-wrapper">
+		<ul class="shoe-info">
 				<li>Brand</li>
 				<li>Model</li>
 				<li>Color</li>
@@ -37,8 +42,9 @@ let username = localStorage.getItem('username');
 				<li>${result[i].primaryColor}</li>
 				<li>${result[i].shoeSize}</li>
 			</ul>
-			<a href="#" class="edit-shoe">Edit</a>
-			<a href="#" id="delete-shoe-btn" stockNumber="${result[i].stockNumber}"> DELETE </a>
+			<a href="#" class="edit-shoe button">EDIT / CLOSE</a>
+			<a href="#" class="delete-shoe-btn button" stockNumber="${result[i].stockNumber}"> DELETE </a>
+		</div>	
 		</section>
 		
 		<section role="region" class="editshoe-section">
@@ -139,8 +145,8 @@ $('#close-edit').click( e => {
 $('#edit-account-form').submit( e => { 
 	e.preventDefault();
 
-	const username = $(event.currentTarget).find('#editUsername-query').val();
-	const password = $(event.currentTarget).find('#editPassword-query').val();
+	// const username = $(event.currentTarget).find('#editUsername-query').val();
+	// const password = $(event.currentTarget).find('#editPassword-query').val();
 	const firstName = $(event.currentTarget).find('#fn-query').val();
 	const lastName = $(event.currentTarget).find('#ln-query').val();
 	const email = $(event.currentTarget).find('#email-query').val();
@@ -149,8 +155,8 @@ $('#edit-account-form').submit( e => {
 	const token = localStorage.getItem('authToken');
 
 	const editRawOwnerObj = {
-		username: username,
-		password: password,
+		// username: username,
+		// password: password,
 		firstName: firstName,
 		lastName: lastName,
 		email: email,
@@ -180,7 +186,6 @@ const editOwnerObj = removeEmptyStrings(editRawOwnerObj);
 		}
 	})
 	.done(result => {
-		console.log(result);
 		localStorage.setItem('username', result.username);
 		window.location.reload(true);
 		});
@@ -189,12 +194,9 @@ const editOwnerObj = removeEmptyStrings(editRawOwnerObj);
 
 // USER DASHBOARD
 function loadUserDashBoard() {
-	console.log('getting user info')
 
 	let username = localStorage.getItem('username');
 	let shoeCount = localStorage.getItem('shoeCount');
-
-	console.log(username,shoeCount);
 
 	// hide dashboard if not logged in , else show dashboard
 	if(username === null){
@@ -212,7 +214,7 @@ function loadUserDashBoard() {
 // LOGOUT 
 $('#logout-btn').on('click', (e) => {
 	event.preventDefault();
-	console.log('Logging Out User');
+
 	localStorage.clear();
 	window.location = '/index.html';
 });
@@ -228,7 +230,6 @@ $('#add-shoe-btn').on('click', e => {
 // CANCEL SHOE EDIT -- REVEAL INVENTORY
 $('#cancelShoeEdit').on('click', e => {
 	e.preventDefault();
-	console.log('clicking');
 	$('#addShoe-form').addClass('hidden');
 	$('#myinventory-section').removeClass('hidden');
 	$('#add-shoe-btn').removeClass('hidden');
@@ -256,7 +257,6 @@ $('#addShoe-form').submit( e => {
 function addItem(newShoeObj) {
 
 	const token = localStorage.getItem('authToken');
-	console.log(token);
 
 	$.ajax({
 		type: 'POST',
@@ -266,7 +266,6 @@ function addItem(newShoeObj) {
 		contentType: 'application/json',
 		beforeSend: function(xhr){
 			xhr.setRequestHeader('Authorization', 'Bearer ' + token)
-			console.log(newShoeObj);
 		},
 		error: function(err) {
 			console.log(err);
@@ -282,8 +281,8 @@ function addItem(newShoeObj) {
 // EDIT ITEM LISTENER
 $('#js-myinventory').on('click', '.edit-shoe', (e) => {
 	e.preventDefault();
-	console.log('Revealing');
-	$(e.currentTarget).parent().next().find('.editform').toggleClass('hidden');
+	console.log('clicked');
+	$(e.currentTarget).parent().parent().next().find('.editform').toggleClass('hidden');
 });
 
 // EDIT ITEM SUBMISSION
@@ -292,8 +291,6 @@ $('#js-myinventory').submit('.editform', e => {
 
 	const item = e.target;
 	const itemId = $(item).attr('stockNumber');
-
-	console.log(itemId);
 	
 	const shoeBrand = $('#'+e.target.id).closest('.editform').find('.editShoeBrand-query').val()
 	const shoeModel = $('#'+e.target.id).closest('.editform').find('.editShoeModel-query').val()
@@ -306,9 +303,6 @@ $('#js-myinventory').submit('.editform', e => {
 		shoeColor: shoeColor,
 		shoeSize: shoeSize
 	}
-
-	console.log(editShoeObj);
-
 	$(editItem(editShoeObj, itemId));
 
 });
@@ -328,18 +322,16 @@ function editItem(item, itemId) {
 		}
 	})
 	.done(result => {
-		console.log(result);
 		localStorage.removeItem('itemId');
 		window.location.reload(true);
 	})
 };
 
 // DELETE ITEM LISTENER
-$('#js-myinventory').on('click', '#delete-shoe-btn', (e) => {
+$('#js-myinventory').on('click', '.delete-shoe-btn', (e) => {
 	e.preventDefault();
 		const item = e.target;
 		const itemId = $(item).attr('stockNumber');
-	console.log(itemId);
 	
 	let retVal = confirm("Are You Sure?");
 	if( retVal == true ){
@@ -353,7 +345,6 @@ $('#js-myinventory').on('click', '#delete-shoe-btn', (e) => {
 // DELETE ITEM AJAX CALL
 function deleteItem(itemId) {
 const token = localStorage.getItem('authToken');
-console.log(token);
 
 	$.ajax({
 		type: 'DELETE',

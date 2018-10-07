@@ -2,39 +2,44 @@
 .shoeinfo-region {
 	background-color: rgb(255, 183, 183);
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	font-size: 14px;
+	font-size: 16px;
 	margin-bottom: 1em;
 	margin: 0 auto;
 	width: 85%;
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 5px;
 }
 
 .shoeinfo-region a {
-	/* display: block; */
 	text-decoration: none;
 }
 
-.shoe-info > li {
-	float: left;
-	list-style: none;
-	padding-left: 20px;
-	font-size: 20px;
+#shoe-item-wrapper {
+	text-align: center;
 }
 
-.shoe-info {
-	overflow: hidden;
+.shoe-info,
+.shoe-info-data {
+	padding-inline-start: 0px;
+}
+
+.shoe-info > li {
+	list-style: none;
+	padding-left: 13px;
+	padding-right: 14px;
+	display: inline;
+	font-size: 14px;
 }
 
 .shoe-info-data > li {
-	float: left;
 	list-style: none;
-	padding-left: 36px;
+	padding-left: 13px;
+	padding-right: 14px;
+	display: inline;
+	font-size: 14px;
 }
 
-.shoe-info-data {
-	overflow: hidden;
+h4 {
+	padding-left: 10px;
+	padding-top: 10px;
 }
 
 #public-inventory {
@@ -42,4 +47,32 @@
 	padding-bottom: 20px;
 	padding-top: 10px;
 	margin-bottom: 20px;
+}
+
+@media (min-width: 625px) {
+	.shoe-info > li {
+		font-size: 26px;
+	}
+	
+	.shoe-info-data > li {
+		font-size: 24px;
+	}
+}
+
+@media (min-width: 875px) {
+.shoe-info > li {
+	list-style: none;
+	padding-left: 58px;
+	padding-right: 53px;
+	display: inline;
+	font-size: 25px;
+}
+
+.shoe-info-data > li {
+	list-style: none;
+	padding-left: 60px;
+	padding-right: 56px;
+	display: inline;
+	font-size: 25px;
+}
 }

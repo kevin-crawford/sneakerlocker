@@ -13,23 +13,36 @@ function loadOwners() {
 		for(let i = 0; i < result.length; i++ ){
 			
 			let shoeSize;
-
+			let shoeNumber = (i + 1);
 			if(result[i].shoeSize == undefined){
-				let shoeSize = 'N/A';
-			} else {
-				let shoeSize = result[i].shoeSize;
-			}
 				$('#js-owner-browse').append(
 					`
 					<div class="owner-browse">
-						<a href="#" class="go-to-ownerInv" username="${result[i].username}">
-							Owner: ${result[i].username}
-							Shoes: ${result[i].shoeCount}
-							Shoe Size: ${shoeSize}
-						</a>
+					<div class="shoeNumber-inventory">
+						<h4>${shoeNumber}</h4>
+					</div>
+						<p>OWNER: ${result[i].username}</p>
+						<p>INVENTORY: ${result[i].shoeCount}</p>
+						<p>SHOE SIZE: N/A</p>
+						<a href="#" class="go-to-ownerInv button" username="${result[i].username}">VIEW</a>
+					</div>
+					`)
+			} else {
+				let shoeSize = result[i].shoeSize;
+				$('#js-owner-browse').append(
+					`
+					<div class="owner-browse">
+					<div class="shoeNumber-inventory">
+						<h4>${shoeNumber}</h4>
+					</div>
+							<p>OWNER: ${result[i].username}</p>
+							<p>INVENTORY: ${result[i].shoeCount}</p>
+							<p>SHOE SIZE: ${shoeSize}</p>
+							<a href="#" class="go-to-ownerInv button" username="${result[i].username}">VIEW</a>
 					</div>
 					`
 				);
+			};	
 		};
 	});
 };

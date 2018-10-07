@@ -85,7 +85,7 @@ describe('owners endpoint', function(){
 							email
 						})
 						.then(function(res){
-							res.should.have.status(422);
+							expect(res).to.have.status(422);
 							res.should.be.json;
 							res.body.should.be.a('object');
 							res.body.reason.should.equal('ValidationError');
@@ -105,7 +105,7 @@ describe('owners endpoint', function(){
 							email
 						})
 						.then(function(res){
-							res.should.have.status(422);
+							expect(res).to.have.status(422);
 							res.should.be.json;
 							res.body.should.be.a('object');
 							res.body.reason.should.equal('ValidationError');
@@ -113,7 +113,7 @@ describe('owners endpoint', function(){
 							res.body.location.should.equal('password');
 					});
 				});
-				it('Should rejecet passwords that are greater than 72 characters', function() {
+				it('Should reject passwords that are greater than 72 characters', function() {
 					return chai
 						.request(app)
 						.post('/')
@@ -125,7 +125,7 @@ describe('owners endpoint', function(){
 							email
 						})
 						.then(function(res){
-							res.should.have.status(422);
+							expect(res).to.have.status(422);
 							res.should.be.json;
 							res.body.should.be.a('object');
 							res.body.reason.should.equal('ValidationError');
@@ -151,7 +151,7 @@ describe('owners endpoint', function(){
 						});
 					})
 					.then(function(res){
-						res.should.have.status(422);
+						expect(res).to.have.status(422);
 						res.should.be.json;
 						res.body.should.be.a('object');
 						res.body.reason.should.equal('ValidationError');
@@ -177,7 +177,7 @@ describe('owners endpoint', function(){
 						});
 					})
 					.then(function(res){
-						res.should.have.status(422);
+						expect(res).to.have.status(422);
 						res.should.be.json;
 						res.body.should.be.a('object');
 						res.body.reason.should.equal('ValidationError');

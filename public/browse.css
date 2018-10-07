@@ -10,34 +10,50 @@ h2 {
 }
 
 .owner-browse {
-	background-color: rgb(210, 210, 210);
+	background-color: rgb(168, 159, 159);
 	font-size: 14px;
 	border: 1px solid black;
 	margin-bottom: 20px;
-	padding: 10px;
+	padding: 35px;
 	width: 80%;
 	margin: 40px auto;
-	text-align: center;
 }
 
-.owner-browse a:link, 
-.owner-browse a:visited, 
-.owner-browse a:hover, 
-.owner-browse a:active {
-	text-decoration: none;
-	color: black;
+.owner-browse p {
+	display: block;
+	padding-right: 9px;
+	font-size: 20px;
 }
 
-footer {
-	padding-bottom: 5px;
-	margin-top: 15px;
-	font-size: 11px;
-	color: #ffffff;
-	text-align: center;
-	font-family: 'Karla', sans-serif;
-	background-color: #000000;
-	border-top: #ac0000 3px solid;
-	width: 100%;
- 	position: static;
-	bottom: 0;
+.shoeNumber-inventory,
+h4 {
+	display: inline;
+	padding-right: 10px;
+	font-size: 20px;
+}
+
+@media (min-width: 665px) {
+
+	.shoeNumber-inventory,
+h4 {
+	display: inline;
+	padding-right: 10px;
+	font-size: 20px;
+}
+
+}
+
+@media (min-width: 825px) {
+	.shoeNumber-inventory,
+	h4 {
+		display: inline;
+		padding-right: 10px;
+		font-size: 20px;
+	}
+	.owner-browse p {
+		display: inline;
+		padding-right: 32px;
+		font-size: 20px;
+	}
+	
 }

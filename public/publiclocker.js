@@ -24,9 +24,14 @@ function loadPublicInventory() {
 			</section>`)
 			} else {
 			for(let i = 0; i < result.length; i++){
+				let shoeNumber = (i + 1);
 			$('#public-inventory').append(
 				`
-			<section role="region" class="shoeinfo-region">
+		<section role="region" class="shoeinfo-region">
+			<div id="shoeNumber-inventory">
+			<h4>${shoeNumber}</h4>
+			</div>
+			<div id="shoe-item-wrapper">
 				<ul class="shoe-info">
 					<li>Brand</li>
 					<li>Model</li>
@@ -39,6 +44,7 @@ function loadPublicInventory() {
 					<li>${result[i].primaryColor}</li>
 					<li>${result[i].shoeSize}</li>
 				</ul>
+				</div>
 			</section>
 				`
 			)}
