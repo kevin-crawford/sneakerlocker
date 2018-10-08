@@ -27,9 +27,9 @@ let username = localStorage.getItem('username');
 		$('#js-myinventory').append(`
 		<section role="region" class="shoeinfo-region">
 		<div class="shoeNumber-inventory">
-			<h4>${shoeNumber}</h4>
+			<h3>${shoeNumber}</h3>
 		</div>
-		<div id="shoe-item-wrapper">
+		<div class="shoe-item-wrapper">
 		<ul class="shoe-info">
 				<li>Brand</li>
 				<li>Model</li>

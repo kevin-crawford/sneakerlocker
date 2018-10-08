@@ -17,7 +17,7 @@ body {
 	margin-top: 10px;
 }
 
-#showcase span {
+#showcase h1 {
 	color: white;
 	text-shadow: 0 1px black;
 	text-align: center;
@@ -51,7 +51,7 @@ body {
 #login-form legend,
 #signup-form legend {
 	text-align: center;
-	color: rgb(243, 237, 237);
+	color: rgb(255, 255, 255);
 	padding: 5px 0px;
 	font-size: 25px;
 }
@@ -129,7 +129,7 @@ nav li:last-child {
 
 nav li a {
   text-decoration: none;
-  color: rgb(182, 182, 182); 
+  color: rgb(255, 255, 255); 
   font: 16px/1 Helvetica, Verdana, sans-serif;
   text-transform: uppercase;
   -webkit-transition: all 0.5s ease;
@@ -157,13 +157,13 @@ nav li.current a {
 	text-align: center;
 }
 
-h3 {
+h1 {
 	text-align: center;
 	font-size: 32px;
 }
 
 .dashboard a, #shoeCount {
-	background-color: #919191;  
+	background-color: #353535;  
   border-radius: 5px;
   color: white;
 	padding: .5em;
@@ -238,7 +238,6 @@ button#back-btn {
 	
 	nav li a {
 		text-decoration: none;
-		color: rgb(182, 182, 182); 
 		font: 34px/1 Helvetica, Verdana, sans-serif;
 		text-transform: uppercase;
 		-webkit-transition: all 0.5s ease;
@@ -267,7 +266,6 @@ section#signup-section {
 #login-form legend,
 #signup-form legend {
   text-align: center;
-  color: rgb(243, 237, 237);
   padding: 5px 0px;
   font-size: 40px;
 }

@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="index.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="browse.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="float-grid.css" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Raleway|Roboto" rel="stylesheet">
 </head>
 	<!-- NAVIGATION -->
 
@@ -24,47 +24,48 @@
 			</div>
 			<div id="branding">
 				<img src="https://fontmeme.com/permalink/181006/f2accca469135ad1cbb444d71dda47f7.png" alt="SneakerLocker Branding">
+				</div>
 			</div>
-			<nav role="navigation"> 
+			</div>
+	</header>
+
+	<nav role="navigation">
+			<div class="row">
+				<div class="col-12">
 				<ul>
 					<li><a href="index.html">Home</a></li>
-						<li><a href="myaccount.html">Account</a></li>
-						<li class="current" ><a href="browse.html">Browse</a></li>
+						<li class="current"><a href="myaccount.html">Account</a></li>
+						<li><a href="browse.html">Browse</a></li>
 				</ul>
-			</nav>
-		</div>
-		</div>
-		</header>
+				</div>
+			</div> 
+	</nav>
 
-		
-<section role="section">
+<main role="main">
+<section role="region" for="dashboard">
 		<div class="row">
 			<div class="col-12">	
 			<div class="dashboard">
-			<h3>Dashboard</h3>
+				<h3>Dashboard</h3>
 			<!-- INSERT OWNERS USERNAME NAME-->
 			<div id="js-userinfo"></div>
-			<a class="button" href="#" id="logout-btn">Logout</a>
-			<a class="button" href="publiclocker.html" id="view-public">Public View</a>
-				</div>
+				<a class="button" href="#" id="logout-btn">Logout</a>
+				<a class="button" href="publiclocker.html" id="view-public">Public View</a>
+			</div>
 			</div>
 		</div>
 </section>
 
-<section role="region" id="owner-browse-section">
+<section role="region" aria-labelledby="js-owner-browse" id="owner-browse-section">
 	<div class="row">
 		<div class="col-12">
 				<div id="js-owner-browse">
-						<h2>BROWSE LOCKERS</h2>
+						<h1>BROWSE LOCKERS</h1>
 				</div> 
 		</div>
 	</div>
 </section>
-<!-- 
-		<footer role="contentinfo">
-			<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
-		</footer> -->
-
-		<script src="browse.js"></script>
-	</body>
+</main>
+<script src="browse.js"></script>
+</body>
 </html>

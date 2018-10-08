@@ -27,21 +27,27 @@
 	<div id="branding">
 		<img src="https://fontmeme.com/permalink/181006/f2accca469135ad1cbb444d71dda47f7.png" alt="SneakerLocker Branding">
 	</div>
-	<nav role="navigation"> 
+</div>
+</div>
+</header>
+
+<nav role="navigation">
+	<div class="row">
+		<div class="col-12">
 		<ul>
 			<li><a href="index.html">Home</a></li>
 				<li class="current"><a href="myaccount.html">Account</a></li>
 				<li><a href="browse.html">Browse</a></li>
 		</ul>
-	</nav>
-</div>
-</div>
-</header>
+		</div>
+	</div> 
+</nav>
 
-<section role="section">
+<main role="main">
+<section role="region" aria-labelledby="dashboard">
 	<div class="row">
 		<div class="col-12">	
-		<div class="dashboard">
+		<div class="dashboard" id="dashboard">
 		<h3>Dashboard</h3>
 		<!-- INSERT OWNERS USERNAME NAME-->
 		<div  id="js-userinfo"></div>
@@ -54,7 +60,7 @@
 </section>
 
 <!-- EDIT OWNER ACCOUNT FORM -->
-<section role="section" id="editaccount-section">
+<section role="region"  aria-labelledby="edit-account" id="editaccount-section">
 	<div class="row">
 	<div class="col-12">
 	<div id="edit-account" class="hidden">
@@ -101,20 +107,20 @@
 	</div>
 </section>
 
-<section role="region" id="myinventory-section">
+<section role="region" aria-labelledby="js-myinventory" id="myinventory-section">
 	<div class="row">
 		<div class="col-12">
 				
 	<!-- GENERATE INVENTORY -->
 		<div id="js-myinventory"> 
-			<h3>Sneaker Inventory</h3>
+			<h1>Sneaker Inventory</h3>
 			<a href="#" id="add-shoe-btn" class="blue-button"><img src="https://cdn3.iconfinder.com/data/icons/musthave/256/Add.png" alt="add shoe">Add A New Shoe to Inventory</a>
 		</div>
 		</div>
 	</div>
 </section>
 
-<section role="region" id="addinventory-section">
+<section role="region" aria-labelledby="add-shoe" id="addinventory-section">
 	<div class="row">
 		<div class="col-12">
 		<!-- ADD SHOE FORM-->
@@ -178,12 +184,7 @@
 		</div>
 	</div>
 </section>
-
-<!-- <footer role="contentinfo">
-	<div class="row">
-		<p>SneakerLocker: Sneaker Inventory &copy; 2018</p>
-	</div>
-</footer> -->
+</main>
 <script src="myaccount.js"></script>
 </body>
 </html>

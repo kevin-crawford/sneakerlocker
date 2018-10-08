@@ -17,7 +17,6 @@
 </head>
 
 <body>
-	<main>
 	<!-- NAVIGATION -->
 	<header role="banner">
 		<div class="row">
@@ -25,30 +24,36 @@
 				<div id="branding">
 					<img src="https://fontmeme.com/permalink/181006/f2accca469135ad1cbb444d71dda47f7.png" alt="SneakerLocker Branding">
 				</div>
-					<nav role="navigation"> 
-						<ul>
-							<li class="current"><a href="index.html">Home</a></li>
-							<li><a href="myaccount.html">Account</a></li>
-							<li><a href="browse.html">Browse</a></li>
-						</ul>
-					</nav>
-				</div>
 			</div>
-		</header>
+		</div>
+	</header>
+
+	<nav role="navigation">
+		<div class="row">
+			<div class="col-12">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li class="current"><a href="myaccount.html">Account</a></li>
+					<li><a href="browse.html">Browse</a></li>
+				</ul>
+			</div>
+		</div> 
+	</nav>
 
 <!-- LANDING PAGE -->
-	<section role="region" id="showcase-section">
+<main role="main">
+	<section role="region" aria-labelledby="showcase" id="showcase-section">
 		<div class="row">
 			<div class="col-12">
 				<div id="showcase">
-					<span>Catalogue, Itemize, Prioritize </span>
+					<h1>Catalogue, Itemize, Prioritize </h1>
 				</div>
 			</div>
 		</div>
 	</section>
 
 <!-- LOGIN FORM-->
-	<section role="region" id="login-section">
+	<section role="region" aria-labelledby="region1" id="login-section">
 		<div class="row">
 			<div class="col-12">
 				<div class="login-form container">
@@ -69,7 +74,7 @@
 	</section>
 
 	<!-- SIGN UP FORM -->
-	<section role="region" id="signup-section" class="hidden">
+	<section role="region" aria-labelledby="region2" id="signup-section" class="hidden">
 		<div class="row">
 			<div class="col-12">
 					<form name="signup-form" id="signup-form" role="form">

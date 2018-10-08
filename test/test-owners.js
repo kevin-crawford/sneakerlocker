@@ -151,7 +151,7 @@ describe('owners endpoint', function(){
 						});
 					})
 					.then(function(res){
-						expect(res).to.have.status(422);
+						res.to.have.status(422);
 						res.should.be.json;
 						res.body.should.be.a('object');
 						res.body.reason.should.equal('ValidationError');

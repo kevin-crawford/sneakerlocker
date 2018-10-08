@@ -1,6 +1,3 @@
-h2 {
-	text-align: center;
-}
 
 #js-owner-browse {
 	background-color: rgba(237, 236, 234, 0.83);
@@ -17,6 +14,12 @@ h2 {
 	padding: 35px;
 	width: 80%;
 	margin: 40px auto;
+}
+
+h2 {
+	padding-top: 10px;
+	padding-left: 10px;
+	display: inline;
 }
 
 .owner-browse p {

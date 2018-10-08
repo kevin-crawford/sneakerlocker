@@ -13,7 +13,7 @@
 	text-decoration: none;
 }
 
-#shoe-item-wrapper {
+.shoe-item-wrapper {
 	text-align: center;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .blue-button {
-	background-color: #71b6ff;
+	background-color: #353535;
 	border-radius: 5px;
 	color: white;
 	padding: .5em;
@@ -105,7 +105,7 @@
 	max-width: 110px;
 }
 
-h4 {
+h3 {
 	padding-top: 10px;
 	padding-left: 10px;
 }
@@ -113,7 +113,7 @@ input[type="submit"],
 button#submit-ownerInfo {
 	display: block;
 	margin: 10px auto;
-	background-color: #71b6ff;
+	background-color: #353535;
 	border-radius: 5px;
 	color: white;
 	padding: .5em;
