@@ -25,19 +25,26 @@
 				<div id="branding">
 					<img src="https://fontmeme.com/permalink/181006/f2accca469135ad1cbb444d71dda47f7.png" alt="SneakerLocker Branding">
 				</div>
-				<nav role="navigation"> 
-					<ul>
-						<li><a href="index.html">Home</a></li>
-							<li class="current"><a href="myaccount.html">Account</a></li>
-							<li><a href="browse.html">Browse</a></li>
-					</ul>
-				</nav>
 			</div>
 		</div>
 	</div>
 </header>
 
-<section role="section">
+
+<nav role="navigation">
+	<div class="row">
+		<div class="col-12">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="current"><a href="myaccount.html">Account</a></li>
+				<li><a href="browse.html">Browse</a></li>
+			</ul>
+		</div>
+	</div> 
+</nav>
+
+<main role="main">
+<section role="region" aria-labelledby="dashboard" for="dashboard">
 		<div class="row">
 			<div class="col-12">	
 			<div class="dashboard">
@@ -50,7 +57,7 @@
 		</div>
 </section>
 
-<section role="region" id="inventory-section">
+<section role="region" aria-labelledby="public-inventory" id="inventory-section">
 	<div class="row">
 		<div class="col-12">
 				<div id="public-inventory"></div>
@@ -58,7 +65,7 @@
 	</div>
 </section>
 
-
+</main>
 <body>
 	<script src="publiclocker.js"></script>
 </body>
