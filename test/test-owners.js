@@ -134,7 +134,7 @@ describe('owners endpoint', function(){
 					});
 				});
 				it('Should reject emails already in use', function() {
-					chai.request(app).post('/').send({
+					return chai.request(app).post('/').send({
 						username,
 						password,
 						firstName,
@@ -142,7 +142,7 @@ describe('owners endpoint', function(){
 						email
 					})
 					.then(() => {
-						chai.request(app).post('/').send({
+						return chai.request(app).post('/').send({
 							username: 'anotheruser',
 							password,
 							firstName,
@@ -151,7 +151,7 @@ describe('owners endpoint', function(){
 						});
 					})
 					.then(function(res){
-						res.to.have.status(422);
+						res.should.have.status(422);
 						res.should.be.json;
 						res.body.should.be.a('object');
 						res.body.reason.should.equal('ValidationError');
@@ -160,7 +160,7 @@ describe('owners endpoint', function(){
 					});
 				});
 				it('Should reject usernames already in use', function() {
-					chai.request(app).post('/').send({
+					return chai.request(app).post('/').send({
 						username,
 						password,
 						firstName,
@@ -168,7 +168,7 @@ describe('owners endpoint', function(){
 						email
 					})
 					.then(() => {
-						chai.request(app).post('/').send({
+						return chai.request(app).post('/').send({
 							username,
 							password,
 							firstName,
