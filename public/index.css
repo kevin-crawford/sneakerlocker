@@ -54,6 +54,7 @@ body {
 	color: rgb(255, 255, 255);
 	padding: 5px 0px;
 	font-size: 25px;
+	font-family: Railway, sans-serif;
 }
 
 #login-form input {
@@ -155,15 +156,23 @@ nav li.current a {
 	margin-bottom: 1em;
 	padding: .5em;
 	text-align: center;
+	font-family: Raleway, sans-serif; 
 }
+
+.dashboard h3 {
+	font-size: 32px;
+}
+
 
 h1 {
 	text-align: center;
 	font-size: 32px;
+	font-family: Roboto, sans-serif;
 }
 
 .dashboard a, #shoeCount {
-	background-color: #353535;  
+	background-color: #353535; 
+	font-family: Raleway, sans-serif; 
   border-radius: 5px;
   color: white;
 	padding: .5em;
@@ -209,6 +218,7 @@ button#back-btn {
   padding: .5em;
 	text-decoration: none;
 	width: 200px;
+	font-family: Railway, sans-serif;
 }
 
 .button:focus,
@@ -217,6 +227,11 @@ button#back-btn {
   color: White;
 }
 
+#mockuser-info {
+	padding-left: 20px;
+	color: white;
+	font-family: Roboto, sans-serif;
+}
 
 @media (min-width: 640px) {
   /* 3 columns, 3/12 in % */

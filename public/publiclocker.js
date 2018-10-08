@@ -16,7 +16,7 @@ function loadPublicInventory() {
 		})
 		.done(result => {
 			console.log(result);
-		$('#public-inventory').prepend(`<h3>${username}'s Inventory</h3>`)
+		$('#public-inventory').prepend(`<h1>${username}'s Inventory</h1>`)
 			if(result.length == 0) {
 				$('#public-inventory').append(`
 			<section role="region" class="shoeinfo-region">

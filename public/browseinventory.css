@@ -19,6 +19,7 @@
 	list-style: none;
 	padding-left: 20px;
 	font-size: 20px;
+	font-family: Railway, sans-serif;
 }
 
 .shoe-info {
@@ -29,6 +30,7 @@
 	float: left;
 	list-style: none;
 	padding-left: 36px;
+	font-family: Railway, sans-serif;
 }
 
 .shoe-info-data {

@@ -16,9 +16,13 @@ function loadPublicInventory() {
 		.done(result => {
 			console.log(result);
 			for(let i = 0; i < result.length; i++){
+				let shoeNumber = (i + 1);
 			$('#public-inventory').append(
 				`
-				<section role="region" class="shoeinfo-region">
+			<section role="region" aria-labeledby="shoe-info" class="shoeinfo-region">
+			<div id="shoeNumber-inventory">
+				<h4>${shoeNumber}</h4>
+			</div>
 				<ul class="shoe-info">
 					<li>Brand</li>
 					<li>Model</li>

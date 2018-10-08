@@ -33,7 +33,7 @@ function loadOwners() {
 					`
 					<div class="owner-browse">
 					<div class="shoeNumber-inventory">
-						<h2>${shoeNumber}</h2>
+						<h4>${shoeNumber}</h2>
 					</div>
 							<p>OWNER: ${result[i].username}</p>
 							<p>INVENTORY: ${result[i].shoeCount}</p>
