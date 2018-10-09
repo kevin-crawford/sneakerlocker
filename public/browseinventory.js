@@ -17,8 +17,15 @@ function loadPublicInventory() {
 			console.log(result);
 			for(let i = 0; i < result.length; i++){
 				let shoeNumber = (i + 1);
+			if(shoeCount == 0){
+					$('#js-myinventory').append(`
+					<section role="region" class="shoeinfo-region">
+						<h4> No Shoes Found! Please add a shoe.<h4>
+					</section>
+					`)
+				} else {
 			$('#public-inventory').append(
-				`
+			`
 			<section role="region" aria-labeledby="shoe-info" class="shoeinfo-region">
 			<div id="shoeNumber-inventory">
 				<h4>${shoeNumber}</h4>
@@ -37,7 +44,8 @@ function loadPublicInventory() {
 				</ul>
 			</section>
 				`
-			)};
+				)};
+			};
 		});
 	};
 	function loadUserDashBoard() {

@@ -1,7 +1,7 @@
 body {
 	margin: 0;
 	background: url('https://i.imgur.com/KlrAjJ7.jpg');
-	background-size: cover cover;
+	background-size: cover cover !important;
 	background-repeat: no-repeat;
 }
 
@@ -12,9 +12,16 @@ body {
 /* SHOWCASE BANNER */
 #showcase {
 	text-align: center;
-	margin-bottom: 10px;
-	height: 75px;
-	margin-top: 10px;
+	width: 600px;
+	margin: 10px auto
+}
+
+#showcase h2 {
+	color: white;
+	text-shadow: 0 1px black;
+	text-align: center;
+	font-size: 18px;
+	font-family: Roboto, sans-serif;
 }
 
 #showcase h1 {
@@ -231,6 +238,12 @@ button#back-btn {
 	padding-left: 20px;
 	color: white;
 	font-family: Roboto, sans-serif;
+}
+
+/* FOOTER */
+footer {
+	bottom: 0;
+	float: left;
 }
 
 @media (min-width: 640px) {
