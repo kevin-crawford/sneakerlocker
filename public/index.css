@@ -1,7 +1,13 @@
+html { 
+  background: url('https://i.imgur.com/KlrAjJ7.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
 	margin: 0;
-	background: url('https://i.imgur.com/KlrAjJ7.jpg');
-	background-size: cover cover !important;
 	background-repeat: no-repeat;
 }
 
@@ -12,7 +18,7 @@ body {
 /* SHOWCASE BANNER */
 #showcase {
 	text-align: center;
-	width: 600px;
+	width: 85%;
 	margin: 10px auto
 }
 
@@ -96,6 +102,19 @@ body {
 	display: block;
 	padding: 0px 0px;
 	color: white;
+}
+
+#error-handling,
+#login-error {
+	text-align: center;
+	color: #0fdef7;
+	font-size: 20px;
+	background-color: rgba(8, 0, 0, 0.5);
+	width: 85%;
+	margin: 0 auto;
+	padding: 1px 0px;
+	border-radius: 5px;
+	font-family: Railway, sans-serif;
 }
 
 .hidden {

@@ -62,12 +62,15 @@
 					<legend>Login</legend>
 						<fieldset>
 								<label for="" id="login-username">Username</label>
-									<input title="Enter Username" type="text" aria-labelledby="" placeholder="sneakerhead" id="username-query" required>
+									<input title="Enter Username" type="text" aria-labelledby="" placeholder="username" id="username-query" required>
 								<label for="" id="login-pw">Password</label>
-									<input title="enter password" type="password" aria-labelledby="" placeholder="iloveshoes" id="password-query" required>
+									<input title="enter password" type="password" aria-labelledby="" placeholder="password" id="password-query" required>
 						</fieldset>
 					<input type="submit" value="submit" for="login-form" title="Submit Login" class="login button">
 					<a href="#" id="new-account" class="button">Dont Have An Account?</a>
+					<div id="login-error">
+						<div class="err-msg"></div>
+					</div>
 				</form>
 				</div>
 			</div>
@@ -96,6 +99,9 @@
 						</fieldset>
 					<button for="signup-form" title="Submit Sign Up" type="submit" id="signup-button" class="button">Submit</button>
 					<button for="back" title="Return to Sign In" type="submit" id="back-btn" class="button">Back</button>
+					<div id="error-handling">
+							<div class="err-msg"></div>
+					</div>
 				</form>
 			</div>
 		</div>

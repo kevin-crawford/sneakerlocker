@@ -182,8 +182,7 @@ app.post('/', jsonParser, (req, res) => {
     });
 });
 
-// --- EDIT OWNER --- ** 
-// NEED TO ENCRYPT PW WHEN EDITED
+// --- EDIT OWNER --- 
 
 app.put('/owner', jwtAuth, (req, res) => {
 
@@ -234,7 +233,7 @@ app.put('/owner', jwtAuth, (req, res) => {
 });
 
 
-//PUBLIC LOCKER VIEW -- WORKING 9-15-18
+//PUBLIC LOCKER VIEW -- 
 app.get('/:username/inventory/', (req, res) => {
   Owner
     .findOne({ username: `${req.params.username}`}).populate('inventory').exec()
@@ -248,7 +247,7 @@ app.get('/:username/inventory/', (req, res) => {
 });
 
 
-//--- ADD SHOE TO OWNER LOCKER --- WORKING 9-15-18
+//--- ADD SHOE TO OWNER LOCKER --
 app.post('/inventory/addShoe', jwtAuth, (req,res) => {
 
   Inventory
@@ -274,7 +273,7 @@ app.post('/inventory/addShoe', jwtAuth, (req,res) => {
   })
 });
 
-// -- EDIT SHOE IN OWNERS LOCKER WORKING 
+// -- EDIT SHOE IN OWNERS LOCKER
 app.put('/inventory/:itemId/editShoe', jwtAuth, (req, res) => {
 const updated = {};
 const updatableFields = ['shoeBrand', 'shoeModel', 'primaryColor', 'shoe', 'email']; updatableFields.forEach(field => {
@@ -296,7 +295,7 @@ Inventory
 })
 
 
-// DELETE SHOE FROM OWNER INVENTORY WORKING
+// DELETE SHOE FROM OWNER INVENTORY
 app.delete('/inventory/:itemId/deleteShoe', jwtAuth, (req, res) => {
   Inventory
     .findByIdAndRemove(req.params.itemId)
@@ -370,7 +369,7 @@ function closeServer() {
 }
 
 // if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+// runs.
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
 }

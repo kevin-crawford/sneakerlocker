@@ -30,7 +30,12 @@ $.ajax({
 	console.log(error);
 	if(error.status === 401) {
 			console.log('Username and/or password is incorrect');
-		}
+			$('#login-error').html(`
+			<div class="err-msg">
+			<p>Username and/or password is incorrect</p>
+			</div>
+			`)
+		};
 	});
 });
 
@@ -60,8 +65,8 @@ $('#logout-btn').on('click', (e) => {
 //SIGN UP EVENT LISTENER
 $('#signup-form').submit( event => {
 	event.preventDefault();
-	$("#login-section").show();
-	$("#signup-section").hide();
+	
+	
 	console.log('Submitting Sign Up Request');
 	const username = $(event.currentTarget).find('#newUsername-query').val();
 	const password = $(event.currentTarget).find('#newPassword-query').val();
@@ -89,13 +94,31 @@ $('#signup-form').submit( event => {
 	})
 	.fail(function (error) {
 		if (password.length < 10){
+			$('#error-handling').html(`
+			<div class="err-msg">
+			<p>Password must be at least 10 characters long</p>
+			</div>
+			`)
 			console.log('password must be at least 10 characters long');
 		}
-		if (error.responseJSON.location === "username"){
+		else if (error.responseJSON.location === "username"){
+			$('#error-handling').html(`
+			<div class="err-msg">
+			<p>Username already taken</p>
+			</div>
+			`)
 			console.log('username already taken');
-		}
-		if ( error.responseJSON.location === "email"){
+		} 
+		else if ( error.responseJSON.location === "email"){
+			$('#error-handling').html(`
+			<div class="err-msg">
+			<p>Email already taken</p>
+			</div>
+			`)
 			console.log('email already taken');
-		}
+		} else {
+			$("#signup-section").hide();
+			$("#login-section").show();
+		};
 	});
 });

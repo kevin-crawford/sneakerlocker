@@ -6,10 +6,6 @@ function loadOwners() {
 		contentType: 'json/application'
 	})
 	.done(result => {
-		console.log(result);
-
-
-
 		for(let i = 0; i < result.length; i++ ){
 			
 			let shoeSize;
@@ -53,7 +49,6 @@ $('#js-owner-browse').on('click', 'a', (e) => {
 	const owner = e.target;
 	const browseOwnerInv = $(owner).attr('username');
 	localStorage.setItem('ownerInv', browseOwnerInv);
-	console.log(username);
 	window.location = '/browseinventory.html';
 	
 });
@@ -66,8 +61,6 @@ function loadUserDashBoard() {
 
 	let username = localStorage.getItem('username');
 	let shoeCount = localStorage.getItem('shoeCount');
-
-	console.log(username,shoeCount);
 
 	// hide dashboard if not logged in , else show dashboard
 	if(username === null){

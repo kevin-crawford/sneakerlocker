@@ -56,11 +56,9 @@ function loadPublicInventory() {
 		console.log('getting user info')
 	
 		let username = localStorage.getItem('username');
-		let shoeCount = localStorage.getItem('shoeCount');
+		let shoeCount = localStorage.getItem('shoeCount');;
 	
-		console.log(username,shoeCount);
-	
-		// hide dashboard if not logged in , else show dashboard
+		// hide dashboard if not logged in, else, show dashboard
 		if(username === null){
 			$('#dashboard').addClass('hidden');
 		} 
