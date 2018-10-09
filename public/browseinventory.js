@@ -14,21 +14,23 @@ function loadPublicInventory() {
 			contentType: 'json/application'
 		})
 		.done(result => {
+			
+			const shoeCount = result.length;
 			console.log(result);
-			for(let i = 0; i < result.length; i++){
-				let shoeNumber = (i + 1);
+			
 			if(shoeCount == 0){
-					$('#js-myinventory').append(`
+				$('#public-inventory').append(`
 					<section role="region" class="shoeinfo-region">
 						<h4> No Shoes Found! Please add a shoe.<h4>
 					</section>
 					`)
 				} else {
-			$('#public-inventory').append(
-			`
+			for(let i = 0; i < result.length; i++){
+						let shoeNumber = (i + 1);
+			$('#public-inventory').append(`
 			<section role="region" aria-labeledby="shoe-info" class="shoeinfo-region">
 			<div id="shoeNumber-inventory">
-				<h4>${shoeNumber}</h4>
+				<h3>${shoeNumber}</h3>
 			</div>
 				<ul class="shoe-info">
 					<li>Brand</li>
