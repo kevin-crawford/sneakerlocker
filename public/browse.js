@@ -65,6 +65,7 @@ function loadUserDashBoard() {
 	// hide dashboard if not logged in , else show dashboard
 	if(username === null){
 		$('.dashboard').addClass('hidden');
+		$('#my-account').addClass('hidden');
 	} 
 	else {
 		$('#js-userinfo').append(`

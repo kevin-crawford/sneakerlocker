@@ -7,6 +7,7 @@ $('#logout-btn').on('click', (e) => {
 
 function loadPublicInventory() {
 	const username = localStorage.getItem('ownerInv');
+
 		$.ajax({
 			type: 'GET',
 			url: `/${username}/inventory`,
@@ -60,7 +61,8 @@ function loadPublicInventory() {
 	
 		// hide dashboard if not logged in , else show dashboard
 		if(username === null){
-			$('#dashboard').addClass('hidden');
+			$('.dashboard').addClass('hidden');
+			$('#my-account').addClass('hidden');
 		} 
 		else {
 			$('#js-userinfo').append(`
