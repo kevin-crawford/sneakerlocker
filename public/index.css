@@ -97,6 +97,12 @@ body {
 	color: white;
 }
 
+label,
+legend,
+a {
+	font-family: Roboto;
+}
+
 #signup-form label {
 	font-size: 16px;
 	display: block;

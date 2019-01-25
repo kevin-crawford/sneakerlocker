@@ -61,10 +61,10 @@ function loadUserDashBoard() {
 
 	let username = localStorage.getItem('username');
 	let shoeCount = localStorage.getItem('shoeCount');
-
+	console.log(username);
 	// hide dashboard if not logged in , else show dashboard
 	if(username === null){
-		$('#dashboard').addClass('hidden');
+		$('.dashboard').addClass('hidden');
 	} 
 	else {
 		$('#js-userinfo').append(`

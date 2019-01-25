@@ -1,6 +1,9 @@
 function loadOwnerInventory() {
 let username = localStorage.getItem('username');
 
+	if (username === null) {
+		window.location = '/index.html'
+	} else {
 	$.ajax({
 		type: 'GET',
 		url: `/${username}/inventory`,
@@ -8,7 +11,10 @@ let username = localStorage.getItem('username');
 		contentType: 'json/application',
 		error: function() {
 			$('#js-myinventory').append(`
-			<a href='/index.html'>Please Log In To View Your Inventory</a>`);
+			<div  id="login-redirect">
+				<a href='/index.html'>Please Log In To View Your Inventory</a>
+			</div>
+			`);
 		}
 	})
 	.done(result => {
@@ -117,6 +123,7 @@ let username = localStorage.getItem('username');
 		)};
 		}
 	});
+	}
 };
 
 // GO TO PUBLIC VIEW LISTENER

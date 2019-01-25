@@ -12,7 +12,6 @@ $('#login-form').submit( event => {
 	};
 
 	console.log(userObject);
-
 $.ajax({
 	type: 'POST',
 	url: '/auth/login',
@@ -122,3 +121,15 @@ $('#signup-form').submit( event => {
 		};
 	});
 });
+
+function checkIfLoggedIn(){
+	let username = localStorage.getItem('username');
+	console.log(username);
+	if(username !== null) {
+		window.location = '/myaccount.html';
+	} else {
+		$('#my-account').addClass('hidden');
+	}
+}
+
+checkIfLoggedIn();
