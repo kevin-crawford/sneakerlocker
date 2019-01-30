@@ -54,6 +54,7 @@ let username = localStorage.getItem('username');
 				<label>Size</label>
 				<p>${result[i].shoeSize}</p>
 			</div>
+
 			<div class="shoe-item-controls">
 				<a href="#" class="edit-shoe button">EDIT / CLOSE</a>
 				<a href="#" class="delete-shoe-btn button" stockNumber="${result[i].stockNumber}"> DELETE </a>
@@ -155,13 +156,10 @@ $('#close-edit').click( e => {
 	$('#myinventory-section').removeClass('hidden');
 	$('#add-shoe-btn').removeClass('hidden');
 })
-// EDIT ACCOUNT AJAX CALLS
 
+// EDIT ACCOUNT AJAX CALLS
 $('#edit-account-form').submit( e => { 
 	e.preventDefault();
-
-	// const username = $(event.currentTarget).find('#editUsername-query').val();
-	// const password = $(event.currentTarget).find('#editPassword-query').val();
 	const firstName = $(event.currentTarget).find('#fn-query').val();
 	const lastName = $(event.currentTarget).find('#ln-query').val();
 	const email = $(event.currentTarget).find('#email-query').val();
@@ -170,8 +168,6 @@ $('#edit-account-form').submit( e => {
 	const token = localStorage.getItem('authToken');
 
 	const editRawOwnerObj = {
-		// username: username,
-		// password: password,
 		firstName: firstName,
 		lastName: lastName,
 		email: email,
@@ -297,7 +293,7 @@ function addItem(newShoeObj) {
 $('#js-myinventory').on('click', '.edit-shoe', (e) => {
 	e.preventDefault();
 	console.log('clicked');
-	$(e.currentTarget).parent().parent().next().find('.editform').toggleClass('hidden');
+	$(e.currentTarget).parent().parent().parent().next().find('.editform').toggleClass('hidden');
 });
 
 // EDIT ITEM SUBMISSION

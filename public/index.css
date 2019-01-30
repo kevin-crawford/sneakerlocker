@@ -204,11 +204,28 @@ h1 {
 }
 
 .dashboard a, #shoeCount {
-	background-color: #353535; 
+
 	font-family: Raleway, sans-serif; 
   border-radius: 5px;
   color: white;
 	padding: .5em;
+	margin: .5em auto;
+	text-decoration: none;
+	display: block;
+	width: 40%;
+}
+
+#shoeCount {
+	color: black;
+	font-weight: bold;
+}
+
+#username {
+	background-color: #353535; 
+	width: 40%;
+	font-family: Raleway, sans-serif; 
+  border-radius: 5px;
+  color: white;
 	margin: .5em auto;
 	text-decoration: none;
 	display: block;
