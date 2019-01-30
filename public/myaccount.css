@@ -1,13 +1,11 @@
 /* SHOE INVENTORY */
 .shoeinfo-region {
-	background-color: rgb(236, 255, 246);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	font-size: 16px;
+	font-size: 13px;
 	margin-bottom: 1em;
-	margin: 0 auto;
-	width: 85%;
-	padding-bottom: 20px;
-	text-align: center;
+	margin: 25px auto;
+	padding: 15px;
+	max-width: 600px;
+	display: flex;
 }
 
 .shoeinfo-region a {
@@ -15,7 +13,15 @@
 }
 
 .shoe-item-wrapper {
-	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-left: 1px solid black;
+	margin: auto;
+}
+
+.shoe-item-wrapper div {
+	margin: 15px;
 }
 
 .shoe-info,
@@ -23,22 +29,20 @@
 	padding-inline-start: 0px;
 }
 
-.shoe-info > li {
+.shoe-item-wrapper p {
 	list-style: none;
-	padding-left: 13px;
-	padding-right: 14px;
 	display: inline;
 	font-size: 14px;
 	font-family: Railway, sans-serif;
 }
 
-.shoe-info-data > li {
-	list-style: none;
-	padding-left: 13px;
-	padding-right: 14px;
-	display: inline;
-	font-size: 14px;
-	font-family: Railway, sans-serif;
+.shoe-item-controls {
+	display: flex;
+	margin: 5px;
+}
+
+.shoe-item-controls a {
+	margin: 5px;
 }
 
 .shoe-info-data {
@@ -58,10 +62,10 @@
 
 #js-myinventory {
 	background-color: rgba(237, 236, 234, 0.83);
-	padding-bottom: 20px;
 	padding-top: 10px;
 	margin-bottom: 20px;
-	text-align: center;
+	max-width: 750px;
+	margin: auto;
 }
 
 #js-myinventory form,
@@ -92,7 +96,12 @@
 	text-align: left;
 }
 
-#js-myinventory label, 
+
+#js-myinventory label {
+	display:block;
+	font-size: 20px;
+}
+
 #edit-account-form label,
 #addShoe-form label {
 	display: inline-block;
@@ -109,10 +118,6 @@
 	max-width: 110px;
 }
 
-h3 {
-	padding-top: 10px;
-	padding-left: 10px;
-}
 input[type="submit"],
 button#submit-ownerInfo {
 	display: block;
@@ -157,9 +162,9 @@ a#close-edit {
 	font-size: 18px;
 }
 
-.edit-shoe {
+/* .edit-shoe {
 	margin-right: 15px;
-}
+} */
 
 /* #add-shoe {
 	text-align: center;

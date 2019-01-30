@@ -36,20 +36,28 @@ let username = localStorage.getItem('username');
 			<h3>${shoeNumber}</h3>
 		</div>
 		<div class="shoe-item-wrapper">
-		<ul class="shoe-info">
-				<li>Brand</li>
-				<li>Model</li>
-				<li>Color</li>
-				<li>Size</li>
-			</ul>
-			<ul class="shoe-info-data">
-				<li>${result[i].shoeBrand}</li>
-				<li>${result[i].shoeModel}</li>
-				<li>${result[i].primaryColor}</li>
-				<li>${result[i].shoeSize}</li>
-			</ul>
-			<a href="#" class="edit-shoe button">EDIT / CLOSE</a>
-			<a href="#" class="delete-shoe-btn button" stockNumber="${result[i].stockNumber}"> DELETE </a>
+	
+
+			<div class="shoe-brand">
+				<label>Brand</label>
+				<p>${result[i].shoeBrand}</p>
+			</div>
+			<div class="shoe-model">
+				<label>Model</label>
+				<p>${result[i].shoeModel}</p>
+			</div>
+			<div class="shoe-color">
+				<label>Color</label>
+				<p>${result[i].primaryColor}</p>
+			</div>
+			<div class="shoe-size">
+				<label>Size</label>
+				<p>${result[i].shoeSize}</p>
+			</div>
+			<div class="shoe-item-controls">
+				<a href="#" class="edit-shoe button">EDIT / CLOSE</a>
+				<a href="#" class="delete-shoe-btn button" stockNumber="${result[i].stockNumber}"> DELETE </a>
+			</div>
 		</div>	
 		</section>
 		

@@ -19,7 +19,7 @@ body {
 #showcase {
 	text-align: center;
 	width: 85%;
-	margin: 10px auto
+	margin: 30px auto
 }
 
 #showcase h2 {
@@ -42,8 +42,14 @@ body {
 
 #login-form,
 #signup-form {
-	background-color: rgba(8, 0, 0, 0.1);
+	background-color: rgba(8, 0, 0, 0.9);
 	padding-bottom: 1em;
+	max-width: 550px;
+	margin: auto;
+}
+
+.container {
+	margin-top: 25px
 }
 
 #login-form fieldset,
@@ -53,13 +59,8 @@ body {
 	text-align: center;
 	display: block;
 	width: 300px;
+	margin: auto;
 }
-
-/* form button {
-	width: 200px;
-	height: 30px;
-} */
-
 
 #login-form legend,
 #signup-form legend {
@@ -183,11 +184,12 @@ nav li.current a {
 /* DASHBOARD */
 .dashboard {
 	background: rgba(237, 236, 234, 0.83);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	margin-bottom: 1em;
 	padding: .5em;
 	text-align: center;
-	font-family: Raleway, sans-serif; 
+	font-family: Raleway, sans-serif;
+	max-width: 750px;
+	margin: auto;
 }
 
 .dashboard h3 {
@@ -248,7 +250,6 @@ button#back-btn {
   color: white;
   padding: .5em;
 	text-decoration: none;
-	width: 200px;
 	font-family: Railway, sans-serif;
 }
 
@@ -307,7 +308,7 @@ section#signup-section {
 
 #login-form {
     padding-bottom: 1em;
-    height: 375px;
+    
 }
 
 #signup-form {
