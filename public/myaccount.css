@@ -19,7 +19,9 @@
 	border-left: 1px solid black;
 	margin: auto;
 }
-
+.shoeNumber-inventory h4 {
+	font-size: 26px;
+}
 .shoe-item-wrapper div {
 	margin: 15px;
 }
@@ -66,6 +68,7 @@
 	margin-bottom: 20px;
 	max-width: 750px;
 	margin: auto;
+	padding: 35px 0px;
 }
 
 #js-myinventory form,
@@ -187,9 +190,6 @@ a#close-edit {
 		font-size: 26px;
 	}
 	
-	.shoe-info-data > li {
-		font-size: 24px;
-	}
 }
 
 @media (min-width: 875px) {
@@ -198,7 +198,6 @@ a#close-edit {
 	padding-left: 58px;
 	padding-right: 53px;
 	display: inline;
-	font-size: 25px;
 }
 
 .shoe-info-data > li {
@@ -206,6 +205,5 @@ a#close-edit {
 	padding-left: 60px;
 	padding-right: 56px;
 	display: inline;
-	font-size: 25px;
 }
 }

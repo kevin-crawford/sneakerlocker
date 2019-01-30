@@ -14,13 +14,22 @@ function loadOwners() {
 				$('#js-owner-browse').append(
 					`
 					<div class="owner-browse">
-					<div class="shoeNumber-inventory">
-						<h4>${shoeNumber}</h4>
-					</div>
-						<p>OWNER: ${result[i].username}</p>
-						<p>INVENTORY: ${result[i].shoeCount}</p>
-						<p>SHOE SIZE: N/A</p>
-						<a href="#" class="go-to-ownerInv button" username="${result[i].username}">VIEW</a>
+						<div class="shoeNumber-inventory">
+							<h4>${shoeNumber}</h4>
+						</div>
+						<div class="shoe-item-owner">
+							<label>OWNER</label>
+							<p>${result[i].username}</p>
+						</div>
+						<div class="shoe-item-count">
+							<label># of Shoes</label>
+							<p>${result[i].shoeCount}</p>
+						</div>
+						<div>
+							<label>Shoe Size</label>
+							<p>N/A</p>
+						</div>	
+							<a href="#" class="go-to-ownerInv button" username="${result[i].username}">VIEW</a>
 					</div>
 					`)
 			} else {
@@ -29,13 +38,22 @@ function loadOwners() {
 					`
 					<div class="owner-browse">
 					<div class="shoeNumber-inventory">
-						<h4>${shoeNumber}</h2>
+						<h4>${shoeNumber}</h4>
 					</div>
-							<p>OWNER: ${result[i].username}</p>
-							<p>INVENTORY: ${result[i].shoeCount}</p>
-							<p>SHOE SIZE: ${shoeSize}</p>
-							<a href="#" class="go-to-ownerInv button" username="${result[i].username}">VIEW</a>
+					<div class="shoe-item-owner">
+						<label>OWNER</label>
+						<p>${result[i].username}</p>
 					</div>
+					<div class="shoe-item-count">
+						<label># of Shoes</label>
+						<p>${result[i].shoeCount}</p>
+					</div>
+					<div>
+						<label>Shoe Size</label>
+						<p>${result[i].shoeSize}</p>
+					</div>	
+						<a href="#" class="go-to-ownerInv button" username="${result[i].username}">VIEW</a>
+				</div>
 					`
 				);
 			};	

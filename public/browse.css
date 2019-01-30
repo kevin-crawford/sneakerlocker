@@ -4,6 +4,9 @@
 	padding-bottom: 20px;
 	padding-top: 10px;
 	margin-bottom: 20px;
+	max-width: 750px;
+	margin: auto;
+
 }
 
 .owner-browse {
@@ -11,9 +14,17 @@
 	font-size: 14px;
 	border: 1px solid black;
 	margin-bottom: 20px;
-	padding: 35px;
+	padding: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 	width: 80%;
 	margin: 40px auto;
+}
+
+.owner-browse label {
+	font-weight: bold;
+	font-size: 16px;
 }
 
 h2 {
@@ -24,25 +35,30 @@ h2 {
 
 .owner-browse p {
 	display: block;
-	padding-right: 9px;
 	font-size: 20px;
 	font-family: Railway, sans-serif;
 }
 
 .shoeNumber-inventory,
 h4 {
-	display: inline;
 	padding-right: 10px;
 	font-size: 20px;
 }
 
+
+@media (max-width: 665px) {
+	.owner-browse {
+		display: block;
+	}
+
+}
 @media (min-width: 665px) {
 
 	.shoeNumber-inventory,
 h4 {
 	display: inline;
 	padding-right: 10px;
-	font-size: 16px;
+	font-size: 24px;
 }
 
 }
@@ -52,12 +68,5 @@ h4 {
 	h4 {
 		display: inline;
 		padding-right: 10px;
-		font-size: 17px;
 	}
-	.owner-browse p {
-		display: inline;
-		padding-right: 32px;
-		font-size: 17px;
-	}
-	
 }
