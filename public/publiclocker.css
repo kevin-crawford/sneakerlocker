@@ -52,6 +52,8 @@ h4 {
 	padding-bottom: 20px;
 	padding-top: 10px;
 	margin-bottom: 20px;
+	width: 750px;
+	margin: auto;
 }
 
 @media (min-width: 625px) {

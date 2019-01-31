@@ -28,7 +28,7 @@ function loadPublicInventory() {
 				} else {
 					$('#public-inventory').append(`
 				<div class="publiclocker-title">
-					<h2>${username} Inventory</h2>
+					<h2>${username}'s Inventory</h2>
 				</div>
 				`)
 			for(let i = 0; i < result.length; i++){

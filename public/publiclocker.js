@@ -23,11 +23,6 @@ function loadPublicInventory() {
 				<h4> No Shoes Found In This Locker<h4>
 			</section>`)
 			} else {
-				$('#public-inventory').append(`
-				<div class="publiclocker-title">
-					<h2>${username} Inventory</h2>
-				</div>
-				`)
 			for(let i = 0; i < result.length; i++){
 				let shoeNumber = (i + 1);
 			$('#public-inventory').append(
