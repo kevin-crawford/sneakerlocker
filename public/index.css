@@ -46,6 +46,7 @@ body {
 	padding-bottom: 1em;
 	max-width: 550px;
 	margin: auto;
+	margin: 20px auto;
 }
 
 .container {
@@ -71,6 +72,12 @@ body {
 	font-family: Railway, sans-serif;
 }
 
+.signup-query {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
 #login-form input {
 	text-align: center;
 	padding: 3px 0px;
@@ -88,7 +95,7 @@ body {
 	margin: 10px auto;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	display: block;
+	width: 50%
 }
 
 #login-form label {
@@ -106,7 +113,7 @@ a {
 
 #signup-form label {
 	font-size: 16px;
-	display: block;
+	width: 30%;
 	padding: 0px 0px;
 	color: white;
 }
@@ -244,22 +251,25 @@ button#back-btn {
 	margin: 0 auto;
 	border: none;
 	margin-bottom: 10px;
+	width: 200px;
 }
 
-#new-account {
+#new-account,
+.login {
 	display: block;
 	text-align: center;
 	margin: 10px auto;
 	width: 200px;
+	border: none;
 }
-
+/* 
 .login {
 	display: block;
 	text-align: center;
 	width: 90%;
 	margin: 10px auto;
 	border: none;
-}
+} */
 
 .button {
   background-color: Crimson;  
@@ -267,7 +277,7 @@ button#back-btn {
   color: white;
   padding: .5em;
 	text-decoration: none;
-	font-family: Railway, sans-serif;
+	font-size: 14px;
 }
 
 .button:focus,
@@ -323,6 +333,8 @@ section#signup-section {
   width: 100%
 }
 
+
+
 #login-form {
     padding-bottom: 1em;
     
@@ -331,6 +343,7 @@ section#signup-section {
 #signup-form {
 	padding-bottom: .5em;
 	height: 500px;
+	
 }
 
 #login-form legend,
