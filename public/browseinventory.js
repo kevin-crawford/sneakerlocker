@@ -35,10 +35,11 @@ function loadPublicInventory() {
 						let shoeNumber = (i + 1);
 			$('#public-inventory').append(`
 			<section role="region" aria-labeledby="shoe-info" class="shoeinfo-region">
+			
 				<div id="shoeNumber-inventory">
 					<h3>${shoeNumber}</h3>
 				</div>
-				<div>
+				<div class="shoe-item wrapper">
 					<div class="shoe-brand">
 						<label>Brand</label>
 						<p>${result[i].shoeBrand}</p>
