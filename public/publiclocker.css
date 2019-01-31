@@ -28,6 +28,7 @@
 	padding-right: 14px;
 	display: inline;
 	font-size: 14px;
+	font-family: Raleway;
 }
 
 .shoe-info-data > li {
@@ -36,12 +37,14 @@
 	padding-right: 14px;
 	display: inline;
 	font-size: 14px;
+	font-family: 'Roboto', sans-serif;
+  font-weight: lighter;
 }
 
 h4 {
 	padding-left: 10px;
 	padding-top: 10px;
-	font-family: Roboto, sans-serf;
+	font-family: 'Roboto', sans-serf;
 }
 
 #public-inventory {
