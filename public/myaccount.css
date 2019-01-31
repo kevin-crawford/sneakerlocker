@@ -18,6 +18,16 @@
 	justify-content: space-between;
 	border-left: 1px solid black;
 	margin: auto;
+	width: 100%;
+	margin-left: 5px;
+}
+
+section.editshoe-section div {
+	text-align: center;
+}
+
+.editshoe-section label {
+	margin-right: 5px;
 }
 .shoeNumber-inventory h4 {
 	font-size: 26px;

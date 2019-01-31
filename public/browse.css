@@ -14,7 +14,7 @@
 	font-size: 14px;
 	border: 1px solid black;
 	margin-bottom: 20px;
-	padding: 10px;
+	padding: 25px;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -35,7 +35,7 @@ h2 {
 
 .owner-browse p {
 	display: block;
-	font-size: 20px;
+	font-weight: lighter;
 	font-family: Railway, sans-serif;
 }
 
@@ -50,6 +50,13 @@ h4 {
 	.owner-browse {
 		display: block;
 	}
+
+	a.go-to-ownerInv.button {
+    margin: auto;
+    display: block;
+    text-align: center;
+    margin: 10px;
+}
 
 }
 @media (min-width: 665px) {
