@@ -20,6 +20,16 @@
 	font-size: 20px;
 	font-family: Railway, sans-serif;
 }
+.shoe-item.wrapper {
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+
+.publiclocker-title h2 {
+	text-align: center;
+}
+
 
 .publiclocker-title {
 	text-align: center;
