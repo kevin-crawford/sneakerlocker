@@ -1,6 +1,6 @@
 # SNEAKER LOCKER
 
-### Live App: https://secret-mountain-26267.herokuapp.com/
+### Live App: https://sneakerlocker.herokuapp.com/
 
 ### Summary:
 
